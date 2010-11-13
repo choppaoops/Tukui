@@ -2,8 +2,8 @@
 if not TukuiCF["nameplate"].enable == true then return end
 
 local TEXTURE = TukuiCF["media"].normTex
-local FONT = TukuiCF["media"].font
-local FONTSIZE = 11
+local FONT = TukuiCF["media"].font2
+local FONTSIZE = 6.5
 local FONTFLAG = "THINOUTLINE"
 local hpHeight = 12
 local hpWidth = 110
@@ -220,9 +220,9 @@ local function UpdateObjects(frame)
 	local level, elite, mylevel = tonumber(frame.level:GetText()), frame.elite:IsShown(), UnitLevel("player")
 	frame.level:ClearAllPoints()
 	if TukuiCF["nameplate"].showhealth == true then
-		frame.level:SetPoint("RIGHT", frame.hp, "RIGHT", 2, 0)
+		frame.level:SetPoint("RIGHT", frame.hp, "RIGHT", 0, 1)
 	else
-		frame.level:SetPoint("RIGHT", frame.hp, "LEFT", -1, 0)
+		frame.level:SetPoint("RIGHT", frame.hp, "LEFT", -1, 1)
 	end
 	if frame.boss:IsShown() then
 		frame.level:SetText("B")
@@ -287,8 +287,8 @@ local function SkinObjects(frame)
 		tile = false, tileSize = 0, edgeSize = noscalemult,
 		insets = {left = -noscalemult, right = -noscalemult, top = -noscalemult, bottom = -noscalemult}
 	})
-	healthbackdrop:SetBackdropBorderColor(0.6, 0.6, 0.6, 1)
-	healthbackdrop:SetBackdropColor(0.1, 0.1, 0.1, 1)
+	healthbackdrop:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
+	healthbackdrop:SetBackdropColor(0, 0, 0, 1)
 	healthbackdrop:SetPoint("TOPLEFT", hp, "TOPLEFT", -noscalemult*2, noscalemult*2)
 	healthbackdrop:SetPoint("BOTTOMRIGHT", hp, "BOTTOMRIGHT", noscalemult*2, -noscalemult*2)
 	if (hp:GetFrameLevel() - 1) > 0 then
@@ -326,7 +326,7 @@ local function SkinObjects(frame)
 	if TukuiCF["nameplate"].showhealth == true then
 		hp.value = hp:CreateFontString(nil, "OVERLAY")	
 		hp.value:SetFont(FONT, FONTSIZE, FONTFLAG)
-		hp.value:SetPoint("CENTER", hp)
+		hp.value:SetPoint("CENTER", hp, 0, 1)
 		hp.value:SetTextColor(1,1,1)
 		hp.value:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	end
@@ -339,8 +339,8 @@ local function SkinObjects(frame)
 		tile = false, tileSize = 0, edgeSize = noscalemult,
 		insets = {left = -noscalemult, right = -noscalemult, top = -noscalemult, bottom = -noscalemult}
 	})
-	castbackdrop:SetBackdropBorderColor(0.6,0.6,0.6,1)
-	castbackdrop:SetBackdropColor(0.1, 0.1, 0.1, 1)
+	castbackdrop:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
+	castbackdrop:SetBackdropColor(0, 0, 0, 1)
 	castbackdrop:SetPoint("TOPLEFT", cb, "TOPLEFT", -noscalemult*2, noscalemult*2)
 	castbackdrop:SetPoint("BOTTOMRIGHT", cb, "BOTTOMRIGHT", noscalemult*2, -noscalemult*2)
 	castbackdrop:SetFrameStrata(cb:GetFrameStrata())
@@ -369,8 +369,8 @@ local function SkinObjects(frame)
 		tile = false, tileSize = 0, edgeSize = noscalemult,
 		insets = {left = -noscalemult, right = -noscalemult, top = -noscalemult, bottom = -noscalemult}
 	})
-	casticonbackdrop:SetBackdropBorderColor(0.6,0.6,0.6,1)
-	casticonbackdrop:SetBackdropColor(0.1, 0.1, 0.1, 1)
+	casticonbackdrop:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
+	casticonbackdrop:SetBackdropColor(0, 0, 0, 1)
 	casticonbackdrop:SetPoint("TOPLEFT", cbicon, "TOPLEFT", -noscalemult*2, noscalemult*2)
 	casticonbackdrop:SetPoint("BOTTOMRIGHT", cbicon, "BOTTOMRIGHT", noscalemult*2, -noscalemult*2)
 	casticonbackdrop:SetFrameLevel(hp:GetFrameLevel() - 1)
@@ -467,7 +467,7 @@ CreateFrame('Frame'):SetScript('OnUpdate', function(self, elapsed)
 		for frame in pairs(frames) do
 			UpdateThreat(frame, self.elapsed)
 		end
-		
+
 		self.elapsed = 0
 	else
 		self.elapsed = (self.elapsed or 0) + elapsed

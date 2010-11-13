@@ -10,7 +10,7 @@ if not TukuiCF["others"].enablebag == true then return end
 
 local bags_BACKPACK = {0, 1, 2, 3, 4}
 local bags_BANK = {-1, 5, 6, 7, 8, 9, 10, 11}
-local BAGSFONT = TukuiCF["media"].font
+local BAGSFONT = TukuiCF["media"].font2
 local ST_NORMAL = 1
 local ST_SOULBAG = 2
 local ST_SPECIAL = 3
@@ -177,6 +177,11 @@ function Stuffing:SlotUpdate(b)
 	SetItemButtonTexture(b.frame, texture)
 	SetItemButtonCount(b.frame, count)
 	SetItemButtonDesaturated(b.frame, locked, 0.5, 0.5, 0.5)
+
+	local scount = _G[b.frame:GetName() .. "Count"]
+	scount:SetFont (BAGSFONT, 10, "OUTLINE")
+	scount:SetPoint("BOTTOMRIGHT", 0, 2)
+	b.scount = scount
 		
 	b.frame:Show()
 end
@@ -482,10 +487,10 @@ function Stuffing:InitBags()
 
 
 	local detail = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
-	detail:SetPoint("TOPLEFT", f, TukuiDB.Scale(12), TukuiDB.Scale(-10))
+	detail:SetPoint("TOPLEFT", f, TukuiDB.Scale(12), TukuiDB.Scale(-14))
 	detail:SetPoint("RIGHT", TukuiDB.Scale(-(16 + 24)), 0)
 	detail:SetJustifyH("LEFT")
-	detail:SetText("|cff9999ff" .. "Search")
+	detail:SetText("|cff9999ff" .. "Поиск")
 	editbox:SetAllPoints(detail)
 
 	local gold = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
@@ -558,46 +563,31 @@ function Stuffing:Layout(lb)
 
 	if lb then
 		bs = bags_BANK
-		cols = (floor(TukuiCF["chat"].chatwidth/370 * 10))
+		cols = (floor(TukuiCF["chat"].chatwidth/355 * 10))
 		f = self.bankFrame
 	else
 		bs = bags_BACKPACK
-		cols = (floor(TukuiCF["chat"].chatwidth/370 * 10))
+		cols = (floor(TukuiCF["chat"].chatwidth/355 * 10))
 		f = self.frame
 
 		f.gold:SetText (GetCoinTextureString(GetMoney(), 12))
-		f.editbox:SetFont(BAGSFONT, 12)
-		f.detail:SetFont(BAGSFONT, 12)
-		f.gold:SetFont(BAGSFONT, 12)
+		f.editbox:SetFont(BAGSFONT, 10)
+		f.detail:SetFont(BAGSFONT, 10)
+		f.gold:SetFont(BAGSFONT, 10)
 
 		f.detail:ClearAllPoints()
-		f.detail:SetPoint("TOPLEFT", f, TukuiDB.Scale(12), TukuiDB.Scale(-10))
+		f.detail:SetPoint("TOPLEFT", f, TukuiDB.Scale(12), TukuiDB.Scale(-14))
 		f.detail:SetPoint("RIGHT", TukuiDB.Scale(-(16 + 24)), 0)
 	end
 
 	f:SetClampedToScreen(1)
-	f:SetBackdrop({
-		bgFile = TukuiCF["media"].blank,
-		edgeFile = TukuiCF["media"].blank,
-		edgeSize = TukuiDB.mult,
-		insets = {left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bottom = -TukuiDB.mult}
-	})
-	f:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
-	f:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
-
 
 	-- bag frame stuff
 	local fb = f.bags_frame
 	if bag_bars == 1 then
+		TukuiDB.SetTemplate(fb)
+		TukuiDB.CreateShadow(fb)
 		fb:SetClampedToScreen(1)
-		fb:SetBackdrop({
-			bgFile = TukuiCF["media"].blank,
-			edgeFile = TukuiCF["media"].blank,
-			edgeSize = TukuiDB.mult,
-			insets = {left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bottom = -TukuiDB.mult}
-		})
-		fb:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
-		fb:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 		local bsize = 30
 		if lb then bsize = 37 end
@@ -656,8 +646,9 @@ function Stuffing:Layout(lb)
 	if (slots % cols) ~= 0 then
 		rows = rows + 1
 	end
-
-	f:SetWidth(TukuiDB.Scale(TukuiCF["chat"].chatwidth))
+	TukuiDB.CreateShadow(f)
+	TukuiDB.SetTemplate(f)
+	f:SetWidth(TukuiDB.Scale(TukuiCF["chat"].chatwidth+4))
 	f:SetHeight(TukuiDB.Scale(rows * 31 + (rows - 1) * 4 + off + 12 * 2))
 
 	local bf = CreateFrame("Frame", "BagHolderFrame", f)
@@ -688,8 +679,7 @@ function Stuffing:Layout(lb)
 						table.insert(self.buttons, idx + 1, b)
 					end
 
-					--xoff = ((f:GetWidth() / cols) / 2) + (x * 31) + (x * 2.5)
-					xoff = (x * 31) + (x * 2.5)
+					xoff = (x * 31) + (x * 3)
 					
 					yoff = off + 12 + (y * 31) + ((y - 1) * 4)
 					yoff = yoff * -1
@@ -698,14 +688,14 @@ function Stuffing:Layout(lb)
 					
 					b.frame:ClearAllPoints()
 					b.frame:SetPoint("TOPLEFT", bf, "TOPLEFT", TukuiDB.Scale(xoff), TukuiDB.Scale(yoff))
-					b.frame:SetHeight(TukuiDB.Scale(31))
-					b.frame:SetWidth(TukuiDB.Scale(31))
+					b.frame:SetHeight(TukuiDB.Scale(30))
+					b.frame:SetWidth(TukuiDB.Scale(30))
 					b.frame:SetPushedTexture("")
 					b.frame:SetNormalTexture("")
 					b.frame:Show()
 					TukuiDB.SetTemplate(b.frame)
-					b.frame:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
 					TukuiDB.StyleButton(b.frame)
+					b.frame:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
 					local clink = GetContainerItemLink
 					if (clink and b.rarity and b.rarity > 1) then
 						b.frame:SetBackdropBorderColor(GetItemQualityColor(b.rarity))
@@ -885,7 +875,6 @@ function Stuffing:PLAYER_ENTERING_WORLD()
 	keybackdrop:SetPoint("BOTTOMLEFT", 0, 0)
 	keybackdrop:SetSize(TukuiDB.Scale(179),TukuiDB.Scale(215))
 	TukuiDB.SetTemplate(keybackdrop)
-	keybackdrop:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
 	ContainerFrame1CloseButton:Hide()
 	ContainerFrame1Portrait:Hide()
 	ContainerFrame1Name:Hide()
@@ -902,8 +891,7 @@ function Stuffing:PLAYER_ENTERING_WORLD()
 		t:SetPoint("TOPLEFT", slot, TukuiDB.Scale(2), TukuiDB.Scale(-2))
 		t:SetPoint("BOTTOMRIGHT", slot, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 		TukuiDB.SetTemplate(slot)
-		
-		TukuiDB.StyleButton(slot, false)
+		TukuiDB.StyleButton(slot)
 	end
 
 
@@ -1364,7 +1352,7 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 	
 	wipe(info)
-	info.text = "Show Keyring"
+	info.text = tukuilocal.bags_keyring
 	info.checked = function()
 		return key_ring == 1
 	end
@@ -1390,4 +1378,3 @@ function Stuffing.Menu(self, level)
 	info.tooltipTitle = CLOSE
 	UIDropDownMenu_AddButton(info, level)
 end
-

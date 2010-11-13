@@ -16,10 +16,10 @@ local Tooltips = {GameTooltip,ItemRefTooltip,ShoppingTooltip1,ShoppingTooltip2,S
 local linkTypes = {item = true, enchant = true, spell = true, quest = true, unit = true, talent = true, achievement = true, glyph = true}
 
 local classification = {
-	worldboss = "|cffAF5050Boss|r",
-	rareelite = "|cffAF5050+ Rare|r",
+	worldboss = "|cffAF5050Босс|r",
+	rareelite = "|cffAF5050+ Редкий|r",
 	elite = "|cffAF5050+|r",
-	rare = "|cffAF5050Rare|r",
+	rare = "|cffAF5050Редкий|r",
 }
  	
 local NeedBackdropBorderRefresh = false
@@ -62,8 +62,13 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 	if db.cursor == true then
 		self:SetOwner(parent, "ANCHOR_CURSOR")	
 	else
+		if TukuiCF["others"].enablebag == true and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
+		self:ClearAllPoints()
+		self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", -1, TukuiDB.Scale(18))	
+	else
 		self:SetOwner(parent, "ANCHOR_NONE")
-		self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -15+xOffset, TukuiDB.Scale(42+yOffset))	
+		self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5+xOffset, TukuiDB.Scale(42+yOffset))	
+		end
 	end
 	self.default = 1
 end)
@@ -84,16 +89,15 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 			self:Hide()
 		else
 			if TukuiCF["others"].enablebag == true and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
+				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", -1, TukuiDB.Scale(18))	
 			else
 				if CheckAddOnShown() == true and xOffset == 0 and yOffset == 0 then
-					if TukuiCF["chat"].showbackdrop == true and TukuiDB.ChatRightShown == true then
-						self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(42))	
-					else
-						self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(18))		
-					end	
+					self:ClearAllPoints()
+					self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(38))		
 				else
-					self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -15+xOffset, TukuiDB.Scale(42+yOffset))	
+					self:ClearAllPoints()
+					self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5+xOffset, TukuiDB.Scale(42+yOffset))	
 				end
 			end
 		end
@@ -154,8 +158,8 @@ GameTooltipStatusBar:SetScript("OnValueChanged", function(self, value)
 
 	if not self.text then
 		self.text = self:CreateFontString(nil, "OVERLAY")
-		self.text:SetPoint("CENTER", GameTooltipStatusBar, 0, TukuiDB.Scale(-3))
-		self.text:SetFont(TukuiCF["media"].font, 12, "THINOUTLINE")
+		self.text:SetPoint("CENTER", GameTooltipStatusBar, 2, TukuiDB.Scale(1))
+		self.text:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 		self.text:Show()
 		if unit then
 			min, max = UnitHealth(unit), UnitHealthMax(unit)
@@ -187,8 +191,8 @@ end)
 local healthBar = GameTooltipStatusBar
 healthBar:ClearAllPoints()
 healthBar:SetHeight(TukuiDB.Scale(5))
-healthBar:SetPoint("TOPLEFT", healthBar:GetParent(), "BOTTOMLEFT", TukuiDB.Scale(2), TukuiDB.Scale(-5))
-healthBar:SetPoint("TOPRIGHT", healthBar:GetParent(), "BOTTOMRIGHT", -TukuiDB.Scale(2), TukuiDB.Scale(-5))
+healthBar:SetPoint("BOTTOMLEFT", healthBar:GetParent(), "TOPLEFT", TukuiDB.Scale(2), TukuiDB.Scale(5))
+healthBar:SetPoint("BOTTOMRIGHT", healthBar:GetParent(), "TOPRIGHT", -TukuiDB.Scale(2), TukuiDB.Scale(5))
 healthBar:SetStatusBarTexture(TukuiCF.media.normTex)
 
 
@@ -197,6 +201,7 @@ healthBarBG:SetFrameLevel(healthBar:GetFrameLevel() - 1)
 healthBarBG:SetPoint("TOPLEFT", -TukuiDB.Scale(2), TukuiDB.Scale(2))
 healthBarBG:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), -TukuiDB.Scale(2))
 TukuiDB.SetTemplate(healthBarBG)
+TukuiDB.CreateShadow(healthBarBG)
 healthBarBG:SetBackdropColor(unpack(TukuiCF.media.backdropfadecolor))
 
 GameTooltip:HookScript("OnTooltipSetUnit", function(self)
@@ -228,15 +233,11 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", -1, TukuiDB.Scale(18))	
 			else
 				if CheckAddOnShown() == true and xOffset == 0 and yOffset == 0 then
-					if TukuiCF["chat"].showbackdrop == true and TukuiDB.ChatRightShown == true then
-						self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(42))	
-					else
-						self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(18))		
-					end
+					self:SetPoint("BOTTOMRIGHT", RDummyFrame, "TOPRIGHT", -1, TukuiDB.Scale(38))		
 				else
-					self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -15+xOffset, TukuiDB.Scale(42+yOffset))	
+					self:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5+xOffset, TukuiDB.Scale(42+yOffset))	
 				end
-			end
+			end	
 		end
 	end	
 	
@@ -373,6 +374,7 @@ end
 
 local SetStyle = function(self)
 	TukuiDB.SetTemplate(self)
+	TukuiDB.CreateShadow(self)
 	self:SetBackdropColor(unpack(TukuiCF.media.backdropfadecolor))
 	Colorize(self)
 end
@@ -417,5 +419,3 @@ TukuiTooltip:SetScript("OnEvent", function(self)
 		hooksecurefunc(GameTooltip, "SetShapeshift", CombatHideActionButtonsTooltip)
 	end
 end)
-
-

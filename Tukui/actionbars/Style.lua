@@ -32,7 +32,7 @@ function style(self, vehicle)
 	if Count then
 		Count:ClearAllPoints()
 		Count:SetPoint("BOTTOMRIGHT", 0, TukuiDB.Scale(2))
-		Count:SetFont(TukuiCF["media"].font, 12, "OUTLINE")
+		Count:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 	end
 	if Btname then
 		Btname:SetText("")
@@ -63,7 +63,7 @@ function style(self, vehicle)
 	if HotKey then
 		HotKey:ClearAllPoints()
 		HotKey:SetPoint("TOPRIGHT", 0, TukuiDB.Scale(-3))
-		HotKey:SetFont(TukuiCF["media"].font, 12, "OUTLINE")
+		HotKey:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 		HotKey.ClearAllPoints = TukuiDB.dummy
 		HotKey.SetPoint = TukuiDB.dummy
 		if not TukuiCF["actionbar"].hotkey == true then

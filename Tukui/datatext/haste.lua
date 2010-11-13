@@ -7,8 +7,8 @@ if TukuiCF["datatext"].haste and TukuiCF["datatext"].haste > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
 	TukuiDB.PP(TukuiCF["datatext"].haste, Text)
 
 	local int = 1
@@ -17,7 +17,7 @@ if TukuiCF["datatext"].haste and TukuiCF["datatext"].haste > 0 then
 		spellhaste = GetCombatRating(20)
 		rangedhaste = GetCombatRating(19)
 		attackhaste = GetCombatRating(18)
-		
+
 		if attackhaste > spellhaste and TukuiDB.class ~= "HUNTER" then
 			haste = attackhaste
 		elseif TukuiDB.class == "HUNTER" then
@@ -25,10 +25,10 @@ if TukuiCF["datatext"].haste and TukuiCF["datatext"].haste > 0 then
 		else
 			haste = spellhaste
 		end
-		
+
 		int = int - t
 		if int < 0 then
-			Text:SetText(SPELL_HASTE_ABBR..": "..valuecolor..haste)
+			Text:SetText(tukuilocal.datatext_playerhaste..valuecolor..haste)
 			int = 1
 		end     
 	end

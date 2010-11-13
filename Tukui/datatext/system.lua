@@ -8,8 +8,8 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 	Stat:SetFrameLevel(3)
 	Stat:EnableMouse(true)
 	
-	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
 	TukuiDB.PP(TukuiCF["datatext"].system, Text)
 	local colorme = string.format("%02x%02x%02x", 1*255, 1*255, 1*255)
 	
@@ -24,16 +24,16 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 		if memory > 999 then
 			local mem = floor((memory/1024) * mult + 0.5) / mult
 			if mem % 1 == 0 then
-				return mem..string.format(".0 %smb%s", unpack(statColor))
+				return mem..string.format(".0 %sмб%s", unpack(statColor))
 			else
-				return mem..string.format(" %smb%s", unpack(statColor))
+				return mem..string.format(" %sмб%s", unpack(statColor))
 			end
 		else
 			local mem = floor(memory * mult + 0.5) / mult
 				if mem % 1 == 0 then
-					return mem..string.format(".0 %skb%s", unpack(statColor))
+					return mem..string.format(".0 %sкб%s", unpack(statColor))
 				else
-					return mem..string.format(" %skb%s", unpack(statColor))
+					return mem..string.format(" %sкб%s", unpack(statColor))
 				end
 		end
 
@@ -63,29 +63,13 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 	local function Update(self, t)
 		int = int - t
 		int2 = int2 - t
-		local fpscolor
-		local latencycolor
 		
 		if int < 0 then
 			RefreshMem(self)
 			int = 10
 		end
 		if int2 < 0 then
-			if select(3, GetNetStats()) < 300 then
-				latencycolor = "|cff0CD809"
-			elseif (select(3, GetNetStats()) > 300 and select(3, GetNetStats()) < 500) then
-				latencycolor = "|cffE8DA0F"
-			else
-				latencycolor = "|cffD80909"
-			end
-			if floor(GetFramerate()) >= 30 then
-				fpscolor = "|cff0CD809"
-			elseif (floor(GetFramerate()) > 15 and floor(GetFramerate()) < 30) then
-				fpscolor = "|cffE8DA0F"
-			else
-				fpscolor = "|cffD80909"
-			end
-			Text:SetText("FPS: "..fpscolor..floor(GetFramerate()).."  |r".."MS: "..latencycolor..select(3, GetNetStats()))
+			Text:SetText(tukuilocal.datatext_fps..valuecolor..floor(GetFramerate()).."  |r"..tukuilocal.datatext_ms..valuecolor..select(3, GetNetStats()))
 			int2 = 0.8
 		end
 	end
@@ -97,12 +81,9 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 			GameTooltip:ClearAllPoints()
 			GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
 			GameTooltip:ClearLines()
-			if bandwidth ~= 0 then
-				GameTooltip:AddDoubleLine(tukuilocal.datatext_bandwidth,format("%s ".."Mbps",bandwidth),0.69, 0.31, 0.31,0.84, 0.75, 0.65)
-				GameTooltip:AddDoubleLine(tukuilocal.datatext_download,format("%s%%", floor(GetDownloadedPercentage()*100+0.5)),0.69, 0.31, 0.31, 0.84, 0.75, 0.65)
-				GameTooltip:AddLine(" ")
-			end
-			GameTooltip:AddDoubleLine(tukuilocal.datatext_totalmemusage,formatMem(Total), 0.69, 0.31, 0.31,0.84, 0.75, 0.65)
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_bandwidth,format("%s "..tukuilocal.datatext_mbps,bandwidth),0, 0.6, 1, 1, 1, 1)
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_download,format("%s%%", floor(GetDownloadedPercentage()*100+0.5)),0, 0.6, 1, 1, 1, 1)
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_totalmemusage,formatMem(Total), 0, 0.6, 1, 1, 1, 1)
 			GameTooltip:AddLine(" ")
 			for i = 1, #Memory do
 				if Memory[i][3] then 

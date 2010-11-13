@@ -1,7 +1,7 @@
 if not TukuiCF["raidframes"].enable == true or TukuiCF["raidframes"].gridonly == true then return end
 
-local font2 = TukuiCF["media"].uffont
-local font1 = TukuiCF["media"].font
+local font2 = TukuiCF["media"].font2
+local font1 = TukuiCF["media"].font2
 local normTex = TukuiCF["media"].normTex
 
 --Frame Size
@@ -20,7 +20,7 @@ local function Shared(self, unit)
 	self:HookScript("OnShow", TukuiDB.updateAllElements)
 	
 	self:SetBackdrop({bgFile = TukuiCF["media"].blank, insets = {top = -TukuiDB.mult, left = -TukuiDB.mult, bottom = -TukuiDB.mult, right = -TukuiDB.mult}})
-	self:SetBackdropColor(0.1, 0.1, 0.1)
+	self:SetBackdropColor(0, 0, 0)
 	
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetHeight(party_height*.80)
@@ -50,16 +50,17 @@ local function Shared(self, unit)
 		health.bg:SetTexture(unpack(TukuiCF["unitframes"].healthbackdropcolor))
 	else
 		health.colorClass = true
-		health.colorReaction = true	
-		health.bg.multiplier = 0.3			
+		health.colorReaction = true
+		health.bg.multiplier = 0.3		
 	end
-	health.colorDisconnected = false
+	health.colorDisconnected = false	
 	
 	-- border for all frames
 	local FrameBorder = CreateFrame("Frame", nil, self)
 	FrameBorder:SetPoint("TOPLEFT", self, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 	FrameBorder:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 	TukuiDB.SetTemplate(FrameBorder)
+	TukuiDB.CreateShadow(FrameBorder)
 	FrameBorder:SetBackdropBorderColor(unpack(TukuiCF["media"].altbordercolor))
 	FrameBorder:SetFrameLevel(2)
 	self.FrameBorder = FrameBorder

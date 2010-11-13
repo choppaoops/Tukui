@@ -23,9 +23,9 @@ local function SetCasterOnlyBuffs()
 		21562, -- Fortitude
 	}
 	Spell5Buff = { --Total Mana
-		61316, --"Dalaran Brilliance"
 		1459, --"Arcane Brilliance"
-	}
+		61316, --"Dalaran Brilliance"
+		}
 	Spell6Buff = { --Mana Regen
 		5675, --"Mana Spring Totem"
 		19740, --"Blessing of Might"
@@ -40,21 +40,19 @@ local function SetBuffs()
 		20217, --"Greater Blessing of Kings",
 	}
 	Spell4Buff = { --Total Stamina
+		1459, --"Arcane Brilliance"
+		61316, --"Dalaran Brilliance"
+	}
+	Spell5Buff = { --Total Mana
+		24907, --Аура лунного совуха
+		3738, --Хаст тотем
+		49868, --Скорость мысли
+		}
+	Spell6Buff = {
 		469, -- Commanding
 		6307, -- Blood Pact
 		90364, -- Qiraji Fortitude
 		21562, -- Fortitude
-	}
-	Spell5Buff = { --Total Mana
-		61316, --"Dalaran Brilliance"
-		1459, --"Arcane Brilliance"
-	}
-	Spell6Buff = { --Total AP
-		19740, --"Blessing of Might" placing it twice because i like the icon better :D code will stop after this one is read, we want this first 
-		30808, --"Unleashed Rage"
-		53138, --Abom Might
-		19506, --Trushot
-		19740, --"Blessing of Might"
 	}
 end
 
@@ -189,12 +187,12 @@ local function OnAuraChange(self, event, arg1, unit)
 	end
 end
 
-local bsize = (((TukuiMinimap:GetWidth()) - (TukuiDB.Scale(4) * 7)) / 6)
-
+local bsize = (((TukuiMinimap:GetWidth()) - (TukuiDB.Scale(5) * 7)) / 6)
 
 --Create the Main bar
 local raidbuff_reminder = CreateFrame("Frame", "RaidBuffReminder", TukuiMinimap)
-TukuiDB.CreatePanel(raidbuff_reminder, TukuiMinimap:GetWidth(), bsize + TukuiDB.Scale(8), "TOPLEFT", TukuiMinimapStatsLeft, "BOTTOMLEFT", 0, TukuiDB.Scale(-3))
+TukuiDB.CreatePanel(raidbuff_reminder, TukuiMinimap:GetWidth(), bsize + TukuiDB.Scale(8), "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, TukuiDB.Scale(-32))
+TukuiDB.CreateShadow(raidbuff_reminder)
 raidbuff_reminder:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_INVENTORY_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_AURA")
@@ -203,15 +201,17 @@ raidbuff_reminder:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
 raidbuff_reminder:RegisterEvent("CHARACTER_POINTS_CHANGED")
 raidbuff_reminder:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 raidbuff_reminder:SetScript("OnEvent", OnAuraChange)
-
+raidbuff_reminder:SetFrameLevel(2)
 
 --Function to create buttons
 local function CreateButton(name, relativeTo, firstbutton)
 	local button = CreateFrame("Frame", name, RaidBuffReminder)
 	if firstbutton == true then
-		TukuiDB.CreatePanel(button, bsize, bsize, "LEFT", relativeTo, "LEFT", TukuiDB.Scale(4), 0)
+		TukuiDB.CreateRBPanel(button, bsize, bsize, "LEFT", relativeTo, "LEFT", TukuiDB.Scale(4), 0)
+		TukuiDB.CreateOuterBorder(button)
 	else
-		TukuiDB.CreatePanel(button, bsize, bsize, "LEFT", relativeTo, "RIGHT", TukuiDB.Scale(4), 0)
+		TukuiDB.CreateRBPanel(button, bsize, bsize, "LEFT", relativeTo, "RIGHT", TukuiDB.Scale(5), 0)
+		TukuiDB.CreateOuterBorder(button)
 	end
 	button:SetFrameLevel(RaidBuffReminder:GetFrameLevel() + 2)
 	button:SetBackdropBorderColor(0,0,0,0)

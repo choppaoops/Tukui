@@ -1,4 +1,4 @@
-﻿------------------------------------------------------------------------
+------------------------------------------------------------------------
 --	First Time Launch and On Login file
 ------------------------------------------------------------------------
 
@@ -7,7 +7,7 @@ local function install()
 	SetCVar("lootUnderMouse", 1)
 	SetCVar("autoSelfCast", 1)
 	SetCVar("mapQuestDifficulty", 1)
-	SetCVar("scriptErrors", 0)
+	SetCVar("scriptErrors", 1)
 	SetCVar("nameplateShowFriends", 0)
 	SetCVar("nameplateShowFriendlyPets", 0)
 	SetCVar("nameplateShowFriendlyGuardians", 0)
@@ -30,7 +30,7 @@ local function install()
 	SetCVar("autoQuestProgress", 1)
 	SetCVar("showLootSpam", 1)
 	SetCVar("guildMemberNotify", 1)
-	SetCVar("chatBubblesParty", 1)
+	SetCVar("chatBubblesParty", 0)
 	SetCVar("chatBubbles", 1)	
 	SetCVar("UberTooltips", 1)
 	SetCVar("removeChatDelay", 1)
@@ -43,7 +43,18 @@ local function install()
 		FCF_SetLocked(ChatFrame1, 1)
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
-				
+		FCF_OpenNewWindow(tukuilocal.chat_trade)
+		FCF_SetLocked(ChatFrame3, 1)
+		FCF_DockFrame(ChatFrame3)
+		FCF_OpenNewWindow(tukuilocal.chat_whisp)
+		FCF_SetLocked(ChatFrame4, 1)
+		FCF_DockFrame(ChatFrame4)	
+
+		FCF_OpenNewWindow(tukuilocal.chat_loot)
+		FCF_UnDockFrame(ChatFrame5)
+		FCF_SetLocked(ChatFrame5, 1)
+		ChatFrame5:Show();
+		
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
 			local chatFrameId = frame:GetID()
@@ -58,32 +69,34 @@ local function install()
 			if i == 1 then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOMLEFT", ChatLBackground, "BOTTOMLEFT", TukuiDB.Scale(2), 0)
+			elseif i == 5 and chatName == tukuilocal.chat_loot then
+				frame:ClearAllPoints()
+				frame:SetPoint("BOTTOMLEFT", RDummyFrame, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
 			end
 					
 			-- save new default position and dimension
 			FCF_SavePositionAndDimensions(frame)
 			
 			-- set default tukui font size
-			FCF_SetChatWindowFontSize(nil, frame, 12)
+			FCF_SetChatWindowFontSize(nil, frame, 13)
 			
 			-- rename windows general because moved to chat #3
-			if i == 1 then FCF_SetWindowName(frame, "G, S & W") end
-			if i == 2 then FCF_SetWindowName(frame, "Log") end
+			if i == 1 then FCF_SetWindowName(frame, tukuilocal.chat_general) end
+			if i == 2 then FCF_SetWindowName(frame, tukuilocal.chat_log) end
 		end
-		
+
 	ChatFrame_RemoveAllMessageGroups(ChatFrame1)
-	ChatFrame_AddChannel(ChatFrame1, "Trade")
-	ChatFrame_AddChannel(ChatFrame1, "General")
-	ChatFrame_AddChannel(ChatFrame1, "LocalDefense")
-	ChatFrame_AddChannel(ChatFrame1, "GuildRecruitment")
-	ChatFrame_AddChannel(ChatFrame1, "LookingForGroup")
+	ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_trade)
+	ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_general)
+	ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_defense)
+	ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_recrutment)
+	ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_lfg)
 	ChatFrame_AddMessageGroup(ChatFrame1, "SAY")
 	ChatFrame_AddMessageGroup(ChatFrame1, "EMOTE")
 	ChatFrame_AddMessageGroup(ChatFrame1, "YELL")
 	ChatFrame_AddMessageGroup(ChatFrame1, "GUILD")
 	ChatFrame_AddMessageGroup(ChatFrame1, "OFFICER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "GUILD_ACHIEVEMENT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "WHISPER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_SAY")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_EMOTE")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_YELL")
@@ -106,26 +119,32 @@ local function install()
 	ChatFrame_AddMessageGroup(ChatFrame1, "DND")
 	ChatFrame_AddMessageGroup(ChatFrame1, "IGNORED")
 	ChatFrame_AddMessageGroup(ChatFrame1, "ACHIEVEMENT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "BN_WHISPER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_CONVERSATION")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_INLINE_TOAST_ALERT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_XP_GAIN")
-	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_HONOR_GAIN")
-	ChatFrame_AddMessageGroup(ChatFrame1, "LOOT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "MONEY")
-	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_XP_GAIN")		
+
+	-- Торговля
+	ChatFrame_RemoveAllMessageGroups(ChatFrame3)
+	ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_general)
+	ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_trade)
+	ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_defense)
+	ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_recrutment)
+	ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_lfg)
+
+	-- Цвет
+	ChangeChatColor("CHANNEL4", 1, 1, 0)
+
+	-- Сообщения
+	ChatFrame_RemoveAllMessageGroups(ChatFrame4)
+	ChatFrame_AddMessageGroup(ChatFrame4, "WHISPER")
+	ChatFrame_AddMessageGroup(ChatFrame4, "BN_WHISPER")
 	
-	
-	if TukuiDB.myname == "Elv" then
-		--keep losing my god damn channels everytime i resetui
-		ChatFrame_AddChannel(DEFAULT_CHAT_FRAME, "tystank")
-		ChatFrame_AddChannel(DEFAULT_CHAT_FRAME, "tys")
-		ChatFrame_AddChannel(DEFAULT_CHAT_FRAME, "crusaderaura")
-		ChangeChatColor("CHANNEL5", 147/255, 112/255, 219/255)
-		ChangeChatColor("CHANNEL6", 139/255, 115/255, 85/255)
-		ChangeChatColor("CHANNEL7", RAID_CLASS_COLORS["PALADIN"].r, RAID_CLASS_COLORS["PALADIN"].g, RAID_CLASS_COLORS["PALADIN"].b)
-		SetCVar("scriptErrors", 1)
-	end	
+	ChatFrame_RemoveAllMessageGroups(ChatFrame5)
+	ChatFrame_AddMessageGroup(ChatFrame5, "LOOT")
+	ChatFrame_AddMessageGroup(ChatFrame5, "MONEY")
+	ChatFrame_AddMessageGroup(ChatFrame5, "COMBAT_XP_GAIN")
+	ChatFrame_AddMessageGroup(ChatFrame5, "COMBAT_HONOR_GAIN")
+	ChatFrame_AddMessageGroup(ChatFrame5, "COMBAT_FACTION_CHANGE")
+
 		-- enable classcolor automatically on login and on each character without doing /configure each time.
 		ToggleChatColorNamesByClassGroup(true, "SAY")
 		ToggleChatColorNamesByClassGroup(true, "EMOTE")
@@ -197,8 +216,8 @@ StaticPopupDialogs["INSTALL_UI"] = {
 
 StaticPopupDialogs["DISABLE_RAID"] = {
 	text = tukuilocal.popup_2raidactive,
-	button1 = "DPS - TANK",
-	button2 = "HEAL",
+	button1 = "ДПС - Танк",
+	button2 = "Лекарь",
 	OnAccept = function() DisableAddOn("Tukui_Heal_Layout") EnableAddOn("Tukui_Dps_Layout") ReloadUI() end,
 	OnCancel = function() EnableAddOn("Tukui_Heal_Layout") DisableAddOn("Tukui_Dps_Layout") ReloadUI() end,
 	timeout = 0,
@@ -265,6 +284,8 @@ TukuiOnLogon:SetScript("OnEvent", function(self, event)
 		SetCVar("showArenaEnemyFrames", 0)
 	end
 	
+	print(tukuilocal.core_release)
+	print(tukuilocal.core_welcome)
 	print(tukuilocal.core_welcome2)
 end)
 

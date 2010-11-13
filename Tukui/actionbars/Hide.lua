@@ -10,9 +10,10 @@ do
 	MainMenuBar:EnableMouse(false)
 	VehicleMenuBar:SetScale(0.00001)
 	VehicleMenuBar:SetAlpha(0)
+	VehicleMenuBar:EnableMouse(false)
 	PetActionBarFrame:EnableMouse(false)
 	ShapeshiftBarFrame:EnableMouse(false)
-	
+
 	local elements = {
 		MainMenuBar, MainMenuBarArtFrame, BonusActionBarFrame, VehicleMenuBar,
 		PossessBarFrame, PetActionBarFrame, ShapeshiftBarFrame,
@@ -26,8 +27,8 @@ do
 		element:SetAlpha(0)
 	end
 	elements = nil
-
-	-- fix main bar keybind not working after a talent switch. :X
+	
+	 -- fix main bar keybind not working after a talent switch. :X
 	hooksecurefunc('TalentFrame_LoadUI', function()
 		PlayerTalentFrame:UnregisterEvent('ACTIVE_TALENT_GROUP_CHANGED')
 	end)

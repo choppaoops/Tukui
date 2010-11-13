@@ -296,7 +296,7 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 51945 ), -- Earthliving Weapon Effect
 			CreateSpellEntry( 61295 ), -- Riptide
 			CreateSpellEntry( 16236 ), -- Ancestral Fortitude
-            CreateSpellEntry( 974 ), -- Earth Shield
+			CreateSpellEntry( 974 ), -- Earth Shield
 		},
 		player = { 
 			CreateSpellEntry( 974 ), -- Earth Shield
@@ -316,7 +316,7 @@ CLASS_FILTERS = {
 		},
 		procs = {
 			CreateSpellEntry( 51528 ), -- Maelstrom Weapon
-			CreateSpellEntry( 51562 ), -- Tidal Waves
+			CreateSpellEntry( 51562 ), -- Tidal Waves 
 			CreateSpellEntry( 16246 ), -- Clearcasting
 		},
 	},
@@ -328,7 +328,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 30108 ), -- Unstable Affliction
 			CreateSpellEntry( 603 ), -- Bane of Doom
 			CreateSpellEntry( 980 ), -- Bane of Agony
-			CreateSpellEntry( 80240 ), -- Bane of Havoc
 			CreateSpellEntry( 1490 ), -- Curse of the Elements 
 			CreateSpellEntry( 18018 ), -- Conflagration
 			CreateSpellEntry( 348 ), -- Immolate

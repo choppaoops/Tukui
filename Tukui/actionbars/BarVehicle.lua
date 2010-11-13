@@ -63,7 +63,7 @@ do
 		_G["TukuiVehicleHotkey"..i] = _G["VehicleMenuBarActionButton"..i]:CreateFontString("TukuiVehicleHotkey"..i, "OVERLAY", nil)
 		_G["TukuiVehicleHotkey"..i]:ClearAllPoints()
 		_G["TukuiVehicleHotkey"..i]:SetPoint("TOPRIGHT", 0, TukuiDB.Scale(-3))
-		_G["TukuiVehicleHotkey"..i]:SetFont(TukuiCF["media"].font, 14, "OUTLINE")
+		_G["TukuiVehicleHotkey"..i]:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 		_G["TukuiVehicleHotkey"..i].ClearAllPoints = TukuiDB.dummy
 		_G["TukuiVehicleHotkey"..i].SetPoint = TukuiDB.dummy
 		
@@ -95,11 +95,12 @@ VehTextUpdate:SetScript("OnEvent", UpdateVehHotkeys)
 local vehicle = CreateFrame("Button", nil, UIParent, "SecureHandlerClickTemplate")
 vehicle:SetWidth(TukuiDB.Scale(26))
 vehicle:SetHeight(TukuiDB.Scale(26))
-vehicle:SetPoint("TOPRIGHT", Minimap, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-58))
+vehicle:SetPoint("TOPRIGHT", Minimap, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-65))
 vehicle:SetNormalTexture("Interface\\AddOns\\Tukui\\media\\textures\\vehicleexit")
 vehicle:SetPushedTexture("Interface\\AddOns\\Tukui\\media\\textures\\vehicleexit")
 vehicle:SetHighlightTexture("Interface\\AddOns\\Tukui\\media\\textures\\vehicleexit")
 TukuiDB.SetTemplate(vehicle)
+TukuiDB.CreateShadow(vehicle)
 vehicle:RegisterForClicks("AnyUp")
 vehicle:SetScript("OnClick", function() VehicleExit() end)
 RegisterStateDriver(vehicle, "visibility", "[vehicleui][target=vehicle,noexists] hide;show")

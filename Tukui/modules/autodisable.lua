@@ -107,11 +107,11 @@ do
 		TukuiCF["unitframes"]["showsymbols"] = nil	               -- show symbol.
 		TukuiCF["unitframes"]["aggro"] = nil                      -- show aggro on all raids layouts
 		TukuiCF["unitframes"]["classbar"] = nil
-		TukuiCF["unitframes"]["mendpet"] = nil                  -- enable maintank
+		TukuiCF["unitframes"]["mendpet"] = nil
 		TukuiCF["unitframes"]["poweroffset"] = nil
 		TukuiCF["auras"]["playtarbuffperrow"] = nil
 		TukuiCF["auras"]["smallbuffperrow"] = nil
-
+		
 		--kill an entire catagory
 		ALLOWED_GROUPS.castbar = nil
 		ALLOWED_GROUPS.arena = nil
@@ -149,7 +149,6 @@ do
 	
 	if TukuiCF["chat"].enable ~= true then
 		TukuiCF["chat"]["whispersound"] = nil               -- play a sound when receiving whisper
-		TukuiCF["chat"]["showbackdrop"] = nil				-- show a backdrop on the chat panels
 		TukuiCF["chat"]["fadeoutofuse"] = nil				-- fade chat text when out of use	
 		TukuiCF["chat"]["sticky"] = nil
 	end
@@ -186,12 +185,6 @@ do
 		TukuiCF["datatext"].stat1meleestat = nil
 		TukuiCF["datatext"].stat1casterstat = nil
 	end
-
-	if TukuiCF["datatext"].stat2 == 0 then
-		TukuiCF["datatext"].stat2tankstat = nil
-		TukuiCF["datatext"].stat2meleestat = nil
-		TukuiCF["datatext"].stat2casterstat = nil
-	end
 end
 
 --------------------------------------------------------------------
@@ -199,9 +192,5 @@ end
 --------------------------------------------------------------------
 --Auto disable tooltip on Unitframe if tooltip is disabled
 if TukuiCF.tooltip.cursor and not TukuiCF.tooltip.hideuf then
-	TukuiCF.tooltip.hideuf = true
-end
-
-if TukuiCF["media"].glossyTexture ~= true then
-	TukuiCF["media"].normTex = [[Interface\AddOns\Tukui\media\textures\normTex2]]
+TukuiCF.tooltip.hideuf = true
 end

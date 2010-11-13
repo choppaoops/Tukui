@@ -15,28 +15,20 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 	local anchor2 = "ANCHOR_TOP"
 	local yoffset2 = TukuiDB.mult
 	local snapfrom = "BOTTOM"
-	
-	if TukuiCF["datatext"].friends == 8 or TukuiCF["datatext"].friends == 9 then
-		yoffset = TukuiDB.Scale(-6)
-		anchor = "BOTTOM"
-		anchor2 = "ANCHOR_BOTTOM"
-		yoffset2 = TukuiDB.mult
-		snapfrom = "TOP"
-	end
 
-	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
 	TukuiDB.PP(TukuiCF["datatext"].friends, Text)
 
-	local menuFrame = CreateFrame("Frame", "MinimapRightClickMenu", UIParent, "UIDropDownMenuTemplate")
+	local menuFrame = CreateFrame("Frame", "TukuiFriendRightClickMenu", UIParent, "UIDropDownMenuTemplate")
 	local menuList = {
-		{ text = "Select an Option", isTitle = true,notCheckable=true},
-		{ text = "Invite", hasArrow = true,notCheckable=true,
+		{ text = tukuilocal.datatext_options, isTitle = true,notCheckable=true},
+		{ text = tukuilocal.datatext_invite, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 3", func = function() print("You've chosen option 3"); end }
 			}
 		},
-		{ text = "Whisper", hasArrow = true,notCheckable=true,
+		{ text = tukuilocal.datatext_whisper, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 4", func = function() print("You've chosen option 4"); end }
 			}
@@ -71,7 +63,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 				for i = 1, BNtotal do if select(7, BNGetFriendInfo(i)) then BNonline = BNonline + 1 end end
 			end
 			local totalonline = online + BNonline
-			Text:SetText(tukuilocal.datatext_friends..": "..valuecolor..totalonline)
+			Text:SetText(tukuilocal.datatext_friends..valuecolor..totalonline)
 			self:SetAllPoints(Text)
 	end
 
@@ -153,10 +145,10 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 						if playerFaction == "Horde" then playerFaction = 0 else playerFaction = 1 end
 
 						if(isAFK) then
-							status = "[AFK]"
+							status = tukuilocal.chat_FLAG_AFK
 						else 
 							if(isDND) then
-								status = "[DND]"
+								status = tukuilocal.chat_FLAG_DND
 							else
 								status = ""
 							end
@@ -169,7 +161,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 							end
 							classc, levelc = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class], GetQuestDifficultyColor(level)
 							if UnitInParty(name) or UnitInRaid(name) then grouped = "|cffaaaaaa*|r" else grouped = "" end
-							GameTooltip:AddDoubleLine(format("%s |cff%02x%02x%02x(%d|r |cff%02x%02x%02x%s|r%s) |cff%02x%02x%02x%s|r",client,levelc.r*255,levelc.g*255,levelc.b*255,level,classc.r*255,classc.g*255,classc.b*255,toonName,grouped, 255, 0, 0, status),givenName.." "..surname,238,238,238,238,238,238)
+							GameTooltip:AddDoubleLine(format("%s (|cff%02x%02x%02x%d|r |cff%02x%02x%02x%s|r%s) |cff%02x%02x%02x%s|r",client,levelc.r*255,levelc.g*255,levelc.b*255,level,classc.r*255,classc.g*255,classc.b*255,toonName,grouped, 255, 0, 0, status),givenName.." "..surname,238,238,238,238,238,238)
 							if IsShiftKeyDown() then
 								if GetRealZoneText() == zone then zone_r, zone_g, zone_b = 0.3, 1.0, 0.3 else zone_r, zone_g, zone_b = 0.65, 0.65, 0.65 end
 								if GetRealmName() == realmName then realm_r, realm_g, realm_b = 0.3, 1.0, 0.3 else realm_r, realm_g, realm_b = 0.65, 0.65, 0.65 end

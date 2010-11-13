@@ -24,6 +24,34 @@ end
 function TukuiDB.Scale(x) return scale(x) end
 TukuiDB.mult = mult
 
+function TukuiDB.CreateInnerBorder(f)
+	if f.iborder then return end
+	f.iborder = CreateFrame("Frame", nil, f)
+	f.iborder:SetPoint("TOPLEFT", mult, -mult)
+	f.iborder:SetPoint("BOTTOMRIGHT", -mult, mult)
+	f.iborder:SetFrameLevel(f:GetFrameLevel())
+	f.iborder:SetBackdrop({
+	  edgeFile = TukuiCF["media"].blank, edgeSize = mult,
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+	f.iborder:SetBackdropBorderColor(0, 0, 0)
+	return f.iborder
+end
+
+function TukuiDB.CreateOuterBorder(f)
+	if f.oborder then return end
+	f.oborder = CreateFrame("Frame", nil, f)
+	f.oborder:SetPoint("TOPLEFT", -mult, mult)
+	f.oborder:SetPoint("BOTTOMRIGHT", mult, -mult)
+	f.oborder:SetFrameLevel(f:GetFrameLevel())
+	f.oborder:SetBackdrop({
+	  edgeFile = TukuiCF["media"].blank, edgeSize = mult, 
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+	f.oborder:SetBackdropBorderColor(0, 0, 0)
+	return f.oborder
+end
+
 function TukuiDB.CreatePanel(f, w, h, a1, p, a2, x, y)
 	local _, class = UnitClass("player")
 	local r, g, b = RAID_CLASS_COLORS[class].r, RAID_CLASS_COLORS[class].g, RAID_CLASS_COLORS[class].b
@@ -35,7 +63,59 @@ function TukuiDB.CreatePanel(f, w, h, a1, p, a2, x, y)
 	f:SetFrameStrata("BACKGROUND")
 	f:SetPoint(a1, p, a2, x, y)
 	f:SetBackdrop({
-	  bgFile = TukuiCF["media"].blank, 
+	  bgFile = TukuiCF["media"].normTex, 
+	  edgeFile = TukuiCF["media"].blank, 
+	  tile = false, tileSize = 0, edgeSize = mult, 
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+	f:SetBackdropColor(unpack(TukuiCF["media"].backdropcolor))
+	if TukuiCF["general"].classcolortheme == true then
+		f:SetBackdropBorderColor(r, g, b)
+	else
+		f:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
+	end
+	TukuiDB.CreateOuterBorder(f)
+	TukuiDB.CreateInnerBorder(f)
+end
+
+function TukuiDB.CreateFadedPanel(f, w, h, a1, p, a2, x, y)
+	local _, class = UnitClass("player")
+	local r, g, b = RAID_CLASS_COLORS[class].r, RAID_CLASS_COLORS[class].g, RAID_CLASS_COLORS[class].b
+	sh = scale(h)
+	sw = scale(w)
+	f:SetFrameLevel(1)
+	f:SetHeight(sh)
+	f:SetWidth(sw)
+	f:SetFrameStrata("BACKGROUND")
+	f:SetPoint(a1, p, a2, x, y)
+	f:SetBackdrop({
+	  bgFile = TukuiCF["media"].normTex, 
+	  edgeFile = TukuiCF["media"].blank, 
+	  tile = false, tileSize = 0, edgeSize = mult, 
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+	f:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
+	if TukuiCF["general"].classcolortheme == true then
+		f:SetBackdropBorderColor(r, g, b)
+	else
+		f:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
+	end
+	TukuiDB.CreateOuterBorder(f)
+	TukuiDB.CreateInnerBorder(f)
+end
+
+function TukuiDB.CreateRBPanel(f, w, h, a1, p, a2, x, y)
+	local _, class = UnitClass("player")
+	local r, g, b = RAID_CLASS_COLORS[class].r, RAID_CLASS_COLORS[class].g, RAID_CLASS_COLORS[class].b
+	sh = scale(h)
+	sw = scale(w)
+	f:SetFrameLevel(1)
+	f:SetHeight(sh)
+	f:SetWidth(sw)
+	f:SetFrameStrata("BACKGROUND")
+	f:SetPoint(a1, p, a2, x, y)
+	f:SetBackdrop({
+	  bgFile = TukuiCF["media"].normTex, 
 	  edgeFile = TukuiCF["media"].blank, 
 	  tile = false, tileSize = 0, edgeSize = mult, 
 	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
@@ -74,7 +154,7 @@ function TukuiDB.SetTemplate(f)
 	local _, class = UnitClass("player")
 	local r, g, b = RAID_CLASS_COLORS[class].r, RAID_CLASS_COLORS[class].g, RAID_CLASS_COLORS[class].b
 	f:SetBackdrop({
-	  bgFile = TukuiCF["media"].blank, 
+	  bgFile = TukuiCF["media"].normTex, 
 	  edgeFile = TukuiCF["media"].blank, 
 	  tile = false, tileSize = 0, edgeSize = mult, 
 	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
@@ -85,6 +165,8 @@ function TukuiDB.SetTemplate(f)
 	else
 		f:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 	end
+	TukuiDB.CreateOuterBorder(f)
+	TukuiDB.CreateInnerBorder(f)
 end
 
 function TukuiDB.Kill(object)
@@ -93,31 +175,6 @@ function TukuiDB.Kill(object)
 	end
 	object.Show = TukuiDB.dummy
 	object:Hide()
-end
-
-function TukuiDB.SetTransparentTemplate(f)
-    f:SetFrameLevel(1)
-    f:SetFrameStrata("BACKGROUND")
-    f:SetBackdrop({
-      bgFile = TukuiCF["media"].blank,
-      edgeFile = TukuiCF["media"].blank,
-      tile = false, tileSize = 0, edgeSize = mult,
-      insets = { left = TukuiDB.Scale(2), right = TukuiDB.Scale(2), top = TukuiDB.Scale(2), bottom = TukuiDB.Scale(2)}
-    })
-    f:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
-    f:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
- 
-    local border = CreateFrame("Frame", nil, f)
-    border:SetFrameLevel(0)
-    border:SetPoint("TOPLEFT", f, "TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(1))
-    border:SetFrameStrata("BACKGROUND")
-    border:SetBackdrop {
-        edgeFile = TukuiCF["media"].blank, edgeSize = TukuiDB.Scale(3),
-        insets = {left = 0, right = 0, top = 0, bottom = 0}
-    }
-    border:SetBackdropColor(unpack(TukuiCF["media"].backdropcolor))
-    border:SetBackdropBorderColor(unpack(TukuiCF["media"].backdropcolor))
-    border:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", TukuiDB.Scale(1), TukuiDB.Scale(-1))
 end
 
 function round(number, decimals)
@@ -134,58 +191,45 @@ end
 
 --Set Datatext Postitions
 function TukuiDB.PP(p, obj)
-	if TukuiDB.lowversion == true then
-		local x = TukuiDB.Scale(((string.match(GetCVar("gxResolution"), "(%d+)x%d+") / 3) / 3))
-		obj:SetHeight(TukuiBottomPanel:GetHeight())
-		if p == 1 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/1.6, -TukuiDB.mult)
-		elseif p == 2 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/1.2, -TukuiDB.mult)
-		elseif p == 3 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x, -TukuiDB.mult)
-		elseif p == 4 then
-			local p = 6 --Swap these so its like how its always been..
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x, -TukuiDB.mult)
-		elseif p == 5 then
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x/1.3, -TukuiDB.mult)
-		elseif p == 6 then
-			local p = 4 --Swap these so its like how its always been..
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x/1.6, -TukuiDB.mult)
-		end
-	else
-		local x = TukuiDB.Scale(((string.match(GetCVar("gxResolution"), "(%d+)x%d+") / 3) / 3.2))
-		obj:SetHeight(TukuiBottomPanel:GetHeight())
-		if p == 1 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/1.6, -TukuiDB.mult)
-		elseif p == 2 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/1.1, -TukuiDB.mult)
-		elseif p == 3 then
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/0.9, -TukuiDB.mult)
-		elseif p == 4 then
-			local p = 6 --Swap these so its like how its always been..
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x/0.8, -TukuiDB.mult)
-		elseif p == 5 then
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x/1.1, -TukuiDB.mult)
-		elseif p == 6 then
-			local p = 4 --Swap these so its like how its always been..
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))+x/1.6, -TukuiDB.mult)
-		elseif p == 9 then
-			local p = 10
-			obj:SetPoint("BOTTOM", UIParent,"BOTTOMRIGHT", -(x*(p-3))-x/20, -TukuiDB.mult)
-		elseif p == 10 then
-			local p = 9
-			obj:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", (x*p)-x/0.53, -TukuiDB.mult)
-		end	
-	end
-	
-	if TukuiMinimap then
-		if p == 7 then
-			obj:SetHeight(TukuiMinimapStatsLeft:GetHeight())
-			obj:SetPoint("CENTER", TukuiMinimapStatsLeft, 0, 0)
-		elseif p == 8 then
-			obj:SetHeight(TukuiMinimapStatsRight:GetHeight())
-			obj:SetPoint("CENTER", TukuiMinimapStatsRight, 0, 0)
-		end
+	if p == 1 then
+		obj:SetHeight(TukuiDataLeftPanel:GetHeight())
+		obj:SetPoint("LEFT", TukuiDataLeftPanel, "LEFT", 20, 0.5)
+	elseif p == 2 then
+		obj:SetHeight(TukuiDataLeftPanel:GetHeight())
+		obj:SetPoint("CENTER", TukuiDataLeftPanel, "CENTER", 2, 0.5)
+	elseif p == 3 then
+		obj:SetHeight(TukuiDataLeftPanel:GetHeight())
+		obj:SetPoint("RIGHT", TukuiDataLeftPanel, "RIGHT", -20, 0.5)
+	elseif p == 4 then
+		obj:SetHeight(TukuiDataRightPanel:GetHeight())
+		obj:SetPoint("LEFT", TukuiDataRightPanel,"LEFT", 20, 0.5)
+	elseif p == 5 then
+		obj:SetHeight(TukuiDataRightPanel:GetHeight())
+		obj:SetPoint("CENTER", TukuiDataRightPanel,"CENTER", 2, 0.5)
+	elseif p == 6 then
+		obj:SetHeight(TukuiDataRightPanel:GetHeight())
+		obj:SetPoint("RIGHT", TukuiDataRightPanel,"RIGHT", -20, 0.5)
+	elseif p == 7 then
+		obj:SetHeight(Tukuibattlenettopstat:GetHeight())
+		obj:SetPoint("LEFT", Tukuibattlenettopstat, "LEFT", 10, 0.5)
+	elseif p == 8 then
+		obj:SetHeight(Tukuibattlenetbottomstat:GetHeight())
+		obj:SetPoint("LEFT", Tukuibattlenetbottomstat, "LEFT", 10, 0.5)
+	elseif p == 9 then
+		obj:SetHeight(Tukuitopstats:GetHeight())
+		obj:SetPoint("LEFT", Tukuitopstats, "LEFT", 35, 0.5)
+	elseif p == 10 then
+		obj:SetHeight(Tukuiminimaptime:GetHeight())
+		obj:SetPoint("CENTER", Tukuiminimaptime, "CENTER", 1, 0.5)
+	elseif p == 11 then
+		obj:SetHeight(Tukuitopstats:GetHeight())
+		obj:SetPoint("RIGHT", Tukuitopstats, "RIGHT", -35, 0.5)
+	elseif p == 12 then
+		obj:SetHeight(Tukuigoldtopstat:GetHeight())
+		obj:SetPoint("LEFT", Tukuigoldtopstat, "LEFT", 10, 0.5)
+	elseif p == 13 then
+		obj:SetHeight(Tukuigoldbottomstat:GetHeight())
+		obj:SetPoint("LEFT", Tukuigoldbottomstat, "LEFT", 10, 0.5)
 	end
 end
 
@@ -214,17 +258,17 @@ end
 --Check Player's Role
 local RoleUpdater = CreateFrame("Frame")
 local function CheckRole(self, event, unit)
-	local resilience
-	if GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)*0.02828 > GetDodgeChance() then
-		resilience = true
-	else
-		resilience = false
-	end
-	--print(dodge, resil)
-	if ((TukuiDB.myclass == "PALADIN" and GetPrimaryTalentTree() == 2) or 
+ local resilience
+if GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)*0.02828 > GetDodgeChance() then
+resilience = true
+else
+resilience = false
+end
+--print(dodge, resil)
+if ((TukuiDB.myclass == "PALADIN" and GetPrimaryTalentTree() == 2) or 
 	(TukuiDB.myclass == "WARRIOR" and GetPrimaryTalentTree() == 3) or 
 	(TukuiDB.myclass == "DEATHKNIGHT" and GetPrimaryTalentTree() == 1)) and
-	resilience == false or
+resilience == false or
 	--Check for 'Thick Hide' tanking talent
 	(TukuiDB.myclass == "DRUID" and GetPrimaryTalentTree() == 2 and GetBonusBarOffset() == 3) then
 		TukuiDB.Role = "Tank"
@@ -293,11 +337,11 @@ function TukuiDB.StyleButton(b, checked)
 		checked:SetPoint("BOTTOMRIGHT",button,-2,2)
 		button:SetCheckedTexture(checked)
 	end
-		
+	
 	if cooldown then
-		cooldown:ClearAllPoints()
-		cooldown:SetPoint("TOPLEFT", button, "TOPLEFT", 2, -2)
-		cooldown:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 2)	
+	cooldown:ClearAllPoints()
+	cooldown:SetPoint("TOPLEFT", button, "TOPLEFT", 2, -2)
+	cooldown:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 2)	
 	end
 end
 
@@ -826,7 +870,7 @@ end
 
 function TukuiDB.PostCreateAura(element, button)
 	TukuiDB.SetTemplate(button)
-	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font, TukuiCF["auras"].auratextscale, "THINOUTLINE")
+	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font2, 10, "THINOUTLINE")
 	button.remaining:SetPoint("CENTER", TukuiDB.Scale(0), TukuiDB.mult)
 	
 	button.cd.noOCC = true		 	-- hide OmniCC CDs
@@ -840,7 +884,7 @@ function TukuiDB.PostCreateAura(element, button)
 	
 	button.count:SetPoint("BOTTOMRIGHT", TukuiDB.mult, TukuiDB.Scale(1.5))
 	button.count:SetJustifyH("RIGHT")
-	button.count:SetFont(TukuiCF["media"].font, TukuiCF["auras"].auratextscale*0.8, "THINOUTLINE")
+	button.count:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 
 	
 	button.overlayFrame = CreateFrame("frame", nil, button, nil)
@@ -864,7 +908,7 @@ end
 
 function TukuiDB.PostCreateAuraSmall(element, button)
 	TukuiDB.SetTemplate(button)
-	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font, TukuiCF["auras"].auratextscale*0.85, "THINOUTLINE")
+	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font2, 10, "THINOUTLINE")
 	button.remaining:SetPoint("CENTER", TukuiDB.Scale(0), TukuiDB.mult*1.5)
 	
 	button.cd.noOCC = true		 	-- hide OmniCC CDs
@@ -878,7 +922,7 @@ function TukuiDB.PostCreateAuraSmall(element, button)
 	
 	button.count:SetPoint("BOTTOMRIGHT", 0, TukuiDB.Scale(1.5))
 	button.count:SetJustifyH("RIGHT")
-	button.count:SetFont(TukuiCF["media"].font, TukuiCF["auras"].auratextscale*0.8, "THINOUTLINE")
+	button.count:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 
 	
 	button.overlayFrame = CreateFrame("frame", nil, button, nil)
@@ -904,7 +948,7 @@ function TukuiDB.PostCreateAuraSmallHealer25(element, button)
 	button:EnableMouse(false)
 	button:SetFrameLevel(15)
 	TukuiDB.SetTemplate(button)
-	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font, TukuiCF["auras"].auratextscale*0.85, "THINOUTLINE")
+	button.remaining = TukuiDB.SetFontString(button, TukuiCF["media"].font2, 10, "THINOUTLINE")
 	button.remaining:SetPoint("CENTER", TukuiDB.Scale(0), TukuiDB.mult*1.5)
 	
 	button.cd.noOCC = true		 	-- hide OmniCC CDs
@@ -918,7 +962,7 @@ function TukuiDB.PostCreateAuraSmallHealer25(element, button)
 	
 	button.count:SetPoint("BOTTOMRIGHT", 0, TukuiDB.Scale(1.5))
 	button.count:SetJustifyH("RIGHT")
-	button.count:SetFont(TukuiCF["media"].font, TukuiCF["auras"].auratextscale*0.8, "THINOUTLINE")
+	button.count:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 
 	
 	button.overlayFrame = CreateFrame("frame", nil, button, nil)
@@ -994,7 +1038,7 @@ end
 
 TukuiDB.PostCastStart = function(self, unit, name, rank, castid)
 	if unit == "vehicle" then unit = "player" end
-	--Fix blank castbar with opening text
+	--Fix blank castbar
 	if name == "Opening" then
 		self.Text:SetText("Opening")
 	end
@@ -1039,31 +1083,31 @@ TukuiDB.UpdateHoly = function(self, event, unit, powerType)
 end
 
 TukuiDB.MoveBuffs = function(self, login)
-	local parent = self:GetParent()
+local parent = self:GetParent()
 	if login then
 		self:SetScript("OnUpdate", nil)
 	end
-	
-	if self:IsShown() then
-		if self == parent.EclipseBar then
-			parent.FlashInfo:Hide()
-			parent.Status:Hide()
-		end
-		parent.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
-		if parent.Debuffs then 
-			parent.Debuffs:ClearAllPoints()
-			if parent.Debuffs then parent.Debuffs:SetPoint("BOTTOM", parent.Health, "TOP", 0, TukuiDB.Scale(17)) end	
-		end		
+		
+if self:IsShown() then
+	if self == parent.EclipseBar then
+		parent.FlashInfo:Hide()
+		parent.Status:Hide()
+	end
+	parent.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
+	if parent.Debuffs then
+		parent.Debuffs:ClearAllPoints()
+		if parent.Debuffs then parent.Debuffs:SetPoint("BOTTOM", parent.Health, "TOP", 0, TukuiDB.Scale(17)) end
+end 	
 	else
-		if self == parent.EclipseBar then
-			parent.FlashInfo:Show()
-			parent.Status:Show()
-		end
+	if self == parent.EclipseBar then
+		parent.FlashInfo:Show()
+		parent.Status:Show()
+	end
 		parent.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(4))
-		if parent.Debuffs then 
+		if parent.Debuffs then
 			parent.Debuffs:ClearAllPoints()
 			parent.Debuffs:SetPoint("BOTTOM", parent.Health, "TOP", 0, TukuiDB.Scale(6))
-		end	
+		end 	
 	end
 end
 
@@ -1092,7 +1136,7 @@ TukuiDB.ToggleBars = function(self)
 		oUF_Tukz_player = oUF_TukzHeal_player
 	end
 	
-	if self == oUF_Tukz_player.EclipseBar and (UnitHasVehicleUI("player") or UnitHasVehicleUI("vehicle")) then 
+		if self == oUF_Tukz_player.EclipseBar and (UnitHasVehicleUI("player") or UnitHasVehicleUI("vehicle")) then 
 		oUF_Tukz_player.EclipseBar:SetScript("OnUpdate", function() 
 			if (UnitHasVehicleUI("player") or UnitHasVehicleUI("vehicle")) then
 				if oUF_Tukz_player.EclipseBar:IsShown() then
@@ -1109,7 +1153,7 @@ TukuiDB.ToggleBars = function(self)
 	
 	if UnitHasVehicleUI("player") then
 		self:Hide()
-	else	
+	else
 		self:Show()
 	end
 end
@@ -1120,18 +1164,18 @@ TukuiDB.ComboDisplay = function(self, event, unit)
 	local cpoints = self.CPoints
 	local cp
 	if(UnitExists'vehicle') then
-		cp = GetComboPoints('vehicle', 'target')
+	cp = GetComboPoints('vehicle', 'target')
 	else
 		cp = GetComboPoints('player', 'target')
 	end
 
-	for i=1, MAX_COMBO_POINTS do
-		if(i <= cp) then
-			cpoints[i]:SetAlpha(1)
-		else
-			cpoints[i]:SetAlpha(0.15)
+		for i=1, MAX_COMBO_POINTS do
+			if(i <= cp) then
+				cpoints[i]:SetAlpha(1)
+			else
+				cpoints[i]:SetAlpha(0.15)
+			end
 		end
-	end
 	
 	if cpoints[1]:GetAlpha() == 1 then
 		for i=1, MAX_COMBO_POINTS do
@@ -1140,12 +1184,12 @@ TukuiDB.ComboDisplay = function(self, event, unit)
 		self.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
 		if self.Buffs then self.Buffs:ClearAllPoints() self.Buffs:SetPoint("BOTTOM", self.Health, "TOP", 0, TukuiDB.Scale(17)) end	
 	else
-		for i=1, MAX_COMBO_POINTS do
+			for i=1, MAX_COMBO_POINTS do
 			cpoints[i]:Hide()
 		end
 
 		self.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(4))	
-		if self.Buffs then self.Buffs:ClearAllPoints() self.Buffs:SetPoint("BOTTOM", self.Health, "TOP", 0, TukuiDB.Scale(4)) end	
+		if self.Buffs then self.Buffs:ClearAllPoints() self.Buffs:SetPoint("BOTTOM", self.Health, "TOP", 0, TukuiDB.Scale(4)) end
 	end
 end
 
@@ -1183,8 +1227,8 @@ TukuiDB.UpdateManaLevel = function(self, elapsed)
 		self.ManaLevel:SetText("|cffaf5050"..tukuilocal.unitframes_ouf_lowmana.."|r")
 		Flash(self, 0.3)
 	else
-		self.ManaLevel:SetText()
-		StopFlash(self)
+			self.ManaLevel:SetText()
+			StopFlash(self)
 	end
 end
 
@@ -1230,8 +1274,8 @@ function TukuiDB.UpdateThreat(self, event, unit)
 		local r, g, b = GetThreatStatusColor(threat)
 		if self.FrameBorder.shadow then
 			self.FrameBorder.shadow:SetBackdropBorderColor(r,g,b,0.85)
-			if self.PowerFrame and self.PowerFrame.shadow then
-				self.PowerFrame.shadow:SetBackdropBorderColor(r,g,b,0.85)
+		if self.PowerFrame and self.PowerFrame.shadow then
+			self.PowerFrame.shadow:SetBackdropBorderColor(r,g,b,0.85)
 			end
 			if self.PFrame and self.PFrame.shadow then
 				self.PFrame.shadow:SetBackdropBorderColor(r, g, b, 1)
@@ -1248,8 +1292,8 @@ function TukuiDB.UpdateThreat(self, event, unit)
 	else
 		if self.FrameBorder.shadow then
 			self.FrameBorder.shadow:SetBackdropBorderColor(0,0,0,0.75)
-			if self.PowerFrame and self.PowerFrame.shadow then
-				self.PowerFrame.shadow:SetBackdropBorderColor(0,0,0,0.75)
+		if self.PowerFrame and self.PowerFrame.shadow then
+			self.PowerFrame.shadow:SetBackdropBorderColor(0,0,0,0.75)
 			end
 			if self.PFrame and self.PFrame.shadow then
 				self.PFrame.shadow:SetBackdropBorderColor(0, 0, 0, 1)

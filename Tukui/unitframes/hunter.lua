@@ -1,5 +1,5 @@
 if (TukuiDB.myclass ~= "HUNTER") then return end
-local font = TukuiCF["media"].font
+local font = TukuiCF["media"].font2
 
 local PetHappiness = CreateFrame("Frame")
 PetHappiness.happiness = GetPetHappiness()
@@ -7,6 +7,8 @@ PetHappiness.happiness = GetPetHappiness()
 local OnEvent = function(self, event, ...)
 	local happiness = GetPetHappiness()
 	local hunterPet = select(2, HasPetUI())
+	
+
 	local unit, power = ...
 	if (event == "UNIT_POWER" and unit == "pet" and power == "HAPPINESS" and happiness and hunterPet and self.happiness ~= happiness) then
 		-- happiness has changed
@@ -109,7 +111,7 @@ if TukuiCF["unitframes"].mendpet == true then
 		elseif IsAddOnLoaded("Tukui_Heal_Layout") then
 			oUF_Tukz_pet = oUF_TukzHeal_pet
 		end
-	
+
 		-- MendPet bar on pet frame when active.
 		local MendPetPlayerFrame = CreateFrame("Frame", _, oUF_Tukz_pet)
 		MendPetPlayerFrame.Panel = BarPanel(oUF_Tukz_pet:GetHeight(), oUF_Tukz_pet:GetWidth(), 0, 0, "CENTER", "CENTER", oUF_Tukz_pet, oUF_Tukz_pet:GetFrameLevel() + 1, MendPetPlayerFrame, "MEDIUM")

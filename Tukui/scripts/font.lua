@@ -61,6 +61,10 @@ TukuiFonts:SetScript("OnEvent", function(self, event, addon)
 	SetFont(PVPInfoTextString,					NORMAL, 22, "THINOUTLINE")
 	SetFont(PVPArenaTextString,					NORMAL, 22, "THINOUTLINE")
 	SetFont(CombatTextFont,                     COMBAT, 100, "THINOUTLINE") -- number here just increase the font quality.
+	SetFont(FriendsFont_Normal,        NORMAL, 12) --Friends frame names
+	SetFont(FriendsFont_Small,        NORMAL, 11) --Last online text
+	SetFont(FriendsFont_Large,        NORMAL, 14) --Not really sure what this does, but it's set to fit in
+	SetFont(FriendsFont_UserText,              NORMAL, 11) --Real ID status text
 	
 	hooksecurefunc("PlayerTitleFrame_UpdateTitles", FixTitleFont)
 	FixTitleFont()

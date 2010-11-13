@@ -6,7 +6,7 @@ local CreateColor = function( red, green, blue, alpha )
 end
 
 -- Configuration starts here:
-if TukuiCF["classtimer"].enable == false then return end
+	if TukuiCF["classtimer"].enable == false then return end
 
 BAR_HEIGHT = TukuiCF["classtimer"].bar_height;
 BAR_SPACING = TukuiCF["classtimer"].bar_spacing;
@@ -18,12 +18,12 @@ CAST_SEPARATOR = TukuiCF["classtimer"].cast_suparator;
 CAST_SEPARATOR_COLOR = CreateColor( 0, 0, 0, 0.5 );
 TEXT_MARGIN = 5;
 
-if ( TukuiDB and TukuiCF["media"] and TukuiCF["media"]["uffont"] ) then
+if ( TukuiDB and TukuiCF["media"] and TukuiCF["media"]["font2"] ) then
 	-- Sets font for all texts
-	MASTER_FONT = { TukuiCF["media"]["uffont"], 12, "OUTLINE" };
+	MASTER_FONT = { TukuiCF["media"]["font2"], 10, "OUTLINE" };
 
 	-- Sets font for stack count
-	STACKS_FONT = { TukuiCF["media"]["uffont"], 11, "OUTLINE" };
+	STACKS_FONT = { TukuiCF["media"]["font2"], 10, "OUTLINE" };
 else
 	-- Sets font for all texts
 	MASTER_FONT = { [=[Interface\Addons\Tukui\media\Russel Square LT.ttf]=], 12, "OUTLINE" };
@@ -49,10 +49,10 @@ end
 PLAYER_DEBUFF_COLOR = nil;
 SORT_DIRECTION = true;
 TENTHS_TRESHOLD = 1
-	
+
 local function OnUnitFramesLoad(self, event, addon)
 	if not (addon == "Tukui_Dps_Layout" or addon == "Tukui_Heal_Layout") then return end
-	
+
 	if IsAddOnLoaded("Tukui_Dps_Layout") then
 		oUF_Tukz_player = oUF_TukzDPS_player
 		oUF_Tukz_target = oUF_TukzDPS_target
@@ -60,7 +60,7 @@ local function OnUnitFramesLoad(self, event, addon)
 		oUF_Tukz_player = oUF_TukzHeal_player
 		oUF_Tukz_target = oUF_TukzHeal_target
 	end
-	
+
 	self:UnregisterEvent("ADDON_LOADED")
 	
 	local CreateUnitAuraDataSource;
@@ -477,6 +477,8 @@ local function OnUnitFramesLoad(self, event, addon)
 						iconbackdrop:SetPoint("TOPLEFT", icon, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 						iconbackdrop:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 						TukuiDB.SetTemplate(iconbackdrop)
+						TukuiDB.CreateShadow(iconbackdrop)
+						
 						iconbackdrop:SetFrameLevel(result:GetFrameLevel() - 1)
 					end
 					
@@ -668,6 +670,7 @@ local function OnUnitFramesLoad(self, event, addon)
 			
 			local border = CreateFrame( "Frame", nil, result, nil );
 				TukuiDB.SetTemplate(border)
+				TukuiDB.CreateShadow(border)
 				border:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 				border:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 				border:SetFrameLevel(result:GetFrameLevel() - 1)
@@ -938,8 +941,8 @@ local function OnUnitFramesLoad(self, event, addon)
 				playerFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_player.TotemBar, "TOPLEFT", xOffset1, yOffset );
 				playerFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_player.TotemBar, "TOPRIGHT", xOffset2, yOffset );								
 			else
-					playerFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_player.Health, "TOPLEFT", xOffset1, yOffset );
-					playerFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_player.Health, "TOPRIGHT", xOffset2, yOffset );	
+				playerFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_player.Health, "TOPLEFT", xOffset1, yOffset );
+				playerFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_player.Health, "TOPRIGHT", xOffset2, yOffset );	
 			end
 		end
 		playerFrame:Show();
@@ -953,15 +956,15 @@ local function OnUnitFramesLoad(self, event, addon)
 		
 		local targetFrame = CreateAuraBarFrame( targetDataSource, oUF_Tukz_target );
 		if TukuiCF["auras"].targetauras == true then
-			targetFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_target.Debuffs, "TOPLEFT", xOffset1, yOffset );
-			targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Debuffs, "TOPRIGHT", xOffset2, yOffset );
+			targetFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_target.Debuffs, "TOPLEFT", xOffset1+2, yOffset );
+			targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Debuffs, "TOPRIGHT", xOffset2-2, yOffset );
 		else
 			if TukuiDB.myclass == "DRUID" or TukuiDB.myclass == "ROGUE" then
 				targetFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_target.Health, "TOPLEFT", xOffset1, yOffset + 14 );
-				targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Health, "TOPRIGHT", xOffset2, yOffset + 14 );				
+				targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Health, "TOPRIGHT", xOffset2, yOffset + 14 );        
 			else
 				targetFrame:SetPoint( "BOTTOMLEFT", oUF_Tukz_target.Health, "TOPLEFT", xOffset1, yOffset );
-				targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Health, "TOPRIGHT", xOffset2, yOffset );	
+				targetFrame:SetPoint( "BOTTOMRIGHT", oUF_Tukz_target.Health, "TOPRIGHT", xOffset2, yOffset );  
 			end
 		end
 		targetFrame:Show();

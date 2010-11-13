@@ -2,17 +2,20 @@
 -- translate or do anything you want if you want to 
 -- use this feature on others clients.
 
-if TukuiDB.client ~= "enUS" and TukuiDB.client ~= "enGB" then return end
-
 ----------------------------------------------------------------------------------
 -- Trade Chat Stuff
 ----------------------------------------------------------------------------------
 local SpamList = {
 	";Powerlevel",
-	"SusanExpress",
 	"recruiting",
 	"Discount",
 	"discount",
+	"золото",
+	"голд",
+	"золотишко",
+	"блестяшки",
+	"монетки",
+	"Блестяшkи",
 }
 local function TRADE_FILTER(self, event, arg1)
 	if (SpamList and SpamList[1]) then
@@ -30,7 +33,7 @@ ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", TRADE_FILTER)
 ----------------------------------------------------------------------------------
 
 local function SPELL_FILTER(self, event, arg1)
-    if (strfind(arg1,"You have unlearned") or strfind(arg1,"You have learned a new spell:") or strfind(arg1,"You have learned a new ability:")) and TukuiDB.level == MAX_PLAYER_LEVEL then
+    if strfind(arg1,tukuilocal.chat_unlearn) or strfind(arg1,tukuilocal.chat_learn) or strfind(arg1,tukuilocal.chat_ability) or strfind(arg1,tukuilocal.chat_petunlearn) or strfind(arg1,tukuilocal.chat_petlearn) then
         return true
     end
 end
@@ -41,15 +44,14 @@ ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", SPELL_FILTER)
 -- with their hacks for multiple chars.
 ----------------------------------------------------------------------------------
 
-
 local function FUCKYOU_GOLDSPAMMERS(self, event, arg1)
-    if strfind(arg1, "falls asleep. Zzzzzzz.") then
+    if strfind(arg1, tukuilocal.chat_sleepspam) then
 		return true
     end
 end
 
 local function GOLDSPAM_FILTER()
-	if GetMinimapZoneText() == "Valley of Strength" or GetMinimapZoneText() == "Trade District" then
+	if GetMinimapZoneText() == tukuilocal.chat_valleyofstrength or GetMinimapZoneText() == tukuilocal.chat_tradedistrict then
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_TEXT_EMOTE", FUCKYOU_GOLDSPAMMERS)
 	else
 		ChatFrame_RemoveMessageEventFilter("CHAT_MSG_TEXT_EMOTE", FUCKYOU_GOLDSPAMMERS)
@@ -67,13 +69,8 @@ GOLDSPAM:SetScript("OnEvent", GOLDSPAM_FILTER)
 ----------------------------------------------------------------------------------
 
 local function SPELL_FILTER(self, event, arg1)
-    if strfind(arg1,"is not ready") or strfind(arg1,"The following players are Away") then
+    if strfind(arg1,tukuilocal.chat_notready) or strfind(arg1,tukuilocal.chat_away) then
         SendChatMessage(arg1, "RAID_WARNING", nil ,nil)
     end
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", SPELL_FILTER)
-
-
-
-
-

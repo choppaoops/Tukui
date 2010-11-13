@@ -95,14 +95,15 @@ if (buffs and buffs[1]) then
 	end
 	
 	local frame = CreateFrame("Frame", _, UIParent)
-	TukuiDB.CreatePanel(frame, TukuiDB.Scale(40), TukuiDB.Scale(40), "CENTER", UIParent, "CENTER", 0, TukuiDB.Scale(200))
+	TukuiDB.CreatePanel(frame, TukuiDB.Scale(44), TukuiDB.Scale(44), "CENTER", UIParent, "CENTER", 0, TukuiDB.Scale(100))
+	TukuiDB.CreateShadow(frame)
 	frame:SetFrameLevel(1)
 	
 	frame.icon = frame:CreateTexture(nil, "OVERLAY")
 	frame.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	frame.icon:SetPoint("CENTER")
-	frame.icon:SetWidth(TukuiDB.Scale(36))
-	frame.icon:SetHeight(TukuiDB.Scale(36))
+	frame.icon:SetWidth(TukuiDB.Scale(40))
+	frame.icon:SetHeight(TukuiDB.Scale(40))
 	frame:Hide()
 	
 	frame:RegisterEvent("UNIT_AURA")
@@ -138,8 +139,9 @@ if (tankbuffs and tankbuffs[1]) then
 			elseif (self.icon:GetTexture() and event == "LEARNED_SPELL_IN_TAB") then
 				self:UnregisterAllEvents()
 				self:RegisterEvent("UNIT_AURA")
-				self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-				self:RegisterEvent("PLAYER_ENTERING_WORLD")
+				self:RegisterEvent("PLAYER_LOGIN")
+				self:RegisterEvent("PLAYER_REGEN_ENABLED")
+				self:RegisterEvent("PLAYER_REGEN_DISABLED")
 			end
 		end
 		local inInstance, instanceType = IsInInstance()	
@@ -166,6 +168,7 @@ if (tankbuffs and tankbuffs[1]) then
 	
 	local frame = CreateFrame("Frame", _, UIParent)
 	TukuiDB.CreatePanel(frame, TukuiDB.Scale(40), TukuiDB.Scale(40), "CENTER", UIParent, "CENTER", 0, TukuiDB.Scale(200))
+	TukuiDB.CreateShadow(frame)
 	frame:SetFrameLevel(2)
 	frame.icon = frame:CreateTexture(nil, "OVERLAY")
 	frame.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)

@@ -5,7 +5,7 @@ if (not TukuiCF["actionbar"].enable == true) then return end
 
 -- used for anchor totembar or shapeshiftbar
 local TukuiShift = CreateFrame("Frame","TukuiShiftBar",TukuiActionBarBackground)
-TukuiShift:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 2, -2)
+TukuiShift:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 2, -30)
 TukuiShift:SetWidth(29)
 TukuiShift:SetHeight(58)
 
@@ -22,7 +22,7 @@ TukuiShift:SetMovable(true)
 TukuiShift:SetUserPlaced(true)
 local ssmove = false
 local function showmovebutton()
-	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
+if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 	if ssmove == false then
 		ssmove = true
 		ssmover:SetAlpha(1)

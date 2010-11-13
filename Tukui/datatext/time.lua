@@ -8,8 +8,8 @@ if TukuiCF["datatext"].wowtime and TukuiCF["datatext"].wowtime > 0 then
 	Stat:SetFrameLevel(3)
 	
 	local Text
-	Text = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	Text = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
 	TukuiDB.PP(TukuiCF["datatext"].wowtime, Text)
 
 	local int = 1
@@ -162,11 +162,11 @@ if TukuiCF["datatext"].wowtime and TukuiCF["datatext"].wowtime > 0 then
 			local table = table or {}
 			local d,h,m,s = ChatFrame_TimeBreakDown(floor(sec))
 			local string = gsub(gsub(format(" %dd %dh %dm "..((d==0 and h==0) and "%ds" or ""),d,h,m,s)," 0[dhms]"," "),"%s+"," ")
-			local string = strtrim(gsub(string, "([dhms])", {d=table.days or "d",h=table.hours or "h",m=table.minutes or "m",s=table.seconds or "s"})," ")
+			local string = strtrim(gsub(string, "([dhms])", {d=table.days or "д",h=table.hours or "ч",m=table.minutes or "м",s=table.seconds or "с"})," ")
 			return strmatch(string,"^%s*$") and "0"..(table.seconds or L"s") or string
 		end
 		if extended then tr,tg,tb = 0.3,1,0.3 else tr,tg,tb = 1,1,1 end
-		if difficulty == 3 or difficulty == 4 then diff = "H" else diff = "N" end
+		if difficulty == 3 or difficulty == 4 then diff = "Г" else diff = "Н" end
 		GameTooltip:AddDoubleLine(format("%s |cffaaaaaa(%s%s)",name,maxPlayers,diff),fmttime(reset),1,1,1,tr,tg,tb)
 		end
 		end

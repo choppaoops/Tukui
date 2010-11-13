@@ -52,10 +52,11 @@ end
 
 --Create our Button
 local AutoButton = CreateFrame("Button", "AutoButton", UIParent, "SecureActionButtonTemplate")
-AutoButton:SetWidth(TukuiDB.Scale(40))
-AutoButton:SetHeight(TukuiDB.Scale(40))
-AutoButton:SetPoint("TOPLEFT", Minimap, "BOTTOMLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(-58))
+AutoButton:SetWidth(TukuiDB.Scale(35))
+AutoButton:SetHeight(TukuiDB.Scale(35))
+AutoButton:SetPoint("TOPLEFT", Minimap, "BOTTOMLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(-65))
 TukuiDB.SetTemplate(AutoButton)
+TukuiDB.CreateShadow(AutoButton)
 TukuiDB.StyleButton(AutoButton, false) 
 AutoButton:SetAttribute("type", "item")
 AutoButtonHide()
@@ -68,7 +69,7 @@ AutoButton.t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 --Count text for our button
 AutoButton.c = AutoButton:CreateFontString(nil,"OVERLAY",f)
-AutoButton.c:SetFont(TukuiCF.media.font,12,"OUTLINE")
+AutoButton.c:SetFont(TukuiCF.media.font2,10,"OUTLINE")
 AutoButton.c:SetTextColor(0.8, 0.8, 0.8, 1)
 AutoButton.c:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 AutoButton.c:SetJustifyH("CENTER")	
@@ -103,7 +104,7 @@ Scanner:SetScript("OnEvent", function()
 					else	
 						AutoButton.c:SetText("")
 					end
-					
+
 					AutoButton:SetScript("OnUpdate", function(self, elapsed)
 						local cd_start, cd_finish, cd_enable = GetContainerItemCooldown(b, s)
 						CooldownFrame_SetTimer(AutoButton.Cooldown, cd_start, cd_finish, cd_enable)
@@ -123,7 +124,7 @@ Scanner:SetScript("OnEvent", function()
 				--Set our texture to the item found in bags
 				AutoButton.t:SetTexture(itemIcon)
 				AutoButton.c:SetText("")
-				
+
 				AutoButton:SetScript("OnUpdate", function(self, elapsed)
 					local cd_start, cd_finish, cd_enable = GetInventoryItemCooldown("player",w)
 					CooldownFrame_SetTimer(AutoButton.Cooldown, cd_start, cd_finish, cd_enable)

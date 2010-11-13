@@ -3,16 +3,11 @@ if not TukuiCF["others"].enablemap == true then return end
 local mapscale = WORLDMAP_WINDOWED_SIZE
 
 local glowt = TukuiCF["media"].glowTex
-local ft = TukuiCF["media"].uffont -- Map font
+local ft = TukuiCF["media"].font2 -- Map font
 local fontsize = 18 -- Map Font Size
 
 local mapbg = CreateFrame("Frame", nil, WorldMapDetailFrame)
-	mapbg:SetBackdrop( { 
-	bgFile = TukuiCF["media"].blank, 
-	edgeFile = TukuiCF["media"].blank, 
-	tile = false, edgeSize = TukuiDB.mult, 
-	insets = { left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bottom = -TukuiDB.mult }
-})
+TukuiDB.SetTemplate(mapbg)
 
 local movebutton = CreateFrame ("Frame", nil, WorldMapFrameSizeUpButton)
 movebutton:SetHeight(TukuiDB.Scale(32))
@@ -42,7 +37,7 @@ end
 local SmallerMapSkin = function()
 	-- don't need this
 	TukuiDB.Kill(WorldMapTrackQuest)
-	
+
 	-- new frame to put zone and title text in
 	local ald = CreateFrame ("Frame", nil, WorldMapButton)
 	ald:SetFrameStrata("HIGH")

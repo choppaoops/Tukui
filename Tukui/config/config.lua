@@ -7,97 +7,96 @@
 }
 
 TukuiCF["skin"] = {	--Skin addons by Darth Android
-	["recount"] = true,
-	["skada"] = true,
+	["recount"] = false,
+	["skada"] = false,
 	["dxe"] = true,
-	["omen"] = true,
+	["omen"] = false,
 }
 
 TukuiCF["unitframes"] = {
 	-- general options
 	["enable"] = true,                     -- do i really need to explain this?
-	["fontsize"] = 12,						-- default font height for unitframes
+	["fontsize"] = 10,						-- default font height for unitframes
 	["lowThreshold"] = 20,                 -- global low threshold, for low mana warning.
-	["targetpowerplayeronly"] = true,         -- enable power text on pvp target only
-	["showfocustarget"] = false,           -- show focus's target
+	["targetpowerplayeronly"] = false,         -- enable power text on pvp target only
+	["showfocustarget"] = true,           -- show focus's target
 	["showtotalhpmp"] = false,             -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                 -- enable smooth bar
 	["showthreat"] = true,                 -- enable the threat bar anchored to info left panel.
 	["charportrait"] = true,              -- enable character portrait
 	["classcolor"] = false,                  -- color unitframes by class
-	["healthcolor"] = TukuiCF["media"].bordercolor, --color of the unitfram
-	["healthbackdropcolor"] = TukuiCF["media"].backdropcolor, --backdropcolor of the unitframe
-	["combatfeedback"] = true,             -- enable combattext on player and target.
-	["playeraggro"] = true,                -- color player border to red if you have aggro on current target.
+	["healthcolor"] = { .219, .219, .219, 1 }, --color of the unitframe when unicolor theme is enabled
+	["healthbackdropcolor"] = { 0, 0, 0, 1 }, --backdropcolor of the unitframe
+	["combatfeedback"] = false,             -- enable combattext on player and target.
+	["playeraggro"] = false,                -- color player border to red if you have aggro on current target.
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
 	["swingbar"] = false,					--enables swingbar (dps layout only)
-	["debuffhighlight"] = true,				--highlight frame with the debuff color if the frame is dispellable
+	["debuffhighlight"] = false,				--highlight frame with the debuff color if the frame is dispellable
 	["showsymbols"] = true,	               -- show symbol.
-	["aggro"] = true,                      -- show aggro
+	["aggro"] = false,                      -- show aggro
 	["poweroffset"] = 9,					--powerbar offset
 	["classbar"] = true,                    -- enable runebar/totembar/holypowerbar/soulshardbar/eclipsebar
-
-	-- hunter only plugin
+	
+		-- hunter only plugin
 	["mendpet"] = true,						--mend pet duration overlay on pet frame
 }
 
 TukuiCF["framesizes"] = {
-	["playtarwidth"] = 220,					--width of player/target frame
-	["playtarheight"] = 28,					--height of player/target frame
-	["smallwidth"] = 100,					--Width of TargetTarget, Focus, FocusTarget, Player's Pet frames
-	["smallheight"] = 23,					--Height of TargetTarget, Focus, FocusTarget, Player's Pet frames
-	["arenabosswidth"] = 180,				--Width of Arena/Boss Frames
-	["arenabossheight"] = 23,				--Height of Arena/Boss Frames
-	["assisttankwidth"] = 100,				--Width of MainTank/MainAssist frames
-	["assisttankheight"] = 20,				--Height of MainTank/MainAssist frames
+	["playtarwidth"] = 220,          --width of player/target frame
+ 	["playtarheight"] = 28,          --height of player/target frame
+	["smallwidth"] = 100,          --Width of TargetTarget, Focus, FocusTarget, Player's Pet frames
+	["smallheight"] = 23,          --Height of TargetTarget, Focus, FocusTarget, Player's Pet frames
+	["arenabosswidth"] = 180,        --Width of Arena/Boss Frames
+	["arenabossheight"] = 23,        --Height of Arena/Boss Frames
+	["assisttankwidth"] = 100,        --Width of MainTank/MainAssist frames
+ 	["assisttankheight"] = 20,        --Height of MainTank/MainAssist frames
 }
 
 TukuiCF["raidframes"] = {
 	["enable"] = true,						-- enable raid frames
-	["fontsize"] = 12,						-- default font height for raidframes
+	["fontsize"] = 10,						-- default font height for raidframes
 	["scale"] = 1,							-- for smaller use a number less than one (0.73), for higher use a number larger than one
 	["showrange"] = true,                  -- show range opacity on raidframes
-	["hidenonmana"] = true,					-- hide non mana on party/raid frames
-	["healcomm"] = true,                  -- enable healcomm4 support on healer layout.
+	["hidenonmana"] = false,					-- hide non mana on party/raid frames
+	["healcomm"] = false,                  -- enable healcomm4 support on healer layout.
 	["raidalphaoor"] = 0.3,                -- alpha of raidframes when unit is out of range
 	["gridonly"] = false,                  -- enable grid only mode for all raid layout. TEMP
 	["gridhealthvertical"] = true,         -- enable vertical grow on health bar for healer layout
-	["showplayerinparty"] = true,          -- show my player frame in party
-	["maintank"] = true,                  -- enable maintank
-	["mainassist"] = true,                -- enable mainassist
+	["showplayerinparty"] = false,          -- show my player frame in party
+	["maintank"] = false,                  -- enable maintank
+	["mainassist"] = false,                -- enable mainassist
 	["showboss"] = true,                   -- enable boss unit frames for PVELOL encounters.
-	["partypets"] = true,					-- enable party pets for the healer layout
-	["disableblizz"] = true,				-- fuck fuck fuckin fuck
+	["disableblizz"] = true,        -- fuck fuck fuckin fuck
 }
 
 TukuiCF["auras"] = {
-	["auratimer"] = true,                  -- enable timers on buffs/debuffs
-	["auratextscale"] = 11,                -- the font size of buffs/debuffs timers on unitframes
-	["playerauras"] = true,               -- enable auras
-	["playershowonlydebuffs"] = true, 		-- only show the players debuffs over the player frame, not buffs (playerauras must be true)
-	["playerdebuffsonly"] = true,			-- show the players debuffs on target, and any debuff in the whitelist (see debuffFilter.lua)
+	["auratimer"] = false,                  -- enable timers on buffs/debuffs
+	["auratextscale"] = 12,                -- the font size of buffs/debuffs timers on unitframes
+	["playerauras"] = false,               -- enable auras
+	["playershowonlydebuffs"] = false, 		-- only show the players debuffs over the player frame, not buffs (playerauras must be true)
+	["playerdebuffsonly"] = false,			-- show the players debuffs on target, and any debuff in the whitelist (see debuffFilter.lua)
 	["targetauras"] = true,                -- enable auras on target unit frame
 	["minimapauras"] = true,				-- enable minimap auras
-	["arenadebuffs"] = true, 				-- enable debuff filter for arena frames
-	["raidunitbuffwatch"] = true,       -- track important spell to watch in pve for grid mode.
-	["totdebuffs"] = true,                -- enable tot debuffs (high reso only)
-	["focusdebuffs"] = true,              -- enable focus debuffs 
-	["playtarbuffperrow"] = 8,				-- buffs/debuffs per row on player/target frames
-	["smallbuffperrow"] = 4,				-- debuffs per row on targettarget/focus frames
+	["arenadebuffs"] = false, 				-- enable debuff filter for arena frames
+	["raidunitbuffwatch"] = false,       -- track important spell to watch in pve for grid mode.
+	["totdebuffs"] = false,                -- enable tot debuffs (high reso only)
+	["focusdebuffs"] = false,              -- enable focus debuffs 
+	["playtarbuffperrow"] = 8,        -- buffs/debuffs per row on player/target frames
+	["smallbuffperrow"] = 4,        -- debuffs per row on targettarget/focus frames
 }
 
 TukuiCF["castbar"] = {
 	["unitcastbar"] = true, -- enable tukui castbar
-		["cblatency"] = false, -- enable castbar latency
+		["cblatency"] = true, -- enable castbar latency
 		["cbicons"] = true, -- enable icons on castbar
-		["castermode"] = false, -- makes castbar larger and puts it above the actionbar frame
+		["castermode"] = true, -- makes castbar larger and puts it above the actionbar frame
 		["classcolor"] = false, -- classcolor
 		["castbarcolor"] = { 0.3, 0.3, 0.3, 1 }, -- Color of player castbar
 		["nointerruptcolor"] = { 1, 0.1, 0.1, 0.5 }, -- Color of target castbar
 }
 
 TukuiCF["classtimer"] = {
-	["enable"] = true,
+	["enable"] = false,
 		["bar_height"] = 17,
 		["bar_spacing"] = 1,
 		["icon_position"] = 2, -- 0 = left, 1 = right, 2 = Outside left, 3 = Outside Right
@@ -117,33 +116,33 @@ TukuiCF["combattext"] = {
 }
 
 TukuiCF["arena"] = {
-	["unitframes"] = true,                 -- enable tukz arena unitframes (requirement : tukui unitframes enabled)
+	["unitframes"] = false,                 -- enable tukz arena unitframes (requirement : tukui unitframes enabled)
 	["spelltracker"] = false,               -- enable tukz enemy spell tracker (an afflicted3 or interruptbar alternative)
 }
 
 TukuiCF["actionbar"] = {
 	["enable"] = true,                     -- enable tukz action bars
-		["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
+		["hotkey"] = false,                     -- enable hotkey display because it was a lot requested
 		["rightbarmouseover"] = false,         -- enable right bars on mouse over
-		["shapeshiftmouseover"] = false,       -- enable shapeshift or totembar on mouseover
+		["shapeshiftmouseover"] = true,       -- enable shapeshift or totembar on mouseover
 		["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 		["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1, 1.5, 2 only)
-		["rightbars"] = 0,                     -- numbers of right bar you want
+		["rightbars"] = 1,                     -- numbers of right bar you want
 		["splitbar"] = true,					-- split the third right actionbar into two rows of 3 on the left and right side of the main actionbar
-		["showgrid"] = true,                   -- show grid on empty button
-		["bottompetbar"] = false,				-- position petbar below the actionbars instead of the right side
-		["buttonsize"] = 27,					--size of action buttons
-		["buttonspacing"] = 4,					--spacing of action buttons
-		["petbuttonsize"] = 25,					--size of pet/stance buttons
-		["petbuttonspacing"] = 4,				--spacing of pet/stance buttons
+		["showgrid"] = false,                   -- show grid on empty button
+		["bottompetbar"] = false,        -- position petbar below the actionbars instead of the right side
+		["buttonsize"] = 27,          --size of action buttons
+		["buttonspacing"] = 4,          --spacing of action buttons
+		["petbuttonsize"] = 25,          --size of pet/stance buttons
+		["petbuttonspacing"] = 4,        --spacing of pet/stance buttons
 }
 
 TukuiCF["nameplate"] = {
 	["enable"] = true,                     -- enable nice skinned nameplates that fit into tukui
 		["showhealth"] = true,					-- show health text on nameplate
 		["enhancethreat"] = true,				-- threat features based on if your a tank or not
-		["overlap"] = false,				--allow nameplates to overlap
-		["combat"] = false,					--only show enemy nameplates in-combat.
+		["overlap"] = true,				--allow nameplates to overlap
+		["combat"] = false,          --only show enemy nameplates in-combat.
 }
 
 TukuiCF["loot"] = {
@@ -154,50 +153,50 @@ TukuiCF["loot"] = {
 
 TukuiCF["cooldown"] = {
 	["enable"] = true,                     -- do i really need to explain this?
-		["treshold"] = 3,                      -- show decimal under X seconds and text turn red
+		["treshold"] = 5,                      -- show decimal under X seconds and text turn red
 		["expiringcolor"] = { 1, 0, 0 },		--color of expiring seconds turns to 
-		["secondscolor"] = { 1, 1, 0 },			--seconds color
+		["secondscolor"] = { 1, 1, 1 },			--seconds color
 		["minutescolor"] = { 1, 1, 1 },			-- minutes color
 		["hourscolor"] = { 0.4, 1, 1 },			-- hours color
 		["dayscolor"] = { 0.4, 0.4, 1 },		-- days color
 }
 
 TukuiCF["datatext"] = {
-	["stat1"] = 1,						   -- Stat Based on your Role (Avoidance-Tank, AP-Melee, SP/HP-Caster)
-	["dur"] = 2,                           -- show your equipment durability on panels.
-	["stat2"] = 3, 						   -- Stat Based on your Role (Armor-Tank, Crit-Melee, Crit-Caster)
-	["system"] = 4,                        -- show fps and ms on panels, and total addon memory in tooltip
-	["wowtime"] = 5,                       -- show time on panels
-	["gold"] = 6,                          -- show your current gold on panels
-	["guild"] = 7,                         -- show number on guildmate connected on panels
-	["friends"] = 8,                       -- show number of friends connected.
-	["bags"] = 0,							-- show ammount of bag space available
-	["dps_text"] = 0,						-- show current dps
-	["hps_text"] = 0,						-- show current hps
-	["haste"] = 0,							-- show current haste
-	["currency"] = 0,						-- show watched items in backpack
+	["stat1"] = 2,                -- Stat Based on your Role (Avoidance-Tank, AP-Melee, SP/HP-Caster)
+	["dur"] = 6,                -- show your equipment durability on panels.
+	["mastery"] = 1,                -- show your characters mastery rating
+	["system"] = 5,                -- show fps and ms on panels, and total addon memory in tooltip
+	["wowtime"] = 10,                -- show time on panels
+	["gold"] = 13,                -- show your current gold on panels
+	["guild"] = 7,                -- show number on guildmate connected on panels
+	["friends"] = 8,                -- show number of friends connected.
+	["crit"] = 9,                -- show crit rating
+	["haste"] = 3,                -- show haste rating
+	["hitrating"] = 11,                -- show hitrating
+	["bags"] = 4,                -- show space used in bags on panels
+	["points"] = 12,                -- show honor, justice points on panels
 	
-	["battleground"] = true,               -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
+	["location_coords"] = true,			--Show location panel
 	["time24"] = false,                     -- set time to 24h format.
 	["localtime"] = true,                 -- set time to local time instead of server time.
-	["fontsize"] = 12,                     -- font size for panels.
+	["fontsize"] = 10,                     -- font size for panels.
 }
 
 TukuiCF["chat"] = {
-	["enable"] = true,                     -- blah
+	["enable"] = true,                     -- blah		
 		["whispersound"] = true,               -- play a sound when receiving whisper
-		["showbackdrop"] = true,				-- show a backdrop on the chat panels
-		["chatwidth"] = 350,					-- width of chat frame
-		["chatheight"] = 111,					-- height of chat frame
-		["fadeoutofuse"] = true,				-- fade chat text when out of use
+		["chatwidth"] = 355,					-- width of chat frame
+		["chatheight"] = 98,					-- height of chat frame
+		["fadeoutofuse"] = false,				-- fade chat text when out of use
 		["sticky"] = true,						-- when opening the chat edit box resort to previous channel
-	["bubbles"] = true,							--skin blizzard chat bubbles
+		["bubbles"] = true,              -- skin blizzard chat bubbles
+		["mouseoverlink"] = true,               -- Hyperlink mouseover
 }
 
 TukuiCF["tooltip"] = {
 	["enable"] = true,                     -- true to enable this mod, false to disable
-		["hidecombat"] = true,                -- hide bottom-right tooltip when in combat
-		["hidecombatraid"] = true,				-- only hide in combat in a raid instance
+		["hidecombat"] = false,                -- hide bottom-right tooltip when in combat
+		["hidecombatraid"] = false,				-- only hide in combat in a raid instance
 		["hidebuttons"] = false,               -- always hide action bar buttons tooltip.
 		["hideuf"] = false,                    -- hide tooltip on unitframes
 		["cursor"] = false,                    -- show anchored to cursor
@@ -209,14 +208,20 @@ TukuiCF["tooltip"] = {
 TukuiCF["buffreminder"] = {
 	["enable"] = true,                     -- this is now the new innerfire warning script for all armor/aspect class.
 		["sound"] = true,                      -- enable warning sound notification for reminder.
-		["raidbuffreminder"] = true,			-- buffbar below the minimap, important missing buffs
+		["raidbuffreminder"] = true,      -- buffbar below the minimap, important missing buffs
+}
+
+TukuiCF["error"] = {
+	["enable"] = true, -- true to enable this mod, false to disable
+		filter = { -- what messages to not hide
+			["Inventory is full."] = true, -- inventory is full will not be hidden by default
+		},
 }
 
 TukuiCF["others"] = {
 	["pvpautorelease"] = false,            -- enable auto-release in bg or wintergrasp.
 	["sellgrays"] = true,                  -- automaticly sell grays?
 	["autorepair"] = true,                 -- automaticly repair?
-	["errorenable"] = true,                     -- true to enable this mod, false to disable
 	["autoacceptinv"] = true,                 -- auto-accept invite from guildmate and friends.
 	["enablemap"] = true,                     -- reskin the map to fit tukui
 	["enablebag"] = true,                     -- enable an all in one bag mod that fit tukui perfectly

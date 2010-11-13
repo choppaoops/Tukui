@@ -16,16 +16,8 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 	local yoffset2 = TukuiDB.mult
 	local snapfrom = "BOTTOM"
 	
-	if TukuiCF["datatext"].friends == 8 or TukuiCF["datatext"].friends == 9 then
-		yoffset = TukuiDB.Scale(-6)
-		anchor = "BOTTOM"
-		anchor2 = "ANCHOR_BOTTOM"
-		yoffset2 = TukuiDB.mult
-		snapfrom = "TOP"
-	end
-	
-	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
 	TukuiDB.PP(TukuiCF["datatext"].guild, Text)
 
 	local function Update(self, event, ...)	
@@ -41,7 +33,7 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 				end
 			end 			
 			self:SetAllPoints(Text)
-			Text:SetText(tukuilocal.datatext_guild .. ": " .. valuecolor..numOnline)
+			Text:SetText(tukuilocal.datatext_guild..valuecolor..numOnline)
 		else
 			Text:SetText(valuecolor..tukuilocal.datatext_noguild)
 		end
@@ -49,13 +41,13 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 		
 	local menuFrame = CreateFrame("Frame", "TukuiGuildRightClickMenu", UIParent, "UIDropDownMenuTemplate")
 	local menuList = {
-		{ text = "Select an Option", isTitle = true,notCheckable=true},
-		{ text = "Invite", hasArrow = true,notCheckable=true,
+		{ text = tukuilocal.datatext_options, isTitle = true,notCheckable=true},
+		{ text = tukuilocal.datatext_invite, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 3", func = function() print("You've chosen option 3"); end }
 			}
 		},
-		{ text = "Whisper", hasArrow = true,notCheckable=true,
+		{ text = tukuilocal.datatext_whisper, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 4", func = function() print("You've chosen option 4"); end }
 			}
@@ -105,7 +97,7 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 				GameTooltip:ClearAllPoints()
 				GameTooltip:SetPoint(anchor, self, snapfrom, 0, yoffset2)
 				GameTooltip:ClearLines()
-				GameTooltip:AddDoubleLine(GetGuildInfo'player',format("%s: %d/%d",tukuilocal.datatext_guild,online,total),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
+				GameTooltip:AddDoubleLine(GetGuildInfo'player',format("%s %d/%d",tukuilocal.datatext_guild,online,total),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 				GameTooltip:AddLine' '
 				if gmotd ~= "" then GameTooltip:AddLine(format("  %s |cffaaaaaa- |cffffffff%s",GUILD_MOTD,gmotd),ttsubh.r,ttsubh.g,ttsubh.b,1) end
 				if online > 1 then

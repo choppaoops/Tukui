@@ -28,7 +28,7 @@ local function Shared(self, unit)
 	
 	health.value = health:CreateFontString(nil, "OVERLAY")
 	health.value:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(1))
-	health.value:SetFont(TukuiCF["media"].uffont, (TukuiCF["raidframes"].fontsize*.83)*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	health.value:SetFont(TukuiCF["media"].font2, (TukuiCF["raidframes"].fontsize)*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	health.value:SetTextColor(1,1,1)
 	health.value:SetShadowOffset(1, -1)
 	self.Health.value = health.value		
@@ -42,8 +42,8 @@ local function Shared(self, unit)
 		health.bg:SetTexture(unpack(TukuiCF["unitframes"].healthbackdropcolor))
 	else
 		health.colorClass = true
-		health.colorReaction = true	
-		health.bg.multiplier = 0.3		
+		health.colorReaction = true
+		health.bg.multiplier = 0.3
 	end
 	health.colorDisconnected = false	
 	
@@ -52,6 +52,7 @@ local function Shared(self, unit)
 	FrameBorder:SetPoint("TOPLEFT", self, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 	FrameBorder:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 	TukuiDB.SetTemplate(FrameBorder)
+	TukuiDB.CreateShadow(FrameBorder)
 	FrameBorder:SetBackdropBorderColor(unpack(TukuiCF["media"].altbordercolor))
 	FrameBorder:SetFrameLevel(2)
 	self.FrameBorder = FrameBorder
@@ -91,7 +92,7 @@ local function Shared(self, unit)
 	
 	local name = health:CreateFontString(nil, "OVERLAY")
 	name:SetPoint("LEFT", health, "LEFT", TukuiDB.Scale(2), TukuiDB.Scale(1))
-	name:SetFont(TukuiCF["media"].uffont, TukuiCF["raidframes"].fontsize*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	name:SetFont(TukuiCF["media"].font2, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
@@ -135,7 +136,7 @@ local function Shared(self, unit)
 	debuffs:SetHeight(raidframe_height)
 	debuffs:SetWidth(raidframe_height*5)
 	debuffs.size = (raidframe_height)
-	debuffs.num = 5
+	debuffs.num = 0
 	debuffs.spacing = 2
     debuffs.initialAnchor = 'LEFT'
 	debuffs.PostCreateIcon = TukuiDB.PostCreateAuraSmall

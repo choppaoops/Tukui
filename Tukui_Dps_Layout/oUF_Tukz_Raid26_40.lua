@@ -29,7 +29,7 @@ local function Shared(self, unit)
 	
 	health.value = health:CreateFontString(nil, "OVERLAY")
 	health.value:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-3), TukuiDB.Scale(1))
-	health.value:SetFont(TukuiCF["media"].uffont, (TukuiCF["raidframes"].fontsize*.83)*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	health.value:SetFont(TukuiCF["media"].font2, (TukuiCF["raidframes"].fontsize)*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	health.value:SetTextColor(1,1,1)
 	health.value:SetShadowOffset(1, -1)
 	self.Health.value = health.value		
@@ -43,11 +43,11 @@ local function Shared(self, unit)
 		health.bg:SetTexture(unpack(TukuiCF["unitframes"].healthbackdropcolor))
 	else
 		health.colorClass = true
-		health.colorReaction = true		
-		health.bg.multiplier = 0.3	
+		health.colorReaction = true
+		health.bg.multiplier = 0.3
 	end
-	health.colorDisconnected = false	
-	
+	health.colorDisconnected = false
+
 	-- border for all frames
 	local FrameBorder = CreateFrame("Frame", nil, self)
 	FrameBorder:SetPoint("TOPLEFT", self, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
@@ -59,7 +59,7 @@ local function Shared(self, unit)
 		
 	local name = health:CreateFontString(nil, "OVERLAY")
 	name:SetPoint("LEFT", health, "LEFT", TukuiDB.Scale(2), TukuiDB.Scale(1))
-	name:SetFont(TukuiCF["media"].uffont, (TukuiCF["raidframes"].fontsize-1)*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	name:SetFont(TukuiCF["media"].font2, (TukuiCF["raidframes"].fontsize)*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name

@@ -8,18 +8,32 @@ if TukuiCF["datatext"].bags and TukuiCF["datatext"].bags > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
 	TukuiDB.PP(TukuiCF["datatext"].bags, Text)
 
 	local function OnEvent(self, event, ...)
-		local free, total,used = 0, 0, 0
+		local free, total, used = 0, 0, 0
 		for i = 0, NUM_BAG_SLOTS do
 			free, total = free + GetContainerNumFreeSlots(i), total + GetContainerNumSlots(i)
 		end
 		used = total - free
-		Text:SetText(tukuilocal.datatext_bags..valuecolor..used.."|r/"..valuecolor..total)
+		Text:SetText(tukuilocal.datatext_bagsfree..valuecolor..free)
 		self:SetAllPoints(Text)
+		self:SetScript("OnEnter", function()
+		if not InCombatLockdown() then
+			GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, TukuiDB.Scale(6));
+			GameTooltip:ClearAllPoints()
+			GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
+			GameTooltip:ClearLines()
+			GameTooltip:AddDoubleLine(valuecolor..tukuilocal.datatext_bags)
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_bagstotal,total,0, 0.6, 1, 1, 1, 1)
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_bagsused,used,0, 0.6, 1, 1, 1, 1)
+		end
+		GameTooltip:Show()
+	end)
+	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 	end
           
 	Stat:RegisterEvent("PLAYER_LOGIN")

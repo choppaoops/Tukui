@@ -86,7 +86,7 @@ local function CreateRollButton(parent, ntex, ptex, htex, rolltype, tiptext, ...
 	f:SetScript("OnClick", ClickRoll)
 	f:SetMotionScriptsWhileDisabled(true)
 	local txt = f:CreateFontString(nil, nil)
-	txt:SetFont(TukuiCF["media"].uffont, 12, "OUTLINE")
+	txt:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 	txt:SetPoint("CENTER", 0, TukuiDB.Scale(rolltype == 2 and 1 or rolltype == 0 and -1.2 or 0))
 	return f, txt
 end
@@ -167,11 +167,11 @@ local function CreateRollFrame()
 
 	local bind = frame:CreateFontString()
 	bind:SetPoint("LEFT", pass, "RIGHT", TukuiDB.Scale(3), TukuiDB.Scale(1))
-	bind:SetFont(TukuiCF["media"].uffont, 12, "OUTLINE")
+	bind:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 	frame.fsbind = bind
 
 	local loot = frame:CreateFontString(nil, "ARTWORK")
-	loot:SetFont(TukuiCF["media"].uffont, 12, "OUTLINE")
+	loot:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 	loot:SetPoint("LEFT", bind, "RIGHT", 0, TukuiDB.Scale(0.12))
 	loot:SetPoint("RIGHT", frame, "RIGHT", TukuiDB.Scale(-5), 0)
 	loot:SetHeight(TukuiDB.Scale(10))
@@ -191,7 +191,7 @@ anchor:SetHeight(TukuiDB.Scale(22))
 anchor:SetBackdrop(backdrop)
 anchor:SetBackdropColor(0.25, 0.25, 0.25, 1)
 local label = anchor:CreateFontString(nil, "ARTWORK")
-label:SetFont(TukuiCF["media"].uffont, 12, "OUTLINE")
+label:SetFont(TukuiCF["media"].font2, 10, "OUTLINE")
 label:SetAllPoints(anchor)
 label:SetText("teksLoot")
 
@@ -339,5 +339,5 @@ anchor:SetScript("OnEvent", function(frame, event, addon)
 
 	anchor:SetScript("OnEvent", function(frame, event, ...) if event == "CHAT_MSG_LOOT" then return CHAT_MSG_LOOT(...) else return START_LOOT_ROLL(...) end end)
 
-	anchor:SetPoint("TOP", UIParent, "TOP", 0, TukuiDB.Scale(-200))
+	anchor:SetPoint("CENTER", UIParent, "CENTER", 0, TukuiDB.Scale(-100))
 end)

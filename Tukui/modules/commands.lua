@@ -103,7 +103,7 @@ function DisbandRaidGroup()
 end
 
 StaticPopupDialogs["DISBAND_RAID"] = {
-	text = "Are you sure you want to disband the group?",
+	text = tukuilocal.disband_message,
 	button1 = ACCEPT,
 	button2 = CANCEL,
 	OnAccept = DisbandRaidGroup,
@@ -115,3 +115,6 @@ SlashCmdList["GROUPDISBAND"] = function()
 	StaticPopup_Show("DISBAND_RAID")
 end
 SLASH_GROUPDISBAND1 = '/rd'
+
+SlashCmdList["READYCHECKSLASHRC"] = function() DoReadyCheck() end
+SLASH_READYCHECKSLASHRC1 = '/rc'

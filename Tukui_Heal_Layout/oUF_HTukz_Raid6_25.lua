@@ -29,12 +29,13 @@ local function Shared(self, unit)
 	health.bg = health:CreateTexture(nil, 'BORDER')
 	health.bg:SetAllPoints(health)
 	health.bg:SetTexture(TukuiCF["media"].normTex)
+	health.bg:SetTexture(0.1, 0.1, 0.1)
 	
 	self.Health.bg = health.bg
 	
 	health.value = health:CreateFontString(nil, "OVERLAY")
 	health.value:SetPoint("BOTTOM", health, "BOTTOM", 0, TukuiDB.Scale(4))
-	health.value:SetFont(TukuiCF["media"].uffont, (TukuiCF["raidframes"].fontsize*.83)*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	health.value:SetFont(TukuiCF["media"].font2, (TukuiCF["raidframes"].fontsize)*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	health.value:SetTextColor(1,1,1)
 	health.value:SetShadowOffset(1, -1)
 	self.Health.value = health.value		
@@ -42,17 +43,14 @@ local function Shared(self, unit)
 	health.PostUpdate = TukuiDB.PostUpdateHealthRaid
 	health.frequentUpdates = true
 	
-	-- Setup Colors
 	if TukuiCF["unitframes"].classcolor ~= true then
 		health.colorTapping = false
 		health.colorClass = false
 		health:SetStatusBarColor(unpack(TukuiCF["unitframes"].healthcolor))	
-		self.Health.bg:SetTexture(unpack(TukuiCF["unitframes"].healthbackdropcolor))
 	else
 		health.colorTapping = true	
 		health.colorClass = true
-		health.colorReaction = true		
-		health.bg.multiplier = 0.3				
+		health.colorReaction = true			
 	end
 	health.colorDisconnected = false
 	
@@ -99,7 +97,7 @@ local function Shared(self, unit)
 	
 	local name = health:CreateFontString(nil, "OVERLAY")
     name:SetPoint("TOP", health, 0, TukuiDB.Scale(-2))
-	name:SetFont(TukuiCF["media"].uffont, TukuiCF["raidframes"].fontsize*TukuiCF["raidframes"].scale, "THINOUTLINE")
+	name:SetFont(TukuiCF["media"].font2, TukuiCF["raidframes"].fontsize*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
@@ -269,7 +267,7 @@ oUF:Factory(function(self)
 					ChangeVisibility("custom [@raid6,noexists][@raid26,exists] hide;show")
 				end
 			end
-		else
+			else
 			self:RegisterEvent("PLAYER_REGEN_ENABLED")
 		end
 	end)
