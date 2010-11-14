@@ -328,6 +328,7 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 30108 ), -- Unstable Affliction
 			CreateSpellEntry( 603 ), -- Bane of Doom
 			CreateSpellEntry( 980 ), -- Bane of Agony
+			CreateSpellEntry( 80240 ), -- Bane of Havoc
 			CreateSpellEntry( 1490 ), -- Curse of the Elements 
 			CreateSpellEntry( 18018 ), -- Conflagration
 			CreateSpellEntry( 348 ), -- Immolate

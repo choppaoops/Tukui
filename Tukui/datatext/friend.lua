@@ -22,13 +22,13 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 
 	local menuFrame = CreateFrame("Frame", "TukuiFriendRightClickMenu", UIParent, "UIDropDownMenuTemplate")
 	local menuList = {
-		{ text = tukuilocal.datatext_options, isTitle = true,notCheckable=true},
-		{ text = tukuilocal.datatext_invite, hasArrow = true,notCheckable=true,
+		{ text = GAMEOPTIONS_MENU, isTitle = true,notCheckable=true},
+		{ text = INVITE, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 3", func = function() print("You've chosen option 3"); end }
 			}
 		},
-		{ text = tukuilocal.datatext_whisper, hasArrow = true,notCheckable=true,
+		{ text = WHISPER, hasArrow = true,notCheckable=true,
 			menuList = {
 				{ text = "Option 4", func = function() print("You've chosen option 4"); end }
 			}

@@ -7,8 +7,8 @@
 
 	<Script file="config\media.lua"/>
 	<Script file="config\config.lua"/>
-	<Script file="config\filters.lua"/>
 	<Script file="config\classtimers.lua"/>
+	<Script file="config\filters.lua"/>
 
 	<Script file="modules\configui.lua"/>
 

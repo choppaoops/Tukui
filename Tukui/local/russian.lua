@@ -107,10 +107,6 @@
 	tukuilocal.datatext_bandwidth = "Скорость: "
 	tukuilocal.datatext_download = "Загрузка: "
 	tukuilocal.datatext_mbps = "Мбит/с"
-	
-	tukuilocal.datatext_options = "Выберите опцию"
-	tukuilocal.datatext_whisper = "Шепнуть"
-	tukuilocal.datatext_invite = "Пригласить"
 
 	tukuilocal.mail_messages = "Сообщений"
 	tukuilocal.mail_done = "Готово"

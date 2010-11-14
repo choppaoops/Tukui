@@ -43,13 +43,13 @@ TukuiCF["unitframes"] = {
 
 TukuiCF["framesizes"] = {
 	["playtarwidth"] = 220,          --width of player/target frame
- 	["playtarheight"] = 28,          --height of player/target frame
+	["playtarheight"] = 28,          --height of player/target frame
 	["smallwidth"] = 100,          --Width of TargetTarget, Focus, FocusTarget, Player's Pet frames
 	["smallheight"] = 23,          --Height of TargetTarget, Focus, FocusTarget, Player's Pet frames
 	["arenabosswidth"] = 180,        --Width of Arena/Boss Frames
 	["arenabossheight"] = 23,        --Height of Arena/Boss Frames
 	["assisttankwidth"] = 100,        --Width of MainTank/MainAssist frames
- 	["assisttankheight"] = 20,        --Height of MainTank/MainAssist frames
+	["assisttankheight"] = 20,        --Height of MainTank/MainAssist frames
 }
 
 TukuiCF["raidframes"] = {
@@ -67,11 +67,12 @@ TukuiCF["raidframes"] = {
 	["mainassist"] = false,                -- enable mainassist
 	["showboss"] = true,                   -- enable boss unit frames for PVELOL encounters.
 	["disableblizz"] = true,        -- fuck fuck fuckin fuck
+	["healthdeficit"] = false,      -- show the health deficit on the raidframes
 }
 
 TukuiCF["auras"] = {
 	["auratimer"] = false,                  -- enable timers on buffs/debuffs
-	["auratextscale"] = 12,                -- the font size of buffs/debuffs timers on unitframes
+	["auratextscale"] = 10,                -- the font size of buffs/debuffs timers on unitframes
 	["playerauras"] = false,               -- enable auras
 	["playershowonlydebuffs"] = false, 		-- only show the players debuffs over the player frame, not buffs (playerauras must be true)
 	["playerdebuffsonly"] = false,			-- show the players debuffs on target, and any debuff in the whitelist (see debuffFilter.lua)
