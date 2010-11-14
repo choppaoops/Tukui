@@ -31,6 +31,8 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			button:ClearAllPoints()
 			button:SetParent(TukuiPetBar)
 			TukuiPetActionBarBackground:SetParent(TukuiPetBar)
+			TukuiPetActionBarBackground:SetFrameStrata("BACKGROUND")
+			TukuiPetActionBarBackground:SetFrameLevel(1)
 			button:SetFrameStrata("MEDIUM")
 			button:SetSize(TukuiDB.petbuttonsize, TukuiDB.petbuttonsize)
 			if i == 1 then

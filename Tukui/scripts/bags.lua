@@ -59,14 +59,29 @@ local function Stuffing_OnShow()
 	Stuffing:SearchReset()
 end
 
+local function MoveChar()
+	if StuffingFrameBank and StuffingFrameBank:IsShown() then
+		CharacterFrame:ClearAllPoints()
+		CharacterFrame:SetPoint("TOPLEFT", StuffingFrameBank, "TOPRIGHT", TukuiDB.Scale(15), 0)
+	end
+end
+
+local function StuffingBank_OnShow()
+	Stuffing.frame:SetScript("OnUpdate", MoveChar)
+end
 
 local function StuffingBank_OnHide()
+Stuffing.frame:SetScript("OnUpdate", nil)
 	CloseBankFrame()
+	if CharacterFrame:IsShown() then
+		ToggleCharacter("PaperDollFrame")
+		ToggleCharacter("PaperDollFrame")
+	end
+
 	if Stuffing.frame:IsShown() then
 		Stuffing.frame:Hide()
 	end
 end
-
 
 local function Stuffing_OnHide()
 	if Stuffing.bankFrame and Stuffing.bankFrame:IsShown() then
@@ -74,16 +89,13 @@ local function Stuffing_OnHide()
 	end
 end
 
-
 local function Stuffing_Open()
 	Stuffing.frame:Show()
 end
 
-
 local function Stuffing_Close()
 	Stuffing.frame:Hide()
 end
-
 
 local function Stuffing_Toggle()
 	if Stuffing.frame:IsShown() then
@@ -92,7 +104,6 @@ local function Stuffing_Toggle()
 		Stuffing.frame:Show()
 	end
 end
-
 
 local function Stuffing_ToggleBag(id)
 	Stuffing_Toggle()
@@ -429,7 +440,9 @@ function Stuffing:InitBank()
 		return
 	end
 
+	MoveChar()
 	local f = self:CreateBagFrame("Bank")
+
 	f:SetScript("OnHide", StuffingBank_OnHide)
 	self.bankFrame = f
 end
@@ -945,6 +958,9 @@ function Stuffing:BANKFRAME_OPENED()
 	if not self.bankFrame then
 		self:InitBank()
 	end
+
+	StuffingBank_OnShow()
+	self.bankFrame:SetScript("OnShow", StuffingBank_OnShow)
 
 	self:Layout(true)
 	for _, x in ipairs(bags_BANK) do

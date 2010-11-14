@@ -1254,7 +1254,6 @@ function TukuiDB.CreateAuraWatchIcon(self, icon)
 	end 	
 end
 
-local _, class = UnitClass("player")
 function TukuiDB.createAuraWatch(self, unit)
 	local auras = CreateFrame("Frame", nil, self)
 	auras:SetPoint("TOPLEFT", self.Health, 2, -2)
@@ -1292,6 +1291,12 @@ function TukuiDB.createAuraWatch(self, unit)
 			for key, value in pairs(TukuiDB.HealerBuffIDs[TukuiDB.myclass]) do
 				tinsert(buffs, value)
 			end
+		end
+	end
+
+	if TukuiDB.PetBuffs[TukuiDB.myclass] then
+		for key, value in pairs(TukuiDB.PetBuffs[TukuiDB.myclass]) do
+			tinsert(buffs, value)
 		end
 	end
 

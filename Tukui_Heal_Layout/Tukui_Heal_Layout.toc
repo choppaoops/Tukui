@@ -6,4 +6,6 @@
 ## X-Category: UnitFrame
 ## RequiredDeps: Tukui
 
+templates.xml
+tags.lua
 layout.lua

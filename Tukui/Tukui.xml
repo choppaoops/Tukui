@@ -110,9 +110,5 @@
 	
 	<Script file="modules\markbar.lua"/>
 	
-	<Include file="unitframes\templates.xml"/>
-	<Script file="unitframes\tags.lua"/>		
-	<Script file="unitframes\hunter.lua"/>
-	
 	<Include file="addon_skins\AddonSkins.xml"/>
 </Ui>
