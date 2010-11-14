@@ -20,7 +20,7 @@ if TukuiCF["datatext"].crit and TukuiCF["datatext"].crit > 0 then
 		rangedcrit = GetRangedCritChance()
 		if spellcrit > meleecrit then
 			CritChance = spellcrit
-		elseif select(2, UnitClass("Player")) == "HUNTER" then    
+		elseif TukuiDB.class == "HUNTER" then    
 			CritChance = rangedcrit
 		else
 			CritChance = meleecrit

@@ -25,9 +25,9 @@ if TukuiCF["datatext"].hitrating and TukuiCF["datatext"].hitrating > 0 then
 	attackpwr = effective
  
 	if int < 0 then
-			if attackpwr > spellpwr and select(2, UnitClass("Player")) ~= "HUNTER" then
+			if attackpwr > spellpwr and TukuiDB.class ~= "HUNTER" then
 				Text:SetText(tukuilocal.datatext_hitrating..valuecolor..format("%.2f", GetCombatRatingBonus(6)).."%")
-			elseif select(2, UnitClass("Player")) == "HUNTER" then
+			elseif TukuiDB.class == "HUNTER" then
 				Text:SetText(tukuilocal.datatext_hitrating..valuecolor..format("%.2f", GetCombatRatingBonus(7)).."%")
 			else
 				Text:SetText(tukuilocal.datatext_hitrating..valuecolor..format("%.2f", GetCombatRatingBonus(8)).."%")

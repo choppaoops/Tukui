@@ -694,7 +694,7 @@ function Stuffing:Layout(lb)
 
 					xoff = (x * 31) + (x * 3)
 					
-					yoff = off + 12 + (y * 31) + ((y - 1) * 4)
+					yoff = off + 12 + (y * 31) + ((y - 1) * 3)
 					yoff = yoff * -1
 					
 					
