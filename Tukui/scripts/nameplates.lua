@@ -468,10 +468,16 @@ if TukuiCF["nameplate"].combat == true then
 	end
 	
 	function NamePlates:PLAYER_ENTERING_WORLD()
+		SetCVar("threatWarning", 3)
 		if InCombatLockdown() then
 			SetCVar("nameplateShowEnemies", 1)
 		else
 			SetCVar("nameplateShowEnemies", 0)
 		end
+	end
+else
+	NamePlates:RegisterEvent("PLAYER_ENTERING_WORLD")
+	function NamePlates:PLAYER_ENTERING_WORLD()
+		SetCVar("threatWarning", 3)
 	end
 end

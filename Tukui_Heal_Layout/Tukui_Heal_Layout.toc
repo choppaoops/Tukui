@@ -5,7 +5,9 @@
 ## X-Email: tukz@tukui.org
 ## X-Category: UnitFrame
 ## RequiredDeps: Tukui
+## SavedVariablesPerCharacter: HealElementsCharPos
 
 templates.xml
 tags.lua
 layout.lua
+oUF_MoveElements.lua

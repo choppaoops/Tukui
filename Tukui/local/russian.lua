@@ -204,6 +204,8 @@
 	tukuilocal.core_uihelp13 = "|cffFF0000/mss|r - передвинуть панель стоек/тотемов."
 	tukuilocal.core_uihelp15 = "|cffFF0000/ainv|r - Включить автоприглашение по слову. Вы можете установить нужное слово, напечатав <code>/ainv слово</code>"
 	tukuilocal.core_uihelp14 = "(Прокрутите вверх, чтобы увидеть больше комманд ...)"
+	tukuilocal.core_uihelp17 = "|cffFF0000/moveele|r - Позволяет двигать различные элементы фреймов."
+	tukuilocal.core_uihelp18 = "|cffFF0000/resetele|r - Сбрасывает позицию элементов на стандартные. Также можно сбросить позицию для определенного элемента, прописав /resetele <elementname>."
 	tukuilocal.core_uihelp16 = "|cffFF0000/resetgold|r - сбросить статистику золота"
  
 	tukuilocal.bind_combat = "Вы не можете назначать клавиши в бою."

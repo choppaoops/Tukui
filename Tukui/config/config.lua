@@ -57,7 +57,7 @@ TukuiCF["raidframes"] = {
 	["fontsize"] = 10,						-- default font height for raidframes
 	["scale"] = 1,							-- for smaller use a number less than one (0.73), for higher use a number larger than one
 	["showrange"] = true,                  -- show range opacity on raidframes
-	["hidenonmana"] = false,					-- hide non mana on party/raid frames
+	["hidenonmana"] = true,					-- hide non mana on party/raid frames
 	["healcomm"] = false,                  -- enable healcomm4 support on healer layout.
 	["raidalphaoor"] = 0.3,                -- alpha of raidframes when unit is out of range
 	["gridonly"] = false,                  -- enable grid only mode for all raid layout. TEMP
@@ -104,7 +104,7 @@ TukuiCF["classtimer"] = {
 		["layout"] = 4, --1 - both player and target auras in one frame right above player frame, 2 - player and target auras separated into two frames above player frame, 3 - player, target and trinket auras separated into three frames above player frame, 4 - player and trinket auras are shown above player frame and target auras are shown above target frame
 		["showspark"] = true,
 		["cast_suparator"] = true,
-		
+
 		["classcolor"] = false,
 		["buffcolor"] = {0.3, 0.3, 0.3, 1}, -- if classcolor isnt true
 		["debuffcolor"] = {0.69, 0.31, 0.31, 1},

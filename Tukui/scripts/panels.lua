@@ -70,13 +70,13 @@ vbarbg.shadow:SetFrameLevel(bottompanel:GetFrameLevel())
 --SPLIT BAR PANELS
 if TukuiCF["actionbar"].splitbar == true then
 	local splitleft = CreateFrame("Frame", "TukuiSplitActionBarLeftBackground", TukuiActionBarBackground)
-	TukuiDB.CreatePanel(splitleft, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "RIGHT", TukuiActionBarBackground, "LEFT", TukuiDB.Scale(-10), 0)
+	TukuiDB.CreatePanel(splitleft, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "RIGHT", TukuiActionBarBackground, "LEFT", TukuiDB.Scale(-4), 0)
 	splitleft:SetFrameLevel(TukuiActionBarBackground:GetFrameLevel())
 	splitleft:SetFrameStrata(TukuiActionBarBackground:GetFrameStrata())
 	TukuiDB.CreateShadow(splitleft)
 	
 	local splitright = CreateFrame("Frame", "TukuiSplitActionBarRightBackground", TukuiActionBarBackground)
-	TukuiDB.CreatePanel(splitright, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "LEFT", TukuiActionBarBackground, "RIGHT", TukuiDB.Scale(10), 0)
+	TukuiDB.CreatePanel(splitright, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "LEFT", TukuiActionBarBackground, "RIGHT", TukuiDB.Scale(4), 0)
 	splitright:SetFrameLevel(TukuiActionBarBackground:GetFrameLevel())
 	splitright:SetFrameStrata(TukuiActionBarBackground:GetFrameStrata())
 	TukuiDB.CreateShadow(splitright)
