@@ -9,7 +9,7 @@ GameTooltip:HookScript("OnTooltipSetItem", function(self)
 		local right = ""
 		
 		if TukuiItemTooltip.id and link ~= nil then
-			left = "|cFFCA3C3CID|r "..link:match(":(%w+)")
+			left = "|cFFCA3C3CID:|r "..link:match(":(%w+)")
 		end
 		
 		if TukuiItemTooltip.count and num > 1 then

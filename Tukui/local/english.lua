@@ -62,7 +62,6 @@ tukuilocal.datatext_friendlist = "Friends list:"
 tukuilocal.datatext_playersp = "SP: "
 tukuilocal.datatext_playerap = "AP: "
 tukuilocal.datatext_playercrit = "Crit: "
-tukuilocal.datatext_playerhaste = "Haste: "
 tukuilocal.datatext_hitrating = "Hit: "
 tukuilocal.datatext_session = "Session: "
 tukuilocal.datatext_character = "Character: "
@@ -103,12 +102,11 @@ tukuilocal.datatext_demolishersdestroyed = "Demolishers Destroyed:"
 tukuilocal.datatext_gatesdestroyed = "Gates Destroyed:"
 tukuilocal.datatext_totalmemusage = "Total Memory Usage:"
 tukuilocal.datatext_control = "Controlled by:"
+tukuilocal.datatext_micromenu = "Micromenu"
+tukuilocal.datatext_mastery = "Mastery: "
 tukuilocal.datatext_bandwidth = "Bandwidth: "
 tukuilocal.datatext_download = "Download: "
 tukuilocal.datatext_mbps = "Mbps"
-
-tukuilocal.datatext_micromenu = "Micromenu"
-tukuilocal.datatext_mastery = "Mastery: "
 
 tukuilocal.mail_messages = "Messages"
 tukuilocal.mail_done = "All done."
@@ -160,7 +158,7 @@ tukuilocal.unitframes_ouf_gohawk = "GO HAWK"
 tukuilocal.unitframes_ouf_goviper = "GO VIPER"
 tukuilocal.unitframes_disconnected = "D/C"
 
-tukuilocal.tooltip_count = "Count"
+tukuilocal.tooltip_count = "Count:"
 
 tukuilocal.bags_noslots = "Can't buy anymore slots!"
 tukuilocal.bags_costs = "Cost: %.2f gold"
@@ -184,14 +182,12 @@ tukuilocal.bags_keyring = "Show Keyring"
 
 tukuilocal.chat_invalidtarget = "Invalid Target"
 
-
-
 tukuilocal.core_autoinv_enable = "Autoinvite ON: invite"
 tukuilocal.core_autoinv_enable_c = "Autoinvite ON: "
 tukuilocal.core_autoinv_disable = "Autoinvite OFF"
 tukuilocal.core_release = "|cffC495DDExt release: |r"..TukuiDB.release
 tukuilocal.core_welcome = "|cffC495DDTukui|r - http://www.tukui.org"
-tukuilocal.core_welcome2 = "|cff00FFFFElv|r's edit version "..TukuiDB.version..", modified by |cff00FFFFExt|r"
+tukuilocal.core_welcome2 = "|cff00FFFFElv|r's edit version "..TukuiDB.version..", modified by |cff00FFFFExt|r.\n|cff00FFFF/uihelp|r for more info."
 
 tukuilocal.core_uihelp1 = "|cff00ff00General Slash Commands|r"
 tukuilocal.core_uihelp2 = "|cffFF0000/tracker|r - Tukui Arena Enemy Cooldown Tracker - Low-memory enemy PVP cooldown tracker. (Icon only)"
@@ -234,6 +230,7 @@ tukuilocal.core_markbar = "Mark Bar"
 
 tukuilocal.hunter_unhappy = "Your pet is unhappy!"
 tukuilocal.hunter_content = "Your pet is content!"
+tukuilocal.hunter_happy = "Your pet is happy!"
 
 function TukuiDB.UpdateHotkey(self, actionButtonType)
 	local hotkey = _G[self:GetName() .. 'HotKey']
@@ -260,4 +257,3 @@ function TukuiDB.UpdateHotkey(self, actionButtonType)
 		hotkey:SetText(text)
 	end
 end
-tukuilocal.hunter_happy = "Your pet is happy!"

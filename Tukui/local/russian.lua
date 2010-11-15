@@ -61,7 +61,6 @@
 	tukuilocal.datatext_playersp = "Спд:"
 	tukuilocal.datatext_playerap = "ap"
 	tukuilocal.datatext_playercrit = "Крит. удар: "
-	tukuilocal.datatext_playerhaste = "Скорость: "
 	tukuilocal.datatext_hitrating = "Меткость: "
 	tukuilocal.datatext_session = "Сеанс: "
 	tukuilocal.datatext_character = "Персонаж: "
@@ -158,7 +157,7 @@
 	tukuilocal.unitframes_ouf_goviper = "Дух Гадюки"
 	tukuilocal.unitframes_disconnected = "D/C"
  
-	tukuilocal.tooltip_count = "Кол-во"
+	tukuilocal.tooltip_count = "Кол-во:"
  
 	tukuilocal.bags_noslots = "невозможно купить еще ячеек!"
 	tukuilocal.bags_costs = "Цена: %.2f золотых"
@@ -187,7 +186,7 @@
 	tukuilocal.core_autoinv_disable = "Автоприглашение ВЫКЛ"
 	tukuilocal.core_release = "|cffC495DDЭкст релиз: |r"..TukuiDB.release
 	tukuilocal.core_welcome = "|cffC495DDTukui|r - http://www.tukui.org"
-	tukuilocal.core_welcome2 = "Cборка |cff00FFFFElv|r'a версия "..TukuiDB.version..", модифицированная |cff00FFFFЭкст|r'ом"
+	tukuilocal.core_welcome2 = "Cборка |cff00FFFFElv|r'a версия "..TukuiDB.version..", модифицированная |cff00FFFFЭкст|r'ом.\n|cff00FFFF/uihelp|r для получения доп. информации."
  
 	tukuilocal.core_uihelp1 = "|cff00ff00Общие комманды|r"
 	tukuilocal.core_uihelp2 = "|cffFF0000/tracker|r - Tukui Arena Enemy Cooldown Tracker - PVP-таймер вражеских перезарядок . (только иконка)"
@@ -203,10 +202,11 @@
 	tukuilocal.core_uihelp12 = "|cffFF0000/hb|r - назначить клавиши."
 	tukuilocal.core_uihelp13 = "|cffFF0000/mss|r - передвинуть панель стоек/тотемов."
 	tukuilocal.core_uihelp15 = "|cffFF0000/ainv|r - Включить автоприглашение по слову. Вы можете установить нужное слово, напечатав <code>/ainv слово</code>"
-	tukuilocal.core_uihelp14 = "(Прокрутите вверх, чтобы увидеть больше комманд ...)"
+	tukuilocal.core_uihelp16 = "|cffFF0000/resetgold|r - сбросить статистику золота"
 	tukuilocal.core_uihelp17 = "|cffFF0000/moveele|r - Позволяет двигать различные элементы фреймов."
 	tukuilocal.core_uihelp18 = "|cffFF0000/resetele|r - Сбрасывает позицию элементов на стандартные. Также можно сбросить позицию для определенного элемента, прописав /resetele <elementname>."
-	tukuilocal.core_uihelp16 = "|cffFF0000/resetgold|r - сбросить статистику золота"
+	tukuilocal.core_uihelp19 = "|cffFF0000/wf|r - разблокировать окно отслеживания заданий для перемещения."
+	tukuilocal.core_uihelp14 = "(Прокрутите вверх, чтобы увидеть больше комманд ...)"
  
 	tukuilocal.bind_combat = "Вы не можете назначать клавиши в бою."
 	tukuilocal.bind_saved = "Все назначения клавиш сохранены."

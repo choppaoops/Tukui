@@ -48,12 +48,13 @@ local function CreateFrameOverlay(parent, name)
 		DPSElementsCharPos[name] = true
 	end)
 		
-	if not FramesDefault[name] then FramesDefault[name] = { } end
-	if not FramesDefault[name]["p"] then FramesDefault[name]["p"] = p end
-	if not FramesDefault[name]["p2"] then FramesDefault[name]["p2"] = p2 end
-	if not FramesDefault[name]["p3"] then FramesDefault[name]["p3"] = p3 end
-	if not FramesDefault[name]["p4"] then FramesDefault[name]["p4"] = p4 end
-	if not FramesDefault[name]["p5"] then FramesDefault[name]["p5"] = p5 end
+	local x = tostring(name)
+	if not FramesDefault[x] then FramesDefault[x] = { } end
+	if not FramesDefault[x]["p"] then FramesDefault[x]["p"] = p end
+	if not FramesDefault[x]["p2"] then FramesDefault[x]["p2"] = p2 end
+	if not FramesDefault[x]["p3"] then FramesDefault[x]["p3"] = p3 end
+	if not FramesDefault[x]["p4"] then FramesDefault[x]["p4"] = p4 end
+	if not FramesDefault[x]["p5"] then FramesDefault[x]["p5"] = p5 end
 
 	f:SetAlpha(0)
 	f:SetMovable(true)
@@ -81,7 +82,18 @@ do
 	CreateFrameOverlay(oUF_TukzDPS_target.Buffs, "TargetBuffs")
 	CreateFrameOverlay(oUF_TukzDPS_player.Debuffs, "PlayerDebuffs")
 	CreateFrameOverlay(oUF_TukzDPS_target.Debuffs, "TargetDebuffs")
+	CreateFrameOverlay(oUF_TukzDPS_focus.Debuffs, "FocusDebuffs")
+	CreateFrameOverlay(oUF_TukzDPS_targettarget.Debuffs, "TargetTargetDebuffs")
 end
+
+StaticPopupDialogs["RELOAD"] = {
+	text = "Reload UI",
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	OnAccept = function() ReloadUI() end,
+	timeout = 0,
+	whileDead = 1,
+}
 
 local function ShowCBOverlay()
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
@@ -95,7 +107,6 @@ local function ShowCBOverlay()
 			_G[Frames.."Move"] = false
 			_G[Frames]:SetAlpha(0)
 			_G[Frames]:EnableMouse(false)	
-			ReloadUI()
 		end
 	end
 end
@@ -110,8 +121,8 @@ local function ResetElements(arg1)
 			_G[Frames]:ClearAllPoints()
 			_G[Frames]:SetPoint(FramesDefault[name]["p"], FramesDefault[name]["p2"], FramesDefault[name]["p3"], FramesDefault[name]["p4"], FramesDefault[name]["p5"])
 			DPSElementsCharPos[name] = false
-			ReloadUI()
 		end
+		StaticPopup_Show("RELOAD")
 	else
 		if not _G[arg1] then return end
 		for i, Frames in pairs(Frames) do
@@ -120,10 +131,47 @@ local function ResetElements(arg1)
 				_G[arg1]:ClearAllPoints()
 				_G[arg1]:SetPoint(FramesDefault[name]["p"], FramesDefault[name]["p2"], FramesDefault[name]["p3"], FramesDefault[name]["p4"], FramesDefault[name]["p5"])	
 				DPSElementsCharPos[name] = false	
-				ReloadUI()		
+				break	
 			end
 		end
+		StaticPopup_Show("RELOAD")
 	end
 end
 SLASH_RESETELEMENTS1 = "/resetele"
 SlashCmdList["RESETELEMENTS"] = ResetElements
+
+-- Move button
+local mele = CreateFrame("Button", "Tukuimele", UIParent)
+local buttontext = mele:CreateFontString(nil,"OVERLAY",nil)
+buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
+buttontext:SetText(valuecolor.."M")
+buttontext:SetPoint("CENTER", TukuiDB.Scale(2), 0)
+TukuiDB.CreatePanel(mele, buttontext:GetWidth()+14, 20, "TOPRIGHT", Tukuitopstats, "TOPLEFT", TukuiDB.Scale(-3), 0)
+TukuiDB.CreateShadow(mele)
+mele:SetFrameLevel(2)
+mele:EnableMouse(true)
+		
+mele:HookScript("OnEnter", function(self)
+	mele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+mele:HookScript("OnLeave", function(self)
+	mele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+mele:RegisterForClicks("AnyUp")
+	mele:SetScript("OnClick", function() ShowCBOverlay() end)
+
+-- Reset button
+local rele = CreateFrame("Button", "Tukuirele", UIParent)
+local buttontext = rele:CreateFontString(nil,"OVERLAY",nil)
+buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
+buttontext:SetText(valuecolor.."R")
+buttontext:SetPoint("CENTER", TukuiDB.Scale(2), 0)
+TukuiDB.CreatePanel(rele, buttontext:GetWidth()+14, 20, "TOPLEFT", Tukuitopstats, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreateShadow(rele)
+rele:SetFrameLevel(2)
+rele:EnableMouse(true)
+		
+rele:HookScript("OnEnter", function(self)
+	rele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+rele:HookScript("OnLeave", function(self)
+	rele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+rele:RegisterForClicks("AnyUp")
+	rele:SetScript("OnClick", function() ResetElements("") end)

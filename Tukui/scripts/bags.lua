@@ -503,7 +503,7 @@ function Stuffing:InitBags()
 	detail:SetPoint("TOPLEFT", f, TukuiDB.Scale(12), TukuiDB.Scale(-14))
 	detail:SetPoint("RIGHT", TukuiDB.Scale(-(16 + 24)), 0)
 	detail:SetJustifyH("LEFT")
-	detail:SetText("|cff9999ff" .. "Поиск")
+	detail:SetText("|cff9999ff" .. tukuilocal.bags_search)
 	editbox:SetAllPoints(detail)
 
 	local gold = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")

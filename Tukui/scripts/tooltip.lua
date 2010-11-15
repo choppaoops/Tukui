@@ -304,7 +304,7 @@ end)
 local Colorize = function(self)
 	local GMF = GetMouseFocus()
 	local unit = (select(2, self:GetUnit())) or (GMF and GMF:GetAttribute("unit"))
-		
+
 	local reaction = unit and UnitReaction(unit, "player")
 	local player = unit and UnitIsPlayer(unit)
 	local tapped = unit and UnitIsTapped(unit)

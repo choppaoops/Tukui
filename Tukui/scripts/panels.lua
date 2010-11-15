@@ -364,18 +364,6 @@ TukuiDB.CreatePanel(cuberight2, 10, stats_height, "TOPLEFT", datarightp, "TOPRIG
 TukuiDB.CreateShadow(cuberight2)
 cuberight2:SetFrameLevel(2)
 
--- Cube left (Topstats)
-local cubestatsl = CreateFrame("Frame", "Tukuicubestatsl", UIParent)
-TukuiDB.CreatePanel(cubestatsl, 10, stats_height, "TOPRIGHT", topstats, "TOPLEFT", -TukuiDB.Scale(3), 0)
-TukuiDB.CreateShadow(cubestatsl)
-cubestatsl:SetFrameLevel(2)
-
--- Cube right (Topstats)
-local cubestatsr = CreateFrame("Frame", "Tukuicubestatsr", UIParent)
-TukuiDB.CreatePanel(cubestatsr, 10, stats_height, "TOPLEFT", topstats, "TOPRIGHT", TukuiDB.Scale(3), 0)
-TukuiDB.CreateShadow(cubestatsr)
-cubestatsr:SetFrameLevel(2)
-
 -- Line Currency - Battle.net
 local linegf = CreateFrame("Frame", "Tukuilinegf", UIParent)
 TukuiDB.CreateFadedPanel(linegf, Tukuibattlenet:GetWidth()+Tukuibattlenettopstat:GetWidth()+3-20, 13, "TOPLEFT", battlenet, "BOTTOMLEFT", 10, TukuiDB.Scale(3))
