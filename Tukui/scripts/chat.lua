@@ -360,7 +360,7 @@ function TukuiDB.ChatCopyButtons()
 	for i = 1, NUM_CHAT_WINDOWS do
 		local cf = _G[format("ChatFrame%d",  i)]
 		local button = CreateFrame("Button", format("ButtonCF%d", i), cf)
-		button:SetHeight(TukuiDB.Scale(20))
+		button:SetHeight(TukuiCF["datatext"].panel_height)
 		button:SetWidth(TukuiDB.Scale(20))
 		TukuiDB.SetTemplate(button)
 		TukuiDB.CreateShadow(button)
@@ -378,12 +378,8 @@ function TukuiDB.ChatCopyButtons()
 				Copy(cf)
 			end
 		end)
-		button:SetScript("OnEnter", function(self) 
-		self:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor))
-		end)
-		button:SetScript("OnLeave", function(self) 
-		self:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
-		end)
+		button:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+		button:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
 	end
 end
 TukuiDB.ChatCopyButtons()

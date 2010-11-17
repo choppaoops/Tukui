@@ -50,7 +50,7 @@ local function install()
 		FCF_SetLocked(ChatFrame4, 1)
 		FCF_DockFrame(ChatFrame4)	
 
-		FCF_OpenNewWindow(tukuilocal.chat_loot)
+		FCF_OpenNewWindow(LOOT)
 		FCF_UnDockFrame(ChatFrame5)
 		FCF_SetLocked(ChatFrame5, 1)
 		ChatFrame5:Show();
@@ -60,16 +60,16 @@ local function install()
 			local chatFrameId = frame:GetID()
 			local chatName = FCF_GetChatWindowInfo(chatFrameId)
 			
-			_G["ChatFrame"..i]:SetSize(TukuiDB.Scale(TukuiCF["chat"].chatwidth - 5), TukuiDB.Scale(TukuiCF["chat"].chatheight))
+			_G["ChatFrame"..i]:SetSize(TukuiDB.Scale(TukuiCF["chat"].chatwidth - 4), TukuiDB.Scale(TukuiCF["chat"].chatheight))
 			
 			-- this is the default width and height of tukui chats.
-			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["chat"].chatwidth + -4), TukuiDB.Scale(TukuiCF["chat"].chatheight))
+			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["chat"].chatwidth - 4), TukuiDB.Scale(TukuiCF["chat"].chatheight))
 			
 			-- move general bottom left
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMLEFT", ChatLBackground, "BOTTOMLEFT", TukuiDB.Scale(2), 0)
-			elseif i == 5 and chatName == tukuilocal.chat_loot then
+				frame:SetPoint("BOTTOMLEFT", ChatLBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+			elseif i == 5 and chatName == LOOT then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOMLEFT", RDummyFrame, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
 			end

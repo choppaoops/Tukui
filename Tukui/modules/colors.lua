@@ -61,10 +61,3 @@ if TukuiCF["general"].classcolortheme == true then
 	TukuiCF["media"].altbordercolor = { r,g,b,1 }
 	TukuiCF["media"].bordercolor = { r,g,b,1 }
 end
-
-
-
-
-
-
-

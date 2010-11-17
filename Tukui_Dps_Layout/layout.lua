@@ -219,11 +219,11 @@ local function Shared(self, unit)
 		if (db.charportrait == true) then
 			local PFrame = CreateFrame("Frame", nil, self)
 			if powerbar_offset ~= 0 then
-				PFrame:SetPoint('TOPRIGHT', self.Health,'TOPLEFT', TukuiDB.Scale(-6), TukuiDB.Scale(2))
+				PFrame:SetPoint('TOPRIGHT', self.Health,'TOPLEFT', TukuiDB.Scale(-5), TukuiDB.Scale(2))
 				PFrame:SetPoint('BOTTOMRIGHT', self.Health,'BOTTOMLEFT', TukuiDB.Scale(-6) - powerbar_offset, -powerbar_offset + TukuiDB.Scale(3))
 				PFrame:SetWidth(original_width/4)
 			else
-				PFrame:SetPoint('TOPRIGHT', self.Health,'TOPLEFT', TukuiDB.Scale(-6), TukuiDB.Scale(2))
+				PFrame:SetPoint('TOPRIGHT', self.Health,'TOPLEFT', TukuiDB.Scale(-5), TukuiDB.Scale(2))
 				PFrame:SetPoint('BOTTOMRIGHT', self.Health,'BOTTOMLEFT', TukuiDB.Scale(-6), TukuiDB.Scale(-3) + -(original_height * 0.35))
 				PFrame:SetWidth(original_width/4)
 	
@@ -723,7 +723,7 @@ local function Shared(self, unit)
  
 			-- cast bar latency on player
 			if TukuiCF["castbar"].cblatency == true then
-				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
+				castbar.safezone = castbar:CreateTexture(nil, "OVERLAY")
 				castbar.safezone:SetTexture(normTex)
 				castbar.safezone:SetVertexColor(0.8, 0.2, 0.2, 0.75)
 				castbar.SafeZone = castbar.safezone
@@ -934,11 +934,11 @@ local function Shared(self, unit)
 		if (db.charportrait == true) then			
 			local PFrame = CreateFrame("Frame", nil, self)
 			if powerbar_offset ~= 0 then
-				PFrame:SetPoint('TOPLEFT', self.Health,'TOPRIGHT', TukuiDB.Scale(6), TukuiDB.Scale(2))
+				PFrame:SetPoint('TOPLEFT', self.Health,'TOPRIGHT', TukuiDB.Scale(5), TukuiDB.Scale(2))
 				PFrame:SetPoint('BOTTOMLEFT', self.Health,'BOTTOMRIGHT', TukuiDB.Scale(6) + powerbar_offset, -powerbar_offset + TukuiDB.Scale(3))
 				PFrame:SetWidth(original_width/4)
 			else
-				PFrame:SetPoint('TOPLEFT', self.Health,'TOPRIGHT', TukuiDB.Scale(6), TukuiDB.Scale(2))
+				PFrame:SetPoint('TOPLEFT', self.Health,'TOPRIGHT', TukuiDB.Scale(5), TukuiDB.Scale(2))
 				PFrame:SetPoint('BOTTOMLEFT', self.Health,'BOTTOMRIGHT', TukuiDB.Scale(6), TukuiDB.Scale(-3) + -(original_height * 0.35))
 				PFrame:SetWidth(original_width/4)
 			end

@@ -27,7 +27,6 @@ tukuilocal.chat_recrutment = "GuildRecruitment"
 tukuilocal.chat_lfg = "LookingForGroup"
 tukuilocal.chat_log = "Log"
 tukuilocal.chat_whisp = "Whispers"
-tukuilocal.chat_loot = "Loot"
 
 tukuilocal.chat_unlearn = "You have unlearned"
 tukuilocal.chat_learn = "You have learned a new spell:"

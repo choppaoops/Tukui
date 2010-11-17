@@ -4,6 +4,7 @@
 	["multisampleprotect"] = true,         -- i don't recommend this because of shitty border but, voila!
 	["embedright"] = "NONE",				-- Addon to embed to the right frame ("Omen", "Recount", "Skada")
 	["classcolortheme"] = false,			--class colored theme for panels
+	["autocustomlagtolerance"] = true,    --set custom lag tollerance to your latency
 }
 
 TukuiCF["skin"] = {	--Skin addons by Darth Android
@@ -181,6 +182,9 @@ TukuiCF["datatext"] = {
 	["time24"] = false,                     -- set time to 24h format.
 	["localtime"] = true,                 -- set time to local time instead of server time.
 	["fontsize"] = 10,                     -- font size for panels.
+
+	["panel_height"] = 20,				-- Height of stats panel
+	["panel_width"] = 14,				-- Panels width (Text:GetWidth +)
 }
 
 TukuiCF["chat"] = {

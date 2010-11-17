@@ -9,7 +9,6 @@ end
 
 local function CreateFrameOverlay(parent, name)
 	if not parent then return end
-	if name == "PlayerCastBar" and TukuiCF["castbar"].castermode == true then return end
 	
 	--Setup Variables
 	if not DPSElementsCharPos[name] then DPSElementsCharPos[name] = false end
@@ -145,33 +144,27 @@ local mele = CreateFrame("Button", "Tukuimele", UIParent)
 local buttontext = mele:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
 buttontext:SetText(valuecolor.."M")
-buttontext:SetPoint("CENTER", TukuiDB.Scale(2), 0)
-TukuiDB.CreatePanel(mele, buttontext:GetWidth()+14, 20, "TOPRIGHT", Tukuitopstats, "TOPLEFT", TukuiDB.Scale(-3), 0)
+buttontext:SetPoint("CENTER", TukuiDB.Scale(1), 0)
+TukuiDB.CreatePanel(mele, buttontext:GetWidth()+TukuiCF["datatext"].panel_width, TukuiCF["datatext"].panel_height, "TOPRIGHT", Tukuitopstats, "TOPLEFT", TukuiDB.Scale(-3), 0)
 TukuiDB.CreateShadow(mele)
 mele:SetFrameLevel(2)
 mele:EnableMouse(true)
 		
-mele:HookScript("OnEnter", function(self)
-	mele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
-mele:HookScript("OnLeave", function(self)
-	mele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
-mele:RegisterForClicks("AnyUp")
-	mele:SetScript("OnClick", function() ShowCBOverlay() end)
+mele:HookScript("OnEnter", function(self) mele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+mele:HookScript("OnLeave", function(self) mele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+mele:RegisterForClicks("AnyUp") mele:SetScript("OnClick", function() ShowCBOverlay() end)
 
 -- Reset button
 local rele = CreateFrame("Button", "Tukuirele", UIParent)
 local buttontext = rele:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
 buttontext:SetText(valuecolor.."R")
-buttontext:SetPoint("CENTER", TukuiDB.Scale(2), 0)
-TukuiDB.CreatePanel(rele, buttontext:GetWidth()+14, 20, "TOPLEFT", Tukuitopstats, "TOPRIGHT", TukuiDB.Scale(3), 0)
+buttontext:SetPoint("CENTER", TukuiDB.Scale(1), 0)
+TukuiDB.CreatePanel(rele, buttontext:GetWidth()+TukuiCF["datatext"].panel_width, TukuiCF["datatext"].panel_height, "TOPLEFT", Tukuitopstats, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(rele)
 rele:SetFrameLevel(2)
 rele:EnableMouse(true)
 		
-rele:HookScript("OnEnter", function(self)
-	rele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
-rele:HookScript("OnLeave", function(self)
-	rele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
-rele:RegisterForClicks("AnyUp")
-	rele:SetScript("OnClick", function() ResetElements("") end)
+rele:HookScript("OnEnter", function(self) rele:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+rele:HookScript("OnLeave", function(self) rele:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+rele:RegisterForClicks("AnyUp") rele:SetScript("OnClick", function() ResetElements("") end)

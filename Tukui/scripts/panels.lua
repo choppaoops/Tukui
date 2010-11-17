@@ -4,29 +4,29 @@ TukuiDB.buttonspacing = TukuiDB.Scale(TukuiCF["actionbar"].buttonspacing)
 TukuiDB.petbuttonsize = TukuiDB.Scale(TukuiCF["actionbar"].petbuttonsize)
 TukuiDB.petbuttonspacing = TukuiDB.Scale(TukuiCF["actionbar"].petbuttonspacing)
 
-local stats_height = TukuiDB.Scale(20)
-local stats_width = TukuiDB.Scale(14)
+local panel_height = TukuiDB.Scale(TukuiCF["datatext"].panel_height)
+local panel_width = TukuiDB.Scale(TukuiCF["datatext"].panel_width)
 
 --BOTTOM FRAME
 local bottompanel = CreateFrame("Frame", "TukuiBottomPanel", UIParent)
-TukuiDB.CreatePanel(bottompanel, UIParent:GetWidth() + (TukuiDB.mult * 2), stats_height, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", -TukuiDB.mult, -TukuiDB.mult)
+TukuiDB.CreatePanel(bottompanel, UIParent:GetWidth() + (TukuiDB.mult * 2), panel_height, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", -TukuiDB.mult, -TukuiDB.mult)
 bottompanel:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", TukuiDB.mult, -TukuiDB.mult)
 TukuiDB.CreateShadow(bottompanel)
 bottompanel:SetFrameLevel(0)
 
 local dataleftp = CreateFrame("Frame", "TukuiDataLeftPanel", UIParent)
-TukuiDB.CreatePanel(dataleftp, TukuiCF["chat"].chatwidth-22, stats_height, "LEFT", bottompanel, "TOPLEFT", TukuiDB.Scale(18), TukuiDB.Scale(0))
+TukuiDB.CreatePanel(dataleftp, TukuiCF["chat"].chatwidth-TukuiDB.Scale(22), panel_height, "LEFT", bottompanel, "TOPLEFT", TukuiDB.Scale(18), TukuiDB.Scale(0))
 TukuiDB.CreateShadow(dataleftp)
 dataleftp:SetFrameLevel(2)
 
 local datarightp = CreateFrame("Frame", "TukuiDataRightPanel", UIParent)
-TukuiDB.CreatePanel(datarightp, TukuiCF["chat"].chatwidth-22, stats_height, "RIGHT", bottompanel, "TOPRIGHT", TukuiDB.Scale(-18), TukuiDB.Scale(0))
+TukuiDB.CreatePanel(datarightp, TukuiCF["chat"].chatwidth-TukuiDB.Scale(22), panel_height, "RIGHT", bottompanel, "TOPRIGHT", TukuiDB.Scale(-18), TukuiDB.Scale(0))
 TukuiDB.CreateShadow(datarightp)
 datarightp:SetFrameLevel(2)
 
 -- Top stats panel
 local topstats = CreateFrame("Frame", "Tukuitopstats", UIParent)
-TukuiDB.CreatePanel(topstats, 320, stats_height, "TOP", UIParent, "TOP", 0, -7)
+TukuiDB.CreatePanel(topstats, TukuiCF["chat"].chatwidth-TukuiDB.Scale(22), panel_height, "TOP", UIParent, "TOP", 0, -7)
 TukuiDB.CreateShadow(topstats)
 topstats:SetFrameLevel(2)
 
@@ -138,7 +138,7 @@ TukuiDB.CreateFadedPanel(chatlbgdummy, TukuiCF["chat"].chatwidth+4, TukuiCF["cha
 TukuiDB.CreateShadow(chatlbgdummy)
 
 local chatltabs = CreateFrame("Frame", "chatltabsPanel", UIParent)
-TukuiDB.CreatePanel(chatltabs, TukuiCF["chat"].chatwidth-19, stats_height, "BOTTOMLEFT", chatlbgdummy, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
+TukuiDB.CreatePanel(chatltabs, TukuiCF["chat"].chatwidth-19, panel_height, "BOTTOMLEFT", chatlbgdummy, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
 TukuiDB.CreateShadow(chatltabs)
 
 --Create Template frame for addon embedding
@@ -161,7 +161,7 @@ chatrbg:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
 chatrbg:SetAlpha(0)
 
 local chatrtabs = CreateFrame("Frame", "chatrtabsPanel", chatrbg)
-TukuiDB.CreatePanel(chatrtabs, TukuiCF["chat"].chatwidth-19, stats_height, "BOTTOMLEFT", chatrbg, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
+TukuiDB.CreatePanel(chatrtabs, TukuiCF["chat"].chatwidth-19, panel_height, "BOTTOMLEFT", chatrbg, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
 TukuiDB.CreateShadow(chatrtabs)
 
 -- Top bar from Eclipse edit
@@ -172,31 +172,31 @@ TukuiDB.CreateShadow(topbar)
  
 -- Location panel from Eclipse edit
 local locationbar = CreateFrame("Frame", "TukuiLocationPanel", UIParent)
-TukuiDB.CreatePanel(locationbar, stats_width+54, stats_height, "TOP", topstats, "BOTTOM", 0, -10)
+TukuiDB.CreatePanel(locationbar, panel_width+54, panel_height, "TOP", topstats, "BOTTOM", 0, -10)
 TukuiDB.CreateShadow(locationbar)
 locationbar:SetFrameLevel(2)
 
 -- Coords line (left)
 local topp = CreateFrame("Frame", "Tukuitopp", UIParent)
-TukuiDB.CreatePanel(topp, 1, stats_height-9, "BOTTOM", locationbar, "TOPLEFT", 8, 0)
+TukuiDB.CreatePanel(topp, 1, panel_height-9, "BOTTOM", locationbar, "TOPLEFT", 8, 0)
 TukuiDB.CreateShadow(topp)
 topp:SetFrameLevel(0)
 
 -- Coords line (right)
 local topp2 = CreateFrame("Frame", "Tukuitopp2", UIParent)
-TukuiDB.CreatePanel(topp2, 1, stats_height-9, "BOTTOM", locationbar, "TOPRIGHT", -8, 0)
+TukuiDB.CreatePanel(topp2, 1, panel_height-9, "BOTTOM", locationbar, "TOPRIGHT", -8, 0)
 TukuiDB.CreateShadow(topp2)
 topp2:SetFrameLevel(0)
 
 -- Coord panel from Eclipse edit
 if TukuiCF["datatext"].location_coords == true then
 	local coords1 = CreateFrame("Frame", "TukuiXCoordsPanel", UIParent)
-	TukuiDB.CreatePanel(coords1, stats_width+19, stats_height, "RIGHT", locationbar, "LEFT", -TukuiDB.Scale(3), 0)
+	TukuiDB.CreatePanel(coords1, panel_width+19, panel_height, "RIGHT", locationbar, "LEFT", -TukuiDB.Scale(3), 0)
 	TukuiDB.CreateShadow(coords1)
 	coords1:SetFrameLevel(2)
 	 
 	local coords2 = CreateFrame("Frame", "TukuiYCoordsPanel", UIParent)
-	TukuiDB.CreatePanel(coords2, stats_width+19, stats_height, "LEFT", locationbar, "RIGHT", TukuiDB.Scale(3), 0)
+	TukuiDB.CreatePanel(coords2, panel_width+19, panel_height, "LEFT", locationbar, "RIGHT", TukuiDB.Scale(3), 0)
 	TukuiDB.CreateShadow(coords2)
 	coords2:SetFrameLevel(2)
 end
@@ -234,19 +234,14 @@ local buttontext = bmenu:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
 buttontext:SetText(valuecolor..tukuilocal.datatext_micromenu)
 buttontext:SetPoint("CENTER", TukuiDB.Scale(1), 0)
-TukuiDB.CreatePanel(bmenu, buttontext:GetWidth()+stats_width, stats_height, "TOPLEFT", TukuiShowB, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(bmenu, buttontext:GetWidth()+panel_width, panel_height, "TOPLEFT", TukuiShowB, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(bmenu)
 bmenu:SetFrameLevel(2)
 bmenu:EnableMouse(true)
 		
-bmenu:HookScript("OnEnter", function(self)
-	bmenu:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
-bmenu:HookScript("OnLeave", function(self)
-	bmenu:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
-bmenu:RegisterForClicks("AnyUp")
-	bmenu:SetScript("OnClick", function()
-	EasyMenu(menuList, menuFrame, "cursor", 0, 0, "MENU", 2)
-end)
+bmenu:HookScript("OnEnter", function(self) bmenu:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+bmenu:HookScript("OnLeave", function(self) bmenu:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+bmenu:RegisterForClicks("AnyUp") bmenu:SetScript("OnClick", function() EasyMenu(menuList, menuFrame, "cursor", 0, 0, "MENU", 2) end)
 
 -- Reload UI Button
 local rlui = CreateFrame("Button", "Tukuirlui", UIParent)
@@ -254,23 +249,18 @@ local buttontext = rlui:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
 buttontext:SetText(valuecolor.."RL")
 buttontext:SetPoint("CENTER", TukuiDB.Scale(2), 0)
-TukuiDB.CreatePanel(rlui, buttontext:GetWidth()+stats_width, stats_height, "TOPLEFT", bmenu, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(rlui, buttontext:GetWidth()+panel_width, panel_height, "TOPLEFT", bmenu, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(rlui)
 rlui:SetFrameLevel(2)
 rlui:EnableMouse(true)
 		
-rlui:HookScript("OnEnter", function(self)
-	rlui:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
-rlui:HookScript("OnLeave", function(self)
-	rlui:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
-rlui:RegisterForClicks("AnyUp")
-	rlui:SetScript("OnClick", function()
-	ReloadUI()
-end)
+rlui:HookScript("OnEnter", function(self) rlui:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end)
+rlui:HookScript("OnLeave", function(self) rlui:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end)
+rlui:RegisterForClicks("AnyUp") rlui:SetScript("OnClick", function() ReloadUI() end)
 
 -- Battle.net
 local battlenet = CreateFrame("Frame", "Tukuibattlenet", UIParent)
-TukuiDB.CreatePanel(battlenet, 43, 43, "TOPLEFT", TukuiShowB, "BOTTOMLEFT", 0, -6)
+TukuiDB.CreatePanel(battlenet, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", TukuiShowB, "BOTTOMLEFT", 0, -6)
 TukuiDB.CreateShadow(battlenet)
 battlenet:SetFrameLevel(2)
 battlenet:SetBackdrop({
@@ -282,18 +272,18 @@ insets = { left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bot
 battlenet:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 local battlenettopstat = CreateFrame("Frame", "Tukuibattlenettopstat", UIParent)
-TukuiDB.CreatePanel(battlenettopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth()-40, stats_height, "TOPLEFT", battlenet, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(battlenettopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "TOPLEFT", battlenet, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(battlenettopstat)
 battlenettopstat:SetFrameLevel(2)
 
 local battlenetbottomstat = CreateFrame("Frame", "Tukuibattlenetbottomstat", UIParent)
-TukuiDB.CreatePanel(battlenetbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth()-40, stats_height, "BOTTOMLEFT", battlenet, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(battlenetbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "BOTTOMLEFT", battlenet, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(battlenetbottomstat)
 battlenetbottomstat:SetFrameLevel(2)
 
 -- Gold Panel
 local goldp = CreateFrame("Frame", "Tukuigoldp", UIParent)
-TukuiDB.CreatePanel(goldp, 43, 43, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -7)
+TukuiDB.CreatePanel(goldp, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -7)
 TukuiDB.CreateShadow(goldp)
 goldp:SetFrameLevel(2)
 goldp:SetBackdrop({
@@ -305,12 +295,12 @@ insets = { left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bot
 goldp:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 local goldtopstat = CreateFrame("Frame", "Tukuigoldtopstat", UIParent)
-TukuiDB.CreatePanel(goldtopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth()-40, stats_height, "TOPLEFT", goldp, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(goldtopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "TOPLEFT", goldp, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(goldtopstat)
 goldtopstat:SetFrameLevel(2)
 
 local goldbottomstat = CreateFrame("Frame", "Tukuigoldbottomstat", UIParent)
-TukuiDB.CreatePanel(goldbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth()-40, stats_height, "BOTTOMLEFT", goldp, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(goldbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "BOTTOMLEFT", goldp, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(goldbottomstat)
 goldbottomstat:SetFrameLevel(2)
 
@@ -342,25 +332,25 @@ timeright:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 -- Cube left (dataleft)
 local cubeleft = CreateFrame("Frame", "Tukuicubeleft", UIParent)
-TukuiDB.CreatePanel(cubeleft, 10, stats_height, "TOPRIGHT", dataleftp, "TOPLEFT", -TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(cubeleft, TukuiDB.Scale(10), panel_height, "TOPRIGHT", dataleftp, "TOPLEFT", -TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(cubeleft)
 cubeleft:SetFrameLevel(2)
 
 -- Cube2 left (dataleft)
 local cubeleft2 = CreateFrame("Frame", "Tukuicubeleft2", UIParent)
-TukuiDB.CreatePanel(cubeleft2, 10, stats_height, "TOPLEFT", dataleftp, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(cubeleft2, TukuiDB.Scale(10), panel_height, "TOPLEFT", dataleftp, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(cubeleft2)
 cubeleft2:SetFrameLevel(2)
 
 -- Cube right (dataright)
 local cuberight = CreateFrame("Frame", "Tukuicuberight", UIParent)
-TukuiDB.CreatePanel(cuberight, 10, stats_height, "TOPRIGHT", datarightp, "TOPLEFT", -TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(cuberight, TukuiDB.Scale(10), panel_height, "TOPRIGHT", datarightp, "TOPLEFT", -TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(cuberight)
 cuberight:SetFrameLevel(2)
 
 -- Cube right (dataright)
 local cuberight2 = CreateFrame("Frame", "Tukuicuberight2", UIParent)
-TukuiDB.CreatePanel(cuberight2, 10, stats_height, "TOPLEFT", datarightp, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(cuberight2, TukuiDB.Scale(10), panel_height, "TOPLEFT", datarightp, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(cuberight2)
 cuberight2:SetFrameLevel(2)
 
@@ -372,13 +362,13 @@ linegf:SetFrameLevel(0)
 
 -- Minimap line (left)
 local mlineleft = CreateFrame("Frame", "Tukuitopp", UIParent)
-TukuiDB.CreatePanel(mlineleft, 1, stats_height-9, "TOP", timeleft, "BOTTOM", 0, 1)
+TukuiDB.CreatePanel(mlineleft, 1, panel_height-9, "TOP", timeleft, "BOTTOM", 0, 1)
 TukuiDB.CreateShadow(mlineleft)
 mlineleft:SetFrameLevel(0)
 
 -- Minimap line (right)
 local mlineright = CreateFrame("Frame", "Tukuitopp2", UIParent)
-TukuiDB.CreatePanel(mlineright, 1, stats_height-9, "TOP", timeright, "BOTTOM", 0, 1)
+TukuiDB.CreatePanel(mlineright, 1, panel_height-9, "TOP", timeright, "BOTTOM", 0, 1)
 TukuiDB.CreateShadow(mlineright)
 mlineright:SetFrameLevel(0)
 
