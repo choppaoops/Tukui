@@ -21,8 +21,7 @@ MarkBarBG:Hide()
  
 --Change border when mouse is inside the button
 local function ButtonEnter(self)
-	local color = RAID_CLASS_COLORS[TukuiDB.myclass]
-	self:SetBackdropBorderColor(color.r, color.g, color.b)
+	self:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor))
 end
  
 --Change border back to normal when mouse leaves button

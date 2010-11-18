@@ -28,6 +28,7 @@ TukuiCF["unitframes"] = {
 	["classcolor"] = false,                  -- color unitframes by class
 	["healthcolor"] = { .219, .219, .219, 1 }, --color of the unitframe when unicolor theme is enabled
 	["healthbackdropcolor"] = { 0, 0, 0, 1 }, --backdropcolor of the unitframe
+	["healthcolorbyvalue"] = false,      -- color health by current health remaining
 	["combatfeedback"] = false,             -- enable combattext on player and target.
 	["playeraggro"] = false,                -- color player border to red if you have aggro on current target.
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
@@ -208,6 +209,8 @@ TukuiCF["tooltip"] = {
 		["colorreaction"] = false,				-- always color border of tooltip by unit reaction
 		["xOfs"] = 0,							--X offset
 		["yOfs"] = 0,							--Y offset
+		["itemid"] = true,							--Show ItemID
+		["count"] = true,						--Show count
 }
 
 TukuiCF["buffreminder"] = {
