@@ -102,6 +102,7 @@
 	tukuilocal.datatext_control = "Под контролем:"
 	tukuilocal.datatext_micromenu = "Микроменю"
 	tukuilocal.datatext_mastery = "Искусность: "
+	tukuilocal.datatext_mrating = "Рейтинг искусности:"
 	tukuilocal.datatext_bandwidth = "Скорость: "
 	tukuilocal.datatext_download = "Загрузка: "
 	tukuilocal.datatext_mbps = "Мбит/с"

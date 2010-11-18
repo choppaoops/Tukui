@@ -13,11 +13,24 @@ if TukuiCF["datatext"].mastery and TukuiCF["datatext"].mastery > 0 then
 	local function Update(self, t)
 		int = int - t
 		mastery = GetMastery()
+		mrating = GetCombatRating(26)
 
 		if int < 0 then
 			Text:SetText(tukuilocal.datatext_mastery..valuecolor..format("%.2f", mastery).."%")
+			self:SetAllPoints(Text)
+			self:SetScript("OnEnter", function()
+		if not InCombatLockdown() then
+			GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, TukuiDB.Scale(6));
+			GameTooltip:ClearAllPoints()
+			GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
+			GameTooltip:ClearLines()
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_mrating,mrating,0, 0.6, 1, 1, 1, 1)
+		end
+		GameTooltip:Show()
+	end)
+	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 			int = 1
-		end     
+		end
 	end
 
 	Stat:SetScript("OnUpdate", Update)
