@@ -113,6 +113,8 @@ local function Shared(self, unit)
 	
 	self:RegisterEvent("UNIT_PET", TukuiDB.updateAllElements)
 	
+	self:RegisterEvent("PARTY_MEMBERS_CHANGED", TukuiDB.updateAllElements)
+	self:RegisterEvent("RAID_ROSTER_UPDATE", TukuiDB.updateAllElements)   
 	return self
 end
 

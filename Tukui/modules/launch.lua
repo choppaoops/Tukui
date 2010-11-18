@@ -255,7 +255,6 @@ TukuiOnLogon:SetScript("OnEvent", function(self, event)
 		SetCVar("uiScale", TukuiCF["general"].uiscale)
 		if (TukuiData == nil) then TukuiData = {} end
 
-		
 		if ElvUIInstalled ~= true then
 			StaticPopup_Show("INSTALL_UI")
 		end
@@ -322,5 +321,3 @@ SlashCmdList["UIHELP"] = UIHelp
 
 SLASH_CONFIGURE1 = "/resetui"
 SlashCmdList.CONFIGURE = function() StaticPopup_Show("INSTALL_UI") end
-
-

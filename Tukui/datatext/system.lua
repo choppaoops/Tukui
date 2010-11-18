@@ -81,7 +81,7 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 			GameTooltip:ClearAllPoints()
 			GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
 			GameTooltip:ClearLines()
-			GameTooltip:AddDoubleLine(tukuilocal.datatext_bandwidth,format("%s "..tukuilocal.datatext_mbps,bandwidth),0, 0.6, 1, 1, 1, 1)
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_bandwidth,format("%s "..tukuilocal.datatext_mbps,TukuiDB.Round(bandwidth, 2)),0, 0.6, 1, 1, 1, 1)
 			GameTooltip:AddDoubleLine(tukuilocal.datatext_download,format("%s%%", floor(GetDownloadedPercentage()*100+0.5)),0, 0.6, 1, 1, 1, 1)
 			GameTooltip:AddDoubleLine(tukuilocal.datatext_totalmemusage,formatMem(Total), 0, 0.6, 1, 1, 1, 1)
 			GameTooltip:AddLine(" ")
