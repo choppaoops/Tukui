@@ -327,8 +327,8 @@ local function Shared(self, unit)
 			self.Experience.Text = Experience.Text
 			self.Experience.PostUpdate = TukuiDB.ExperienceText
 			if TukuiCF["unitframes"].combat == true then
-				Reputation:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true, true) end)
-				Reputation:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false, true) end)
+				Experience:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true, true) end)
+				Experience:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false, true) end)
 			end
 
 			self.Experience.Rested = CreateFrame('StatusBar', nil, self.Experience)
