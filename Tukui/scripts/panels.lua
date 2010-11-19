@@ -47,7 +47,9 @@ barbg:SetWidth(((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13)))
 barbg:SetFrameLevel(bottompanel:GetFrameLevel() + 2)
 barbg:SetFrameStrata("LOW")
 TukuiDB.CreateShadow(barbg)
-if TukuiCF["actionbar"].bottomrows == 2 then
+if TukuiCF["actionbar"].bottomrows == 3 then
+	barbg:SetHeight((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
+elseif TukuiCF["actionbar"].bottomrows == 2 then
 	barbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 else
 	barbg:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))

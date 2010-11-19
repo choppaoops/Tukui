@@ -5,7 +5,7 @@ if TukuiDB.lowversion then
 	TukuiCF["actionbar"].splitbar = false
 end
 
-if TukuiCF["actionbar"].bottomrows == 0 or TukuiCF["actionbar"].bottomrows > 2 then
+if TukuiCF["actionbar"].bottomrows == 0 or TukuiCF["actionbar"].bottomrows > 3 then
 	TukuiCF["actionbar"].bottomrows = 1
 end
 
@@ -23,6 +23,10 @@ end
 
 if TukuiCF["actionbar"].bottomrows ~= 2 then
 	TukuiCF["actionbar"].swaptopbottombar = nil
+end
+
+if TukuiCF["actionbar"].bottomrows == 3 then
+	TukuiCF["actionbar"].splitbar = false
 end
 
 ------------------------------------------------------------------------
