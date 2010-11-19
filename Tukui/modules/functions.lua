@@ -514,6 +514,49 @@ function TukuiDB.SpawnMenu(self)
 	end
 end
 
+local frameshown = true
+local unitlist = {}
+local function FadeFramesInOut(fade)
+	for frames, unitlist in pairs(unitlist) do
+		if not UnitExists(_G[unitlist].unit) then return end
+		if fade == true then
+			UIFrameFadeIn(_G[unitlist], 0.15)
+		else
+			UIFrameFadeOut(_G[unitlist], 0.15)
+		end
+	end
+end
+
+TukuiDB.Fader = function(self, arg1, arg2)
+	if arg1 == "UNIT_HEALTH" and self.unit ~= arg2 then return end
+
+	local unit = self.unit
+	if arg2 == true then self = self:GetParent() end
+	if not unitlist[tostring(self:GetName())] then tinsert(unitlist, tostring(self:GetName())) end
+
+	local cur = UnitHealth("player")
+	local max = UnitHealthMax("player")
+
+	if cur ~= max and frameshown ~= true then
+		FadeFramesInOut(true)
+		frameshown = true  
+	elseif (UnitExists("target") or UnitExists("focus")) and frameshown ~= true then
+		FadeFramesInOut(true)
+		frameshown = true	
+	elseif arg1 == true and frameshown ~= true then
+		FadeFramesInOut(true)
+		frameshown = true
+	else
+		if InCombatLockdown() and frameshown ~= true then
+			FadeFramesInOut(true)
+			frameshown = true	
+		elseif not UnitExists("target") and not InCombatLockdown() and not UnitExists("focus") and (cur == max) then
+			FadeFramesInOut(false)
+			frameshown = false
+		end
+	end
+end
+
 TukuiDB.AuraFilter = function(icons, unit, icon, name, rank, texture, count, dtype, duration, timeLeft, caster, isStealable, shouldConsolidate, spellID)
 	local header = icon:GetParent():GetParent():GetParent():GetName()
 	local inInstance, instanceType = IsInInstance()

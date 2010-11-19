@@ -38,8 +38,9 @@ TukuiCF["unitframes"] = {
 	["aggro"] = false,                      -- show aggro
 	["poweroffset"] = 9,					--powerbar offset
 	["classbar"] = true,                    -- enable runebar/totembar/holypowerbar/soulshardbar/eclipsebar
+	["combat"] = false,            -- only show main unitframes when in combat/havetarget/or mouseover
 	
-		-- hunter only plugin
+	-- hunter only plugin
 	["mendpet"] = true,						--mend pet duration overlay on pet frame
 }
 
@@ -103,7 +104,7 @@ TukuiCF["classtimer"] = {
 		["bar_height"] = 17,
 		["bar_spacing"] = 1,
 		["icon_position"] = 2, -- 0 = left, 1 = right, 2 = Outside left, 3 = Outside Right
-		["layout"] = 4, --1 - both player and target auras in one frame right above player frame, 2 - player and target auras separated into two frames above player frame, 3 - player, target and trinket auras separated into three frames above player frame, 4 - player and trinket auras are shown above player frame and target auras are shown above target frame
+		["layout"] = 4, --1 - both player and target auras in one frame right above player frame, 2 - player and target auras separated into two frames above player frame, 3 - player, target and trinket auras separated into three frames above player frame, 4 - player and trinket auras are shown above player frame and target auras are shown above target frame, 5 - Everything above player frame, no target debuffs.
 		["showspark"] = true,
 		["cast_suparator"] = true,
 
@@ -138,6 +139,7 @@ TukuiCF["actionbar"] = {
 		["buttonspacing"] = 4,          --spacing of action buttons
 		["petbuttonsize"] = 25,          --size of pet/stance buttons
 		["petbuttonspacing"] = 4,        --spacing of pet/stance buttons
+		["swaptopbottombar"] = false,      --swap the main actionbar position with the bottom actionbar
 }
 
 TukuiCF["nameplate"] = {

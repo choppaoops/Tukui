@@ -29,8 +29,8 @@
 	<Include file="libs\LibSharedMedia-3.0\lib.xml"/>
 
 	<Script file="modules\colors.lua"/>	
-	<Script file="modules\autodisable.lua"/>
 	<Script file="modules\functions.lua"/>
+	<Script file="modules\autodisable.lua"/>
 	<Script file="modules\launch.lua"/>
 	<Script file="modules\temp.lua"/>
 	<Script file="modules\watchframe.lua"/>

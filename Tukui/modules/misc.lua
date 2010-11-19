@@ -2,9 +2,8 @@
 WorldStateAlwaysUpFrame:SetFrameStrata("BACKGROUND")
 WorldStateAlwaysUpFrame:SetFrameLevel(0)
 WorldStateAlwaysUpFrame:ClearAllPoints()
-WorldStateAlwaysUpFrame:SetScale(TukuiDB.Scale(0.85))
+WorldStateAlwaysUpFrame:SetScale(TukuiDB.Scale(1))
 WorldStateAlwaysUpFrame:SetPoint("TOP", TukuiDB.Scale(0), TukuiDB.Scale(-60))
-
 
 if TukuiCF["general"].embedright == "Skada" and IsAddOnLoaded("Skada") then
 	SkadaBarWindowSkada:SetAllPoints(RDummyFrame)

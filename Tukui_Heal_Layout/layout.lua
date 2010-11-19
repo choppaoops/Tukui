@@ -307,7 +307,11 @@ local function Shared(self, unit)
 			Experience.Text:SetPoint('CENTER', self.Experience)
 			self.Experience.Text = Experience.Text
 			self.Experience.PostUpdate = TukuiDB.ExperienceText
-			
+			if TukuiCF["unitframes"].combat == true then
+				Reputation:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true, true) end)
+				Reputation:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false, true) end)
+			end
+
 			self.Experience.Rested = CreateFrame('StatusBar', nil, self.Experience)
 			self.Experience.Rested:SetAllPoints(self.Experience)
 			self.Experience.Rested:SetStatusBarTexture(normTex)
@@ -347,6 +351,11 @@ local function Shared(self, unit)
 			Reputation.Text:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			Reputation.Text:SetPoint('CENTER', self.Reputation)
 			self.Reputation.Text = Reputation.Text
+			
+			if TukuiCF["unitframes"].combat == true then
+				Reputation:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true, true) end)
+				Reputation:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false, true) end)
+			end
 			Reputation.PostUpdate = TukuiDB.UpdateReputationColor
 
 			self.Reputation.F = CreateFrame("Frame", nil, self.Reputation)
@@ -789,6 +798,18 @@ local function Shared(self, unit)
 				otherBar = ohpb,
 				maxOverflow = 1,
 			}
+		end
+		
+		--Autohide in combat
+		if TukuiCF["unitframes"].combat == true then
+			self:RegisterEvent("PLAYER_ENTERING_WORLD", TukuiDB.Fader)
+			self:RegisterEvent("PLAYER_REGEN_ENABLED", TukuiDB.Fader)
+			self:RegisterEvent("PLAYER_REGEN_DISABLED", TukuiDB.Fader)
+			self:RegisterEvent("PLAYER_TARGET_CHANGED", TukuiDB.Fader)
+			self:RegisterEvent("PLAYER_FOCUS_CHANGED", TukuiDB.Fader)
+			self:RegisterEvent("UNIT_HEALTH", TukuiDB.Fader)
+			self:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true) end)
+			self:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false) end)
 		end
 		
 		-- update all frames when changing area, to fix exiting instance while in vehicle
@@ -1343,6 +1364,12 @@ local function Shared(self, unit)
 			if TukuiCF["auras"].raidunitbuffwatch == true then
 				TukuiDB.createAuraWatch(self,unit)
 			end
+			
+			--Autohide in combat
+			if TukuiCF["unitframes"].combat == true then
+				self:HookScript("OnEnter", function(self) TukuiDB.Fader(self, true) end)
+				self:HookScript("OnLeave", function(self) TukuiDB.Fader(self, false) end)
+			end
 		end
 		
 		if TukuiCF["castbar"].unitcastbar == true and unit == "focus" then
@@ -1414,8 +1441,7 @@ local function Shared(self, unit)
 			self.Castbar.Time = castbar.time
 			self.Castbar.Icon = castbar.icon
 		end
-		
-		self:RegisterEvent("UNIT_PET", TukuiDB.updateAllElements)	
+	
 	end
 	
 	------------------------------------------------------------------------
@@ -1795,6 +1821,7 @@ tot:SetSize(smallframe_width, smallframe_height)
 local pet = oUF:Spawn('pet', "oUF_TukzHeal_pet")
 pet:SetPoint("TOPRIGHT", oUF_TukzHeal_player, "BOTTOMRIGHT", 0,TukuiDB.Scale(-42))
 pet:SetSize(smallframe_width, smallframe_height)
+pet:SetParent(player)
 
 -- Focus's target
 if db.showfocustarget == true then

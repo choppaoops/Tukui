@@ -260,7 +260,7 @@ rlui:RegisterForClicks("AnyUp") rlui:SetScript("OnClick", function() ReloadUI() 
 
 -- Battle.net
 local battlenet = CreateFrame("Frame", "Tukuibattlenet", UIParent)
-TukuiDB.CreatePanel(battlenet, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", TukuiShowB, "BOTTOMLEFT", 0, -6)
+TukuiDB.CreatePanel(battlenet, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", TukuiShowB, "BOTTOMLEFT", 0, -10)
 TukuiDB.CreateShadow(battlenet)
 battlenet:SetFrameLevel(2)
 battlenet:SetBackdrop({
@@ -283,7 +283,7 @@ battlenetbottomstat:SetFrameLevel(2)
 
 -- Gold Panel
 local goldp = CreateFrame("Frame", "Tukuigoldp", UIParent)
-TukuiDB.CreatePanel(goldp, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -7)
+TukuiDB.CreatePanel(goldp, (panel_height*2)+TukuiDB.Scale(3), (panel_height*2)+TukuiDB.Scale(3), "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -8)
 TukuiDB.CreateShadow(goldp)
 goldp:SetFrameLevel(2)
 goldp:SetBackdrop({
@@ -354,11 +354,17 @@ TukuiDB.CreatePanel(cuberight2, TukuiDB.Scale(10), panel_height, "TOPLEFT", data
 TukuiDB.CreateShadow(cuberight2)
 cuberight2:SetFrameLevel(2)
 
--- Line Currency - Battle.net
+-- Line Currency - Battle.net (left)
 local linegf = CreateFrame("Frame", "Tukuilinegf", UIParent)
-TukuiDB.CreateFadedPanel(linegf, Tukuibattlenet:GetWidth()+Tukuibattlenettopstat:GetWidth()+3-20, 13, "TOPLEFT", battlenet, "BOTTOMLEFT", 10, TukuiDB.Scale(3))
+TukuiDB.CreateFadedPanel(linegf, TukuiDB.Scale(1), TukuiDB.Scale(14), "TOPLEFT", battlenet, "BOTTOMLEFT", TukuiDB.Scale(16), TukuiDB.Scale(3))
 TukuiDB.CreateShadow(linegf)
 linegf:SetFrameLevel(0)
+
+-- Line Currency - Battle.net (right)
+local linegf2 = CreateFrame("Frame", "Tukuilinegf2", UIParent)
+TukuiDB.CreateFadedPanel(linegf2, TukuiDB.Scale(1), TukuiDB.Scale(14), "TOPRIGHT", battlenetbottomstat, "BOTTOMRIGHT", TukuiDB.Scale(-16), TukuiDB.Scale(3))
+TukuiDB.CreateShadow(linegf2)
+linegf2:SetFrameLevel(0)
 
 -- Minimap line (left)
 local mlineleft = CreateFrame("Frame", "Tukuitopp", UIParent)

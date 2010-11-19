@@ -98,6 +98,7 @@ local function Shared(self, unit)
     name:SetPoint("LEFT", health, 3, 1)
 	name:SetFont(font2, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
+	name.frequentUpdates = 0.2
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:namelong]")
 	self.Name = name
 	
@@ -183,14 +184,8 @@ local function Shared(self, unit)
 	if TukuiCF["auras"].raidunitbuffwatch == true then
 		TukuiDB.createAuraWatch(self,unit)
     end
-		
-	self:RegisterEvent("UNIT_PET", TukuiDB.updateAllElements) 
-	
-	
+
 	self:Hide()
-	
-	self:RegisterEvent("PARTY_MEMBERS_CHANGED", TukuiDB.updateAllElements)
-	self:RegisterEvent("RAID_ROSTER_UPDATE", TukuiDB.updateAllElements) 
 	return self
 end
 

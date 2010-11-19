@@ -1,6 +1,9 @@
 ------------------------------------------------------------------------
 -- prevent action bar users config errors
 ------------------------------------------------------------------------
+if TukuiDB.lowversion then
+	TukuiCF["actionbar"].splitbar = false
+end
 
 if TukuiCF["actionbar"].bottomrows == 0 or TukuiCF["actionbar"].bottomrows > 2 then
 	TukuiCF["actionbar"].bottomrows = 1
@@ -16,6 +19,10 @@ end
 
 if TukuiCF["unitframes"].classcolor == true then
 	TukuiCF["unitframes"].healthcolorbyvalue = false
+end
+
+if TukuiCF["actionbar"].bottomrows ~= 2 then
+	TukuiCF["actionbar"].swaptopbottombar = nil
 end
 
 ------------------------------------------------------------------------
