@@ -109,8 +109,8 @@ local function Shared(self, unit)
 	self.Leader = leader
 	
     local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    LFDRole:SetHeight(TukuiDB.Scale(6))
-    LFDRole:SetWidth(TukuiDB.Scale(6))
+    LFDRole:SetHeight(TukuiDB.Scale(13))
+    LFDRole:SetWidth(TukuiDB.Scale(13))
 	LFDRole:SetPoint("TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(-2))
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
