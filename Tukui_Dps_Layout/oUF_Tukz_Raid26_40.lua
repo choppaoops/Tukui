@@ -7,7 +7,7 @@ if TukuiCF["raidframes"].griddps ~= true then
 	raid_width = TukuiDB.Scale(95)*TukuiCF["raidframes"].scale
 	raid_height = TukuiDB.Scale(11)*TukuiCF["raidframes"].scale
 else
-	raid_width = TukuiDB.Scale((TukuiCF["chat"].chatwidth+4) / 5) - TukuiDB.Scale(6)
+	raid_width = TukuiDB.Scale(ChatLBackground:GetWidth() / 5) - TukuiDB.Scale(6)
 	raid_height = TukuiDB.Scale(21)*TukuiCF["raidframes"].scale
 end
 

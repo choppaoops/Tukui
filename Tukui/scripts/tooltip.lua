@@ -88,7 +88,7 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 		elseif InCombatLockdown() and db.hidecombat == true and TukuiCF["tooltip"].hidecombatraid == false then
 			self:Hide()
 		else
-			if TukuiCF["others"].enablebag == true and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
+			if TukuiCF["others"].enablebag == true and StuffingFrameBags and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", -1, TukuiDB.Scale(18))	
 			else
@@ -214,7 +214,7 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 			self:Hide()
 			return
 		else
-			if TukuiCF["others"].enablebag == true and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
+			if TukuiCF["others"].enablebag == true and StuffingFrameBags and StuffingFrameBags:IsShown() and xOffset == 0 and yOffset == 0 then
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", -1, TukuiDB.Scale(18))	
 			else
 				if CheckAddOnShown() == true and xOffset == 0 and yOffset == 0 then

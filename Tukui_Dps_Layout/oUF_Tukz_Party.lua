@@ -151,7 +151,7 @@ local function Shared(self, unit)
     debuffs.size = party_height*.9
     debuffs.spacing = 2
     debuffs.initialAnchor = 'LEFT'
-	debuffs.num = 5
+	debuffs.num = 0
 	debuffs.PostCreateIcon = TukuiDB.PostCreateAura
 	debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
 	self.Debuffs = debuffs
