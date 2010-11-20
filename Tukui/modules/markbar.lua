@@ -4,8 +4,6 @@
 -- Config
 font = TukuiCF.media.font2           	-- Font to be used for button text
 fontsize = 10                     		-- Size of font for button text
-flarewidth = TukuiDB.Scale(18)
-flareheight = TukuiDB.Scale(18)
 buttonwidth = TukuiDB.Scale(30)    -- Width of menu buttons
 buttonheight = TukuiDB.Scale(30)   -- Height of menu buttons
 toplayout = false
@@ -29,14 +27,10 @@ MarkBarBG:SetPoint(unpack(anchor))
 MarkBarBG:Hide()
  
 --Change border when mouse is inside the button
-local function ButtonEnter(self)
-	self:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor))
-end
+local function ButtonEnter(self) self:SetBackdropBorderColor(unpack(TukuiCF["media"].valuecolor)) end
  
 --Change border back to normal when mouse leaves button
-local function ButtonLeave(self)
-	self:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
-end
+local function ButtonLeave(self) self:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor)) end
 
 -- Mark Button BG and icons
 icon = CreateFrame("Button", "tmb_Icon", MarkBarBG)
