@@ -576,11 +576,11 @@ function Stuffing:Layout(lb)
 
 	if lb then
 		bs = bags_BANK
-		cols = (floor(TukuiCF["chat"].chatwidth/355 * 10))
+		cols = (floor(TukuiCF["chat"].chatwidth/353 * 10))
 		f = self.bankFrame
 	else
 		bs = bags_BACKPACK
-		cols = (floor(TukuiCF["chat"].chatwidth/355 * 10))
+		cols = (floor(TukuiCF["chat"].chatwidth/353 * 10))
 		f = self.frame
 
 		f.gold:SetText (GetCoinTextureString(GetMoney(), 12))

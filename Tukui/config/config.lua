@@ -59,8 +59,8 @@ TukuiCF["raidframes"] = {
 	["enable"] = true,						-- enable raid frames
 	["fontsize"] = 10,						-- default font height for raidframes
 	["scale"] = 1,							-- for smaller use a number less than one (0.73), for higher use a number larger than one
-	["showrange"] = true,                  -- show range opacity on raidframes
-	["hidenonmana"] = true,					-- hide non mana on party/raid frames
+	["showrange"] = false,                  -- show range opacity on raidframes
+	["hidenonmana"] = false,					-- hide non mana on party/raid frames
 	["healcomm"] = false,                  -- enable healcomm4 support on healer layout.
 	["raidalphaoor"] = 0.3,                -- alpha of raidframes when unit is out of range
 	["gridonly"] = false,                  -- enable grid only mode for all raid layout. TEMP
@@ -71,6 +71,7 @@ TukuiCF["raidframes"] = {
 	["showboss"] = true,                   -- enable boss unit frames for PVELOL encounters.
 	["disableblizz"] = true,        -- fuck fuck fuckin fuck
 	["healthdeficit"] = false,      -- show the health deficit on the raidframes
+	["griddps"] = true,          -- show dps layout in grid style
 }
 
 TukuiCF["auras"] = {
@@ -193,7 +194,7 @@ TukuiCF["datatext"] = {
 TukuiCF["chat"] = {
 	["enable"] = true,                     -- blah		
 		["whispersound"] = true,               -- play a sound when receiving whisper
-		["chatwidth"] = 355,					-- width of chat frame
+		["chatwidth"] = 353,					-- width of chat frame
 		["chatheight"] = 98,					-- height of chat frame
 		["fadeoutofuse"] = false,				-- fade chat text when out of use
 		["sticky"] = true,						-- when opening the chat edit box resort to previous channel
