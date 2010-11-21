@@ -3,27 +3,15 @@
  
 -- Config
 font = TukuiCF.media.font2           	-- Font to be used for button text
-fontsize = 10                     		-- Size of font for button text
+fontsize = TukuiCF["datatext"].fontsize                     		-- Size of font for button text
 buttonwidth = TukuiDB.Scale(30)    -- Width of menu buttons
 buttonheight = TukuiDB.Scale(30)   -- Height of menu buttons
-toplayout = false
-
--- Default position of toggle button and background
-local anchor = {}
-if toplayout == true then
-	anchor = {"TOPLEFT", UIParent, "TOP", 0, -3}
-else
-	anchor = {"BOTTOMLEFT", ChatLBackground, "BOTTOMRIGHT", TukuiDB.Scale(3), TukuiDB.Scale(-10)}
-end
 
 --Background Frame
 local MarkBarBG = CreateFrame("Frame", "MarkBarBackground", UIParent)
 TukuiDB.CreatePanel(MarkBarBG, buttonwidth * 8 + TukuiDB.Scale(27), buttonheight + TukuiDB.Scale(6), "BOTTOMLEFT", ChatLBackground, "BOTTOMRIGHT", TukuiDB.Scale(3), TukuiDB.Scale(-10))
-MarkBarBG:SetBackdropColor(unpack(TukuiCF["media"].backdropcolor))
 TukuiDB.CreateShadow(MarkBarBG)
 MarkBarBG:SetFrameLevel(0)
-MarkBarBG:ClearAllPoints()
-MarkBarBG:SetPoint(unpack(anchor))
 MarkBarBG:Hide()
  
 --Change border when mouse is inside the button
@@ -83,7 +71,7 @@ end
  
 --Create button for when frame is hidden
 local HiddenToggleButton = CreateFrame("Button", "tmb_HiddenToggleButton", UIParent)
-TukuiDB.CreatePanel(HiddenToggleButton, 120, 20, "TOPLEFT", Tukuicubeleft2, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(HiddenToggleButton, 120, TukuiDB.Scale(TukuiCF["datatext"].panel_height), "TOPLEFT", Tukuicubeleft2, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(HiddenToggleButton)
 HiddenToggleButton:SetScript("OnEnter", ButtonEnter)
 HiddenToggleButton:SetScript("OnLeave", ButtonLeave)
@@ -102,11 +90,7 @@ local ShownToggleButton = CreateFrame("Button", "tmb_ShownToggleButton", MarkBar
 TukuiDB.CreatePanel(ShownToggleButton, 18, 18, "BOTTOMLEFT", MarkBarBackground, "TOPLEFT", 0, TukuiDB.Scale(3))
 TukuiDB.CreateShadow(ShownToggleButton)
 ShownToggleButton:ClearAllPoints()
-if toplayout == true then 
-	tmb_ShownToggleButton:SetPoint("TOPLEFT", MarkBarBackground, "BOTTOMLEFT", 0, TukuiDB.Scale(-3))
-else
-	tmb_ShownToggleButton:SetPoint("BOTTOMLEFT", MarkBarBackground, "TOPLEFT", 0, TukuiDB.Scale(3))
-end
+tmb_ShownToggleButton:SetPoint("BOTTOMLEFT", MarkBarBackground, "TOPLEFT", 0, TukuiDB.Scale(3))
 ShownToggleButton:SetScript("OnEnter", ButtonEnter)
 ShownToggleButton:SetScript("OnLeave", ButtonLeave)
 ShownToggleButton:SetScript("OnMouseUp", function(self)
@@ -144,11 +128,7 @@ local RaidUtilityPanel = CreateFrame("Frame", "RaidUtilityPanel", UIParent)
 TukuiDB.CreatePanel(RaidUtilityPanel, TukuiDB.Scale(165), panel_height, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, 3)
 TukuiDB.CreateShadow(RaidUtilityPanel)
 RaidUtilityPanel:ClearAllPoints()
-if toplayout == true then 
-	RaidUtilityPanel:SetPoint("TOPRIGHT", MarkBarBackground, "BOTTOMRIGHT", 0, TukuiDB.Scale(-3))
-else
-	RaidUtilityPanel:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
-end
+RaidUtilityPanel:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
 local r,g,b,_ = TukuiCF["media"].backdropcolor
 RaidUtilityPanel:Hide()
 
@@ -157,11 +137,7 @@ local HiddenToggleButton = CreateFrame("Button", HiddenToggleButton, UIParent)
 TukuiDB.CreatePanel(HiddenToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth()+1), 18, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", TukuiDB.Scale(0), TukuiDB.Scale(3))
 TukuiDB.CreateShadow(HiddenToggleButton)
 HiddenToggleButton:ClearAllPoints()
-if toplayout == true then 
-	HiddenToggleButton:SetPoint("TOPRIGHT", MarkBarBackground, "BOTTOMRIGHT", 0, TukuiDB.Scale(-3))
-else
-	HiddenToggleButton:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
-end
+HiddenToggleButton:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
 HiddenToggleButton:SetScript("OnEnter", ButtonEnter)
 HiddenToggleButton:SetScript("OnLeave", ButtonLeave)
 HiddenToggleButton:SetScript("OnMouseUp", function(self)
@@ -172,19 +148,14 @@ end)
 local HiddenToggleButtonText = HiddenToggleButton:CreateFontString(nil,"OVERLAY",HiddenToggleButton)
 HiddenToggleButtonText:SetFont(font,fontsize,"OUTLINE")
 HiddenToggleButtonText:SetText(tukuilocal.core_raidutil)
-HiddenToggleButtonText:SetPoint("CENTER")
-HiddenToggleButtonText:SetJustifyH("CENTER")
+HiddenToggleButtonText:SetPoint("CENTER", 1, 0)
  
 --Create button for when frame is shown
 local ShownToggleButton = CreateFrame("Button", ShownToggleButton, RaidUtilityPanel)
 TukuiDB.CreatePanel(ShownToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth() / 2.5), 18, "BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
 TukuiDB.CreateShadow(ShownToggleButton)
 ShownToggleButton:ClearAllPoints()
-if toplayout == true then 
-	ShownToggleButton:SetPoint("TOP", RaidUtilityPanel, "BOTTOM", 0, TukuiDB.Scale(-3))
-else
-	ShownToggleButton:SetPoint("BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
-end
+ShownToggleButton:SetPoint("BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
 ShownToggleButton:SetScript("OnEnter", ButtonEnter)
 ShownToggleButton:SetScript("OnLeave", ButtonLeave)
 ShownToggleButton:SetScript("OnMouseUp", function(self)
@@ -345,20 +316,6 @@ local set_anim = function (self,k,x,y)
 	self.anim_o.b:SetOffset(x,y)
 	if k then self.anim_o:SetScript("OnFinished",function() self:Hide() end) end
 end
-if toplayout == true then
-	set_anim(tmb_HiddenToggleButton,true, -100, 30)
-	tmb_HiddenToggleButton:Hide()
-
-	set_anim(MarkBarBackground,true, 100, 30)
-	MarkBarBackground:Hide()
-
-	set_anim(HiddenToggleButton,true, 100, 30)
-	HiddenToggleButton:Hide()
-
-	set_anim(HiddenToggleButton,true, 100, 30)
-	RaidUtilityPanel:Hide()
-	
-else
 	set_anim(tmb_HiddenToggleButton,true, 0, -60)
 
 	set_anim(MarkBarBackground,true, 320, 0)
@@ -369,7 +326,6 @@ else
 
 	set_anim(HiddenToggleButton,true, 220, 0)
 	RaidUtilityPanel:Hide()
-end
 
 -- Set Scripts
 tmb_HiddenToggleButton:SetScript("OnMouseUp",function()

@@ -57,6 +57,7 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			for i = 1, 12 do
 				table.insert(buttons, self:GetFrameRef("ActionButton"..i))
 			end
+			firedonce = false
 		]])
 
 		self:SetAttribute("_onstate-page", [[ 
@@ -67,13 +68,33 @@ bar:SetScript("OnEvent", function(self, event, ...)
 
 		self:SetAttribute("_onstate-vehicleupdate", [[
 			if newstate == "s2" then
-				self:Hide()
 				self:GetParent():Hide()
+				if firedonce == false and not UnitHasVehicleUI("player") then
+					firedonce = true 
+					return 
+				else 
+					firedonce = true 
+				end
+				
+				for i, button in ipairs(buttons) do
+					oldpage = button:GetAttribute("actionpage")
+					button:SetAttribute("actionpage", 11)
+				end
 			else
-				self:Show()
 				self:GetParent():Show()
+				if (firedonce == false) or (not oldpage) then firedonce = true return end
+				for i, button in ipairs(buttons) do
+					button:SetAttribute("actionpage", oldpage)
+				end
 			end
 		]])
+		
+		self:SetAttribute("_onstate-bonus", [[
+			for i, button in ipairs(buttons) do
+				button:SetAttribute("actionpage", tonumber(newstate))
+			end
+		]])
+		RegisterStateDriver(self, "bonus", "[bonusbar:5] 11;")	
 		
 		RegisterStateDriver(self, "page", GetBar())
 		RegisterStateDriver(self, "vehicleupdate", "[vehicleui]s2;s1")

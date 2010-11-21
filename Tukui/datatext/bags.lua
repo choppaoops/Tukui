@@ -19,8 +19,8 @@ if TukuiCF["datatext"].bags and TukuiCF["datatext"].bags > 0 then
 		end
 		used = total - free
 		Text:SetText(tukuilocal.datatext_bagsfree..valuecolor..free)
-		self:SetAllPoints(Text)
-		self:SetScript("OnEnter", function()
+		Stat:SetAllPoints(Text)
+		Stat:SetScript("OnEnter", function()
 		if not InCombatLockdown() then
 			GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, TukuiDB.Scale(6));
 			GameTooltip:ClearAllPoints()
@@ -33,7 +33,7 @@ if TukuiCF["datatext"].bags and TukuiCF["datatext"].bags > 0 then
 		end
 		GameTooltip:Show()
 	end)
-	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
 	end
           
 	Stat:RegisterEvent("PLAYER_LOGIN")
