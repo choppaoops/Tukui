@@ -145,7 +145,7 @@ TukuiDB.CreateFadedPanel(chatlbgdummy, TukuiCF["chat"].chatwidth+4, TukuiCF["cha
 TukuiDB.CreateShadow(chatlbgdummy)
 
 local chatltabs = CreateFrame("Frame", "chatltabsPanel", UIParent)
-TukuiDB.CreatePanel(chatltabs, TukuiCF["chat"].chatwidth-19, panel_height, "BOTTOMLEFT", chatlbgdummy, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
+TukuiDB.CreatePanel(chatltabs, TukuiCF["chat"].chatwidth-TukuiDB.Scale(19), panel_height, "BOTTOMLEFT", chatlbgdummy, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
 TukuiDB.CreateShadow(chatltabs)
 
 --Create Template frame for addon embedding
@@ -168,7 +168,7 @@ chatrbg:SetBackdropColor(unpack(TukuiCF["media"].backdropfadecolor))
 chatrbg:SetAlpha(0)
 
 local chatrtabs = CreateFrame("Frame", "chatrtabsPanel", chatrbg)
-TukuiDB.CreatePanel(chatrtabs, TukuiCF["chat"].chatwidth-19, panel_height, "BOTTOMLEFT", chatrbg, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
+TukuiDB.CreatePanel(chatrtabs, TukuiCF["chat"].chatwidth-TukuiDB.Scale(19), panel_height, "BOTTOMLEFT", chatrbg, "TOPLEFT", TukuiDB.Scale(0),  TukuiDB.Scale(3))
 TukuiDB.CreateShadow(chatrtabs)
 
 -- Top bar from Eclipse edit
@@ -198,12 +198,12 @@ topp2:SetFrameLevel(0)
 -- Coord panel from Eclipse edit
 if TukuiCF["datatext"].location_coords == true then
 	local coords1 = CreateFrame("Frame", "TukuiXCoordsPanel", UIParent)
-	TukuiDB.CreatePanel(coords1, panel_width+19, panel_height, "RIGHT", locationbar, "LEFT", -TukuiDB.Scale(3), 0)
+	TukuiDB.CreatePanel(coords1, TukuiDB.Scale(35), panel_height, "RIGHT", locationbar, "LEFT", -TukuiDB.Scale(3), 0)
 	TukuiDB.CreateShadow(coords1)
 	coords1:SetFrameLevel(2)
 	 
 	local coords2 = CreateFrame("Frame", "TukuiYCoordsPanel", UIParent)
-	TukuiDB.CreatePanel(coords2, panel_width+19, panel_height, "LEFT", locationbar, "RIGHT", TukuiDB.Scale(3), 0)
+	TukuiDB.CreatePanel(coords2, TukuiDB.Scale(35), panel_height, "LEFT", locationbar, "RIGHT", TukuiDB.Scale(3), 0)
 	TukuiDB.CreateShadow(coords2)
 	coords2:SetFrameLevel(2)
 end

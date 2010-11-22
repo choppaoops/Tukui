@@ -3,7 +3,7 @@ local Stat = CreateFrame("Frame")
 
 local Text  = TukuiLocationPanel:CreateFontString(nil, "LOW")
 Text:SetFont(TukuiCF["media"].font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
-Text:SetPoint("CENTER", 0, 0)
+Text:SetPoint("CENTER", TukuiDB.Scale(1), 0)
  
 local function OnEvent(self, event)
 	local location = GetMinimapZoneText()
@@ -35,11 +35,11 @@ Stat:SetScript("OnEvent", OnEvent)
 if TukuiCF["datatext"].location_coords == true then
 	local Text2 = TukuiXCoordsPanel:CreateFontString(nil, "LOW")
 	Text2:SetFont(TukuiCF["media"].font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
-	Text2:SetPoint("CENTER", 0, 0)
+	Text2:SetPoint("CENTER", TukuiDB.Scale(1), 0)
  
 	local Text3  = TukuiYCoordsPanel:CreateFontString(nil, "LOW")
 	Text3:SetFont(TukuiCF["media"].font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
-	Text3:SetPoint("CENTER", 0, 0)
+	Text3:SetPoint("CENTER", TukuiDB.Scale(1), 0)
 	
 	local ela,go = 0,false
 	 
