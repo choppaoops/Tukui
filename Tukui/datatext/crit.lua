@@ -8,7 +8,7 @@ if TukuiCF["datatext"].crit and TukuiCF["datatext"].crit > 0 then
 	Stat:SetFrameLevel(3)
 
 	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
 	TukuiDB.PP(TukuiCF["datatext"].crit, Text)
 
 	local int = 1

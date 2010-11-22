@@ -9,7 +9,7 @@ if TukuiCF["datatext"].points and TukuiCF["datatext"].points > 0 then
 	Stat:SetFrameLevel(3)
 
 	local Text  = TukuiDataLeftPanel:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize)
+	Text:SetFont(TukuiCF.media.font2, TukuiCF["datatext"].fontsize, "THINOUTLINE")
 	TukuiDB.PP(TukuiCF["datatext"].points, Text)
 
 	local function OnEvent(self, event)	
