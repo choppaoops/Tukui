@@ -89,8 +89,6 @@ HiddenToggleButtonText:SetPoint("CENTER", 0, 0.5)
 local ShownToggleButton = CreateFrame("Button", "tmb_ShownToggleButton", MarkBarBackground)
 TukuiDB.CreatePanel(ShownToggleButton, 18, 18, "BOTTOMLEFT", MarkBarBackground, "TOPLEFT", 0, TukuiDB.Scale(3))
 TukuiDB.CreateShadow(ShownToggleButton)
-ShownToggleButton:ClearAllPoints()
-tmb_ShownToggleButton:SetPoint("BOTTOMLEFT", MarkBarBackground, "TOPLEFT", 0, TukuiDB.Scale(3))
 ShownToggleButton:SetScript("OnEnter", ButtonEnter)
 ShownToggleButton:SetScript("OnLeave", ButtonLeave)
 ShownToggleButton:SetScript("OnMouseUp", function(self)
@@ -125,19 +123,15 @@ local panel_height = ((TukuiDB.Scale(5)*4) + (TukuiDB.Scale(20)*4))
  
 --Create main frame
 local RaidUtilityPanel = CreateFrame("Frame", "RaidUtilityPanel", UIParent)
-TukuiDB.CreatePanel(RaidUtilityPanel, TukuiDB.Scale(165), panel_height, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, 3)
+TukuiDB.CreatePanel(RaidUtilityPanel, TukuiDB.Scale(166), panel_height, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
 TukuiDB.CreateShadow(RaidUtilityPanel)
-RaidUtilityPanel:ClearAllPoints()
-RaidUtilityPanel:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
 local r,g,b,_ = TukuiCF["media"].backdropcolor
 RaidUtilityPanel:Hide()
 
 --Create button for when frame is hidden
 local HiddenToggleButton = CreateFrame("Button", HiddenToggleButton, UIParent)
-TukuiDB.CreatePanel(HiddenToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth()+1), 18, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", TukuiDB.Scale(0), TukuiDB.Scale(3))
+TukuiDB.CreatePanel(HiddenToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth()), 18, "BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", TukuiDB.Scale(0), TukuiDB.Scale(3))
 TukuiDB.CreateShadow(HiddenToggleButton)
-HiddenToggleButton:ClearAllPoints()
-HiddenToggleButton:SetPoint("BOTTOMRIGHT", MarkBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(3))
 HiddenToggleButton:SetScript("OnEnter", ButtonEnter)
 HiddenToggleButton:SetScript("OnLeave", ButtonLeave)
 HiddenToggleButton:SetScript("OnMouseUp", function(self)
@@ -152,10 +146,8 @@ HiddenToggleButtonText:SetPoint("CENTER", 1, 0)
  
 --Create button for when frame is shown
 local ShownToggleButton = CreateFrame("Button", ShownToggleButton, RaidUtilityPanel)
-TukuiDB.CreatePanel(ShownToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth() / 2.5), 18, "BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
+TukuiDB.CreatePanel(ShownToggleButton, TukuiDB.Scale(RaidUtilityPanel:GetWidth()), 18, "BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
 TukuiDB.CreateShadow(ShownToggleButton)
-ShownToggleButton:ClearAllPoints()
-ShownToggleButton:SetPoint("BOTTOM", RaidUtilityPanel, "TOP", TukuiDB.Scale(0), TukuiDB.Scale(3))
 ShownToggleButton:SetScript("OnEnter", ButtonEnter)
 ShownToggleButton:SetScript("OnLeave", ButtonLeave)
 ShownToggleButton:SetScript("OnMouseUp", function(self)
@@ -168,7 +160,7 @@ end)
 local ShownToggleButtonText = ShownToggleButton:CreateFontString(nil,"OVERLAY",ShownToggleButton)
 ShownToggleButtonText:SetFont(font,fontsize,"OUTLINE")
 ShownToggleButtonText:SetText(tukuilocal.addon_close)
-ShownToggleButtonText:SetPoint("CENTER", TukuiDB.Scale(1), TukuiDB.Scale(1))
+ShownToggleButtonText:SetPoint("CENTER", TukuiDB.Scale(1), 0)
  
 -- Function to create buttons in this module
 local function CreateButton(name, parent, template, width, height, point, relativeto, point2, xOfs, yOfs, text, texture)
@@ -182,7 +174,7 @@ local function CreateButton(name, parent, template, width, height, point, relati
 	if text then
 		local t = b:CreateFontString(nil,"OVERLAY",b)
 		t:SetFont(font,fontsize,"OUTLINE")
-		t:SetPoint("CENTER", TukuiDB.Scale(1), TukuiDB.Scale(1))
+		t:SetPoint("CENTER", TukuiDB.Scale(1), 0)
 		t:SetText(text)
 	elseif texture then
 		local t = b:CreateTexture(nil,"OVERLAY",nil)
@@ -193,7 +185,7 @@ local function CreateButton(name, parent, template, width, height, point, relati
 end
  
 --Disband Raid button
-CreateButton("DisbandRaidButton", RaidUtilityPanel, nil, RaidUtilityPanel:GetWidth() * 0.8, TukuiDB.Scale(18), "TOP", RaidUtilityPanel, "TOP", 0, TukuiDB.Scale(-5), tukuilocal.core_raidutil_disbandgroup, nil)
+CreateButton("DisbandRaidButton", RaidUtilityPanel, nil, RaidUtilityPanel:GetWidth() * 0.8, TukuiDB.Scale(18), "TOP", RaidUtilityPanel, "TOP", 0, TukuiDB.Scale(-6), tukuilocal.core_raidutil_disbandgroup, nil)
 TukuiDB.SetTemplate(DisbandRaidButton)
 DisbandRaidButton:SetScript("OnMouseUp", function(self) StaticPopup_Show("DISBAND_RAID") end)
  

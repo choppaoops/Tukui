@@ -104,8 +104,8 @@ local function Shared(self, unit)
 
 	if TukuiCF["unitframes"].showsymbols == true then
 		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
-		RaidIcon:SetHeight(TukuiDB.Scale(15)*TukuiCF["raidframes"].scale)
-		RaidIcon:SetWidth(TukuiDB.Scale(15)*TukuiCF["raidframes"].scale)
+		RaidIcon:SetHeight(TukuiDB.Scale(13)*TukuiCF["raidframes"].scale)
+		RaidIcon:SetWidth(TukuiDB.Scale(13)*TukuiCF["raidframes"].scale)
 		RaidIcon:SetPoint('LEFT', self.Name, 'RIGHT')
 		RaidIcon:SetTexture('Interface\\AddOns\\Tukui\\media\\textures\\raidicons.blp')
 		self.RaidIcon = RaidIcon
