@@ -64,7 +64,7 @@ local function CreateFrameOverlay(parent, name)
 	
 	
 	local fs = f:CreateFontString(nil, "OVERLAY")
-	fs:SetFont(TukuiCF["media"].font, TukuiCF["auras"].auratextscale, "THINOUTLINE")
+	fs:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 	fs:SetJustifyH("CENTER")
 	fs:SetShadowColor(0, 0, 0)
 	fs:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
@@ -87,7 +87,7 @@ do
 end
 
 StaticPopupDialogs["RELOAD"] = {
-	text = "Reload UI",
+	text = "Need a Reload UI to reset all elements",
 	button1 = ACCEPT,
 	button2 = CANCEL,
 	OnAccept = function() ReloadUI() end,
@@ -143,7 +143,7 @@ SlashCmdList["RESETELEMENTS"] = ResetElements
 local mele = CreateFrame("Button", "Tukuimele", UIParent)
 local buttontext = mele:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
-buttontext:SetText(valuecolor.."M")
+buttontext:SetText("M: "..valuecolor.."Elements")
 buttontext:SetPoint("CENTER", TukuiDB.Scale(1), 0)
 TukuiDB.CreatePanel(mele, buttontext:GetWidth()+TukuiCF["datatext"].panel_width, TukuiDB.Scale(TukuiCF["datatext"].panel_height), "TOPRIGHT", Tukuitopstats, "TOPLEFT", TukuiDB.Scale(-3), 0)
 TukuiDB.CreateShadow(mele)
@@ -158,7 +158,7 @@ mele:RegisterForClicks("AnyUp") mele:SetScript("OnClick", function() ShowCBOverl
 local rele = CreateFrame("Button", "Tukuirele", UIParent)
 local buttontext = rele:CreateFontString(nil,"OVERLAY",nil)
 buttontext:SetFont(TukuiCF.media.font2,TukuiCF["datatext"].fontsize,"OUTLINE")
-buttontext:SetText(valuecolor.."R")
+buttontext:SetText("R: "..valuecolor.."Elements")
 buttontext:SetPoint("CENTER", TukuiDB.Scale(1), 0)
 TukuiDB.CreatePanel(rele, buttontext:GetWidth()+TukuiCF["datatext"].panel_width, TukuiDB.Scale(TukuiCF["datatext"].panel_height), "TOPLEFT", Tukuitopstats, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(rele)
