@@ -279,12 +279,12 @@ insets = { left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bot
 battlenet:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 local battlenettopstat = CreateFrame("Frame", "Tukuibattlenettopstat", UIParent)
-TukuiDB.CreatePanel(battlenettopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "TOPLEFT", battlenet, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(battlenettopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - (panel_height*2), panel_height, "TOPLEFT", battlenet, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(battlenettopstat)
 battlenettopstat:SetFrameLevel(2)
 
 local battlenetbottomstat = CreateFrame("Frame", "Tukuibattlenetbottomstat", UIParent)
-TukuiDB.CreatePanel(battlenetbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "BOTTOMLEFT", battlenet, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(battlenetbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - (panel_height*2), panel_height, "BOTTOMLEFT", battlenet, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(battlenetbottomstat)
 battlenetbottomstat:SetFrameLevel(2)
 
@@ -302,12 +302,12 @@ insets = { left = -TukuiDB.mult, right = -TukuiDB.mult, top = -TukuiDB.mult, bot
 goldp:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
 local goldtopstat = CreateFrame("Frame", "Tukuigoldtopstat", UIParent)
-TukuiDB.CreatePanel(goldtopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "TOPLEFT", goldp, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(goldtopstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - (panel_height*2), panel_height, "TOPLEFT", goldp, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(goldtopstat)
 goldtopstat:SetFrameLevel(2)
 
 local goldbottomstat = CreateFrame("Frame", "Tukuigoldbottomstat", UIParent)
-TukuiDB.CreatePanel(goldbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - TukuiDB.Scale(40), panel_height, "BOTTOMLEFT", goldp, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(goldbottomstat, TukuiShowB:GetWidth()+TukuiMButton:GetWidth()+Tukuirlui:GetWidth() - (panel_height*2), panel_height, "BOTTOMLEFT", goldp, "BOTTOMRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(goldbottomstat)
 goldbottomstat:SetFrameLevel(2)
 
@@ -396,7 +396,7 @@ spec:SetFrameLevel(2)
 -- Class config, VuhDo buff frame
 if TukuiDB.myname == "Веллиара" then
 local vuhdoframe = CreateFrame("Frame", "TukuiVuhDoFrame", UIParent)
-TukuiDB.CreatePanel(vuhdoframe, 120, TukuiCF["chat"].chatheight+TukuiDB.Scale(50), "RIGHT", rdummyframe, "LEFT", -TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(vuhdoframe, TukuiDB.Scale(130), RDummyFrame:GetHeight()+TukuiDB.Scale(23), "TOPRIGHT", chatrtabs, "TOPLEFT", -TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(vuhdoframe)
 vuhdoframe:SetFrameLevel(2)
 end

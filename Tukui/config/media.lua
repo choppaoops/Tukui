@@ -4,6 +4,16 @@ TukuiCF["media"] = {
 	["font2"] = [=[Interface\Addons\Tukui\media\fonts\visitor_rus.ttf]=],
 	["dmgfont"] = [[Interface\AddOns\Tukui\media\fonts\combat.ttf]], -- general font of dmg / sct
 	
+	-- fonts (TAIWAN ONLY)
+	["tw_font"] = [=[fonts\bLEI00D.ttf]=], -- general font of tukui
+	["tw_font2"] = [[fonts\bLEI00D.ttf]], -- general font of unitframes
+	["tw_dmgfont"] = [[fonts\bLEI00D.ttf]], -- general font of dmg / sct
+	
+	-- fonts (KOREAN ONLY)
+	["kr_font"] = [=[Fonts\2002.TTF]=], -- general font of tukui
+	["kr_font2"] = [[Fonts\2002.TTF]], -- general font of unitframes
+	["kr_dmgfont"] = [[Fonts\2002.TTF]], -- general font of dmg / sct
+	
 	-- textures
 	["normTex"] = [[Interface\AddOns\Tukui\media\textures\normTex]], -- texture used for tukui healthbar/powerbar/etc
 	["gold"] = [[Interface\AddOns\Tukui\media\textures\gold]],
