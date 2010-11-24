@@ -106,6 +106,7 @@
 	tukuilocal.datatext_bandwidth = "Скорость: "
 	tukuilocal.datatext_download = "Загрузка: "
 	tukuilocal.datatext_mbps = "Мбит/с"
+	tukuilocal.datatext_notalents = "Нет талантов"
 
 	tukuilocal.mail_messages = "Сообщений"
 	tukuilocal.mail_done = "Готово"

@@ -107,6 +107,7 @@ tukuilocal.datatext_mrating = "Mastery rating:"
 tukuilocal.datatext_bandwidth = "Bandwidth: "
 tukuilocal.datatext_download = "Download: "
 tukuilocal.datatext_mbps = "Mbps"
+tukuilocal.datatext_notalents = "No Talents"
 
 tukuilocal.mail_messages = "Messages"
 tukuilocal.mail_done = "All done."

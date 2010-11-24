@@ -15,7 +15,9 @@ if TukuiCF["datatext"].specswitcher and TukuiCF["datatext"].specswitcher > 0 the
  
 	local int = 1
 	local function Update(self, t)
-                if not GetPrimaryTalentTree() then return end
+		if not GetPrimaryTalentTree() then
+			Text:SetText(valuecolor..tukuilocal.datatext_notalents) 
+		return end
 		int = int - t
 		if int < 0 then
 			local tree1num = select(5,GetTalentTabInfo(1))
@@ -56,7 +58,9 @@ if TukuiCF["datatext"].specswitcher and TukuiCF["datatext"].specswitcher > 0 the
 				GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
 				GameTooltip:ClearLines()
  
-				if(hs) then
+				if(not GetPrimaryTalentTree()) then
+					GameTooltip:AddLine(valuecolor..tukuilocal.datatext_notalents)
+				elseif(hs) then
 					GameTooltip:AddLine((c == 1 and "* " or "  ") .. select(2,GetTalentTabInfo(majorTree1)).." "..group1tree1.."|r/"..group1tree2.."|r/"..group1tree3.."|r")
 					GameTooltip:AddLine((c == 2 and "* " or "  ") .. select(2,GetTalentTabInfo(majorTree2)).." "..group2tree1.."|r/"..group2tree2.."|r/"..group2tree3.."|r")
 				else
