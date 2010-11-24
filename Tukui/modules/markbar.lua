@@ -71,7 +71,7 @@ end
  
 --Create button for when frame is hidden
 local HiddenToggleButton = CreateFrame("Button", "tmb_HiddenToggleButton", UIParent)
-TukuiDB.CreatePanel(HiddenToggleButton, 120, TukuiDB.Scale(TukuiCF["datatext"].panel_height), "TOPLEFT", Tukuicubeleft2, "TOPRIGHT", TukuiDB.Scale(3), 0)
+TukuiDB.CreatePanel(HiddenToggleButton, TukuiDB.Scale(130), TukuiDB.Scale(TukuiCF["datatext"].panel_height), "TOPLEFT", Tukuicubeleft2, "TOPRIGHT", TukuiDB.Scale(3), 0)
 TukuiDB.CreateShadow(HiddenToggleButton)
 HiddenToggleButton:SetScript("OnEnter", ButtonEnter)
 HiddenToggleButton:SetScript("OnLeave", ButtonLeave)

@@ -385,6 +385,14 @@ TukuiDB.CreatePanel(mlineright, 1, panel_height-9, "TOP", timeright, "BOTTOM", 0
 TukuiDB.CreateShadow(mlineright)
 mlineright:SetFrameLevel(0)
 
+---------------------------------
+
+-- Spec panel
+local spec = CreateFrame("Frame", "Tukuispec", UIParent)
+TukuiDB.CreatePanel(spec, TukuiDB.Scale(130), panel_height, "TOPRIGHT", cuberight, "TOPLEFT", -TukuiDB.Scale(3), 0)
+TukuiDB.CreateShadow(spec)
+spec:SetFrameLevel(2)
+
 -- Class config, VuhDo buff frame
 if TukuiDB.myname == "Веллиара" then
 local vuhdoframe = CreateFrame("Frame", "TukuiVuhDoFrame", UIParent)

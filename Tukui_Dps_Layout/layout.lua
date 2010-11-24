@@ -1416,6 +1416,8 @@ local function Shared(self, unit)
 			self.Castbar.Time = castbar.time
 			self.Castbar.Icon = castbar.icon
 		end
+		
+		self:RegisterEvent("UNIT_PET", TukuiDB.updateAllElements)
 	end
 	
 	------------------------------------------------------------------------

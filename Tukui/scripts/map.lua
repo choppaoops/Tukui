@@ -244,9 +244,9 @@ coords.MouseText = TukuiDB.SetFontString(CoordsFrame, TukuiCF["media"].font2, 10
 coords.PlayerText:SetTextColor(WorldMapQuestShowObjectivesText:GetTextColor())
 coords.MouseText:SetTextColor(WorldMapQuestShowObjectivesText:GetTextColor())
 coords.PlayerText:SetPoint("RIGHT", WorldMapFrame, "BOTTOM", -10, 42)
-coords.PlayerText:SetText("Player:   0, 0")
+coords.PlayerText:SetText(PLAYER..":   0, 0")
 coords.MouseText:SetPoint("LEFT", WorldMapFrame, "BOTTOM", 10, 42)
-coords.MouseText:SetText("Mouse:   0, 0")
+coords.MouseText:SetText(MOUSE_LABEL..":   0, 0")
 
 local int = 0
 coords:SetScript("OnUpdate", function(self, elapsed)

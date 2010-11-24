@@ -178,21 +178,12 @@ if TukuiCF["datatext"].wowtime and TukuiCF["datatext"].wowtime > 0 then
 	Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 	Stat:SetScript("OnUpdate", Update)
 	Stat:RegisterEvent("UPDATE_INSTANCE_INFO")
-	if TukuiCF["general"].minimalistic ~= true then
-		Stat:SetScript("OnMouseDown", function() GameTimeFrame:Click() end)
-	else
-		Stat:SetScript("OnMouseDown", function(self, btn) 
-			if btn == "RightButton" then
-				OpenAllBags()
-			elseif btn == "MiddleButton" then
-				if not IsAddOnLoaded("Blizzard_GuildUI") then 
-					LoadAddOn("Blizzard_GuildUI")
-				end 
-				ToggleFrame(GuildFrame)
-			else
-				GameTimeFrame:Click() 
-			end
-		end)
-	end
+	Stat:SetScript("OnMouseDown", function(self, btn)
+		if btn == 'LeftButton'  then
+			ToggleCalendar()
+		else
+			ToggleTimeManager()
+		end
+	end)
 	Update(Stat, 10)
 end

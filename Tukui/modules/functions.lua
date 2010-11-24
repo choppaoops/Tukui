@@ -260,6 +260,9 @@ function TukuiDB.PP(p, obj)
 	elseif p == 13 then
 		obj:SetHeight(Tukuigoldbottomstat:GetHeight())
 		obj:SetPoint("LEFT", Tukuigoldbottomstat, "LEFT", 10, 0.5)
+	elseif p == 14 then
+		obj:SetHeight(Tukuispec:GetHeight())
+		obj:SetPoint("CENTER", Tukuispec, "CENTER", 1, 0.5)
 	end
 end
 
@@ -1412,7 +1415,7 @@ function TukuiDB.createAuraWatch(self, unit)
 			end
 
 			local count = icon:CreateFontString(nil, "OVERLAY")
-			count:SetFont(TukuiCF["media"].uffont, 8, "THINOUTLINE")
+			count:SetFont(TukuiCF["media"].font2, 10, "THINOUTLINE")
 			count:SetPoint("CENTER", unpack(TukuiDB.countOffsets[spell[2]]))
 			icon.count = count
 

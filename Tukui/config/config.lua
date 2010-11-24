@@ -182,6 +182,7 @@ TukuiCF["datatext"] = {
 	["hitrating"] = 11,                -- show hitrating
 	["bags"] = 4,                -- show space used in bags on panels
 	["points"] = 12,                -- show honor, justice points on panels
+	["specswitcher"] = 14, -- show your active talent group and allow you to switch on panels.
 	
 	["location_coords"] = true,			--Show location panel
 	["time24"] = false,                     -- set time to 24h format.
