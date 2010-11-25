@@ -49,17 +49,17 @@ if TukuiCF["datatext"].points and TukuiCF["datatext"].points > 0 then
 			GameTooltip:ClearAllPoints()
 			GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, TukuiDB.mult)
 			GameTooltip:ClearLines()
-			GameTooltip:AddLine(tukuilocal.datatext_currency)
+			GameTooltip:AddLine(valuecolor..tukuilocal.datatext_currency)
 			GameTooltip:AddLine" "
 
 			if h_amount > 0 then
-				GameTooltip:AddDoubleLine(h_name .. ":", h_amount)
+				GameTooltip:AddDoubleLine(h_name .. ":", valuecolor..h_amount,1,1,1)
 			end
 			if c_amount > 0 then
-				GameTooltip:AddDoubleLine(c_name .. ":", c_amount)
+				GameTooltip:AddDoubleLine(c_name .. ":", valuecolor..c_amount,1,1,1)
 			end
 			if j_amount > 0 then
-				GameTooltip:AddDoubleLine(j_name .. ":", j_amount)
+				GameTooltip:AddDoubleLine(j_name .. ":", valuecolor..j_amount,1,1,1)
 			end
 			GameTooltip:Show()
 		end

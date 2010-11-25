@@ -61,10 +61,10 @@ if TukuiCF["datatext"].specswitcher and TukuiCF["datatext"].specswitcher > 0 the
 				if(not GetPrimaryTalentTree()) then
 					GameTooltip:AddLine(valuecolor..tukuilocal.datatext_notalents)
 				elseif(hs) then
-					GameTooltip:AddLine((c == 1 and "* " or "  ") .. select(2,GetTalentTabInfo(majorTree1)).." "..group1tree1.."|r/"..group1tree2.."|r/"..group1tree3.."|r")
-					GameTooltip:AddLine((c == 2 and "* " or "  ") .. select(2,GetTalentTabInfo(majorTree2)).." "..group2tree1.."|r/"..group2tree2.."|r/"..group2tree3.."|r")
+					GameTooltip:AddLine(valuecolor..(c == 1 and "* " or "  ") .. "|r" .. select(2,GetTalentTabInfo(majorTree1))..": "..valuecolor..group1tree1.."/"..group1tree2.."/"..group1tree3,1,1,1)
+					GameTooltip:AddLine(valuecolor..(c == 2 and "* " or "  ") .. "|r" .. select(2,GetTalentTabInfo(majorTree2))..": "..valuecolor..group2tree1.."/"..group2tree2.."/"..group2tree3,1,1,1)
 				else
-					GameTooltip:AddLine(select(2,GetTalentTabInfo(majorTree1)).." "..group1tree1.."|r/"..group1tree2.."|r/"..group1tree3.."|r")
+					GameTooltip:AddLine(select(2,GetTalentTabInfo(majorTree1))..": "..valuecolor..group1tree1.."/"..group1tree2.."/"..group1tree3,1,1,1)
 				end
  
 				GameTooltip:Show()

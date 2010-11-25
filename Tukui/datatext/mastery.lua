@@ -17,8 +17,8 @@ if TukuiCF["datatext"].mastery and TukuiCF["datatext"].mastery > 0 then
 
 		if int < 0 then
 			Text:SetText(tukuilocal.datatext_mastery..valuecolor..format("%.2f", mastery).."%")
-			self:SetAllPoints(Text)
-			self:SetScript("OnEnter", function()
+			Stat:SetAllPoints(Text)
+			Stat:SetScript("OnEnter", function()
 		if not InCombatLockdown() then
 			GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, TukuiDB.Scale(6));
 			GameTooltip:ClearAllPoints()
@@ -28,7 +28,7 @@ if TukuiCF["datatext"].mastery and TukuiCF["datatext"].mastery > 0 then
 		end
 		GameTooltip:Show()
 	end)
-	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
 			int = 1
 		end
 	end

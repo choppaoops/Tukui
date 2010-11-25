@@ -60,6 +60,7 @@
 	tukuilocal.datatext_playersp = "Спд:"
 	tukuilocal.datatext_playerap = "ap"
 	tukuilocal.datatext_playercrit = "Крит. удар: "
+	tukuilocal.datatext_critrating = "Рейтинг критического удара:"
 	tukuilocal.datatext_hitrating = "Меткость: "
 	tukuilocal.datatext_session = "Сеанс: "
 	tukuilocal.datatext_character = "Персонаж: "

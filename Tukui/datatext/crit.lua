@@ -18,15 +18,33 @@ if TukuiCF["datatext"].crit and TukuiCF["datatext"].crit > 0 then
 		meleecrit = GetCritChance()
 		spellcrit = GetSpellCritChance(1)
 		rangedcrit = GetRangedCritChance()
+		meleecritrating = GetCombatRating(9)
+		spellcritrating = GetCombatRating(11)
+		rangedcritrating = GetCombatRating(10)
 		if spellcrit > meleecrit then
 			CritChance = spellcrit
+			CritChanceRating = spellcritrating
 		elseif TukuiDB.class == "HUNTER" then    
 			CritChance = rangedcrit
+			CritChanceRating = rangedcritrating
 		else
 			CritChance = meleecrit
+			CritChanceRating = meleecritrating
 		end
 		if int < 0 then
 			Text:SetText(tukuilocal.datatext_playercrit..valuecolor..format("%.2f", CritChance) .. "%")
+			Stat:SetAllPoints(Text)
+			Stat:SetScript("OnEnter", function()
+		if not InCombatLockdown() then
+			GameTooltip:SetOwner(self, "ANCHOR_BOTTOM", 0, -TukuiDB.Scale(6));
+			GameTooltip:ClearAllPoints()
+			GameTooltip:SetPoint("TOP", self, "BOTTOM", 0, -TukuiDB.mult)
+			GameTooltip:ClearLines()
+			GameTooltip:AddDoubleLine(tukuilocal.datatext_critrating,CritChanceRating,0, 0.6, 1, 1, 1, 1)
+		end
+		GameTooltip:Show()
+	end)
+	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
 			int = 1
 		end     
 	end
