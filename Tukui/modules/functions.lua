@@ -1056,7 +1056,6 @@ local parent = self:GetParent()
 			parent.FlashInfo:Hide()
 			parent.Status:Hide()
 		end
-		parent.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
 	
 		if (IsAddOnLoaded("Tukui_Dps_Layout") and DPSElementsCharPos and DPSElementsCharPos["PlayerBuffs"] == true) then return end
 		if (IsAddOnLoaded("Tukui_Heal_Layout") and HealElementsCharPos and HealElementsCharPos["PlayerBuffs"] == true) then return end
@@ -1065,7 +1064,7 @@ local parent = self:GetParent()
 
 		if parent.Debuffs then
 			parent.Debuffs:ClearAllPoints()
-			if parent.Debuffs then parent.Debuffs:SetPoint("BOTTOM", parent.Health, "TOP", 0, TukuiDB.Scale(17)) end
+			if parent.Debuffs then parent.Debuffs:SetPoint("BOTTOM", parent.Health, "TOP", 0, TukuiDB.Scale(14)) end
 		end 	
 	else
 		if self == parent.EclipseBar then

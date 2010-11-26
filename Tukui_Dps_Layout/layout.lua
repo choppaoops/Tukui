@@ -170,7 +170,7 @@ local function Shared(self, unit)
 		
 		-- name and level
 		local Name = health:CreateFontString(nil, "OVERLAY")
-		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort] [Tukui:diffcolor][level] [shortclassification]')
+		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort] [level] [shortclassification]')
 		Name:SetPoint("CENTER", health, "CENTER", TukuiDB.Scale(0), TukuiDB.Scale(1))
 		Name:SetJustifyH("LEFT")
 		Name:SetFont(font1, 10, "THINOUTLINE")
@@ -479,18 +479,18 @@ local function Shared(self, unit)
 			-- set holy power bar or shard bar
 			if (TukuiDB.myclass == "WARLOCK" or TukuiDB.myclass == "PALADIN") then
 				--ReAdjust main background (this is invisible.. we need to adjust this so buffs appear above the unitframe correctly.. and so we can click this module to target ourselfs)
-				self.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
-				player_height = player_height + TukuiDB.Scale(14)
+				player_height = player_height + TukuiDB.Scale(9)
 
 				local bars = CreateFrame("Frame", nil, self)
-				bars:SetPoint("BOTTOMLEFT", self.Health, "TOPLEFT", 0, TukuiDB.Scale(5))
-				bars:SetWidth(original_width)
-				bars:SetHeight(TukuiDB.Scale(8))
+				bars:SetPoint("BOTTOMLEFT", self.Health, "TOPLEFT", powerbar_offset+TukuiDB.Scale(2), TukuiDB.Scale(-1))
+				bars:SetWidth(original_width - TukuiDB.Scale(90))
+				bars:SetHeight(TukuiDB.Scale(5))
 				bars:SetBackdropBorderColor(0,0,0,0)
+				bars:SetFrameLevel(self:GetFrameLevel() + 3)
 
 				for i = 1, 3 do					
 					bars[i]=CreateFrame("StatusBar", self:GetName().."_Shard"..i, bars)
-					bars[i]:SetHeight(TukuiDB.Scale(8))					
+					bars[i]:SetHeight(TukuiDB.Scale(5))					
 					bars[i]:SetStatusBarTexture(normTex)
 					bars[i]:GetStatusBarTexture():SetHorizTile(false)
 
@@ -511,7 +511,7 @@ local function Shared(self, unit)
 					end
 
 					bars[i].bg:SetAllPoints(bars[i])
-					bars[i]:SetWidth(TukuiDB.Scale(original_width - 2)/3)
+					bars[i]:SetWidth(TukuiDB.Scale(original_width - 92)/3)
 
 					bars[i].bg:SetTexture(normTex)					
 					bars[i].bg:SetAlpha(.15)
@@ -544,6 +544,7 @@ local function Shared(self, unit)
 				end
 				bars.FrameBackdrop = CreateFrame("Frame", nil, bars)
 				TukuiDB.SetTemplate(bars.FrameBackdrop)
+				TukuiDB.CreateShadow(bars.FrameBackdrop)
 				bars.FrameBackdrop:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 				bars.FrameBackdrop:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 				bars.FrameBackdrop:SetFrameLevel(bars:GetFrameLevel() - 1)

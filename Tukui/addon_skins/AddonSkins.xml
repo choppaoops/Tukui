@@ -2,6 +2,6 @@
 	<Script file='LoadSkins.lua' />
 	<Script file='skins\DXE.lua' />
 	<Script file='skins\Omen.lua' />
-	<Script file='skins\Recount.lua' />
 	<Script file='skins\Skada.lua' />
+	<Script file='skins\QBar.lua' />
 </Ui>

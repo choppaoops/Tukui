@@ -1,6 +1,6 @@
 TukuiCF["media"] = {
 	-- fonts
-	["font"] = [=[Interface\Addons\Tukui\media\fonts\parangon_410c.ttf]=], -- general font of tukui
+	["font"] = [=[Interface\Addons\Tukui\media\fonts\normal_font.ttf]=], -- general font of tukui
 	["font2"] = [=[Interface\Addons\Tukui\media\fonts\visitor_rus.ttf]=],
 	["dmgfont"] = [[Interface\AddOns\Tukui\media\fonts\combat.ttf]], -- general font of dmg / sct
 	

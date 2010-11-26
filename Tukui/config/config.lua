@@ -12,6 +12,7 @@ TukuiCF["skin"] = {	--Skin addons by Darth Android
 	["skada"] = false,
 	["dxe"] = true,
 	["omen"] = false,
+	["qbar"] = true,
 }
 
 TukuiCF["unitframes"] = {
@@ -227,7 +228,7 @@ TukuiCF["buffreminder"] = {
 TukuiCF["error"] = {
 	["enable"] = true, -- true to enable this mod, false to disable
 		filter = { -- what messages to not hide
-			["Inventory is full."] = true, -- inventory is full will not be hidden by default
+			--["Inventory is full."] = true, -- inventory is full will not be hidden by default
 		},
 }
 
