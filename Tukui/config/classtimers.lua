@@ -2,9 +2,6 @@ CreateSpellEntry = function( id, castByAnyone, color, unitType, castSpellId )
 	return { id = id, castByAnyone = castByAnyone, color = color, unitType = unitType or 0, castSpellId = castSpellId };
 end
 
-
-
-
 TRINKET_FILTER = {
 	CreateSpellEntry( 75477 ), -- Scaly Nimbleness [Petrified Twilight Scale] 271
 	CreateSpellEntry( 75480 ), -- Scaly Nimbleness [Petrified Twilight Scale] 285
@@ -50,7 +47,6 @@ TRINKET_FILTER = {
     CreateSpellEntry( 67773 ), -- Paragon Strength (Death's Verdict/Choice Heroic)
 	CreateSpellEntry( 71579 ), -- Elusive Power (Maghia's Misguided Quill)
 	CreateSpellEntry( 67669 ), -- Elusive Power (Abyssal Rune)
-
 	CreateSpellEntry( 67684 ), -- Hospitality (Talisman of Resurgence)
 	CreateSpellEntry( 71584 ), -- Revitalized (Purified Lunar Dust)
 	CreateSpellEntry( 53909 ), -- Potion of Wild Magic
@@ -101,7 +97,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 81340 ), -- Sudden Doom
 		},
 },
-
 	DRUID = { 
 		target = { 
 			CreateSpellEntry( 48438 ), -- Wild Growth
@@ -110,10 +105,8 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 33763 ), -- Lifebloom
 			CreateSpellEntry( 5570 ), -- Insect Swarm
 			CreateSpellEntry( 8921 ), -- Moonfire
-
 			CreateSpellEntry( 339 ), -- Entangling Roots
 			CreateSpellEntry( 33786 ), -- Cyclone
-
 			CreateSpellEntry( 2637 ), -- Hibernate
 			CreateSpellEntry( 2908 ), -- Soothe
 			CreateSpellEntry( 50259 ), -- Feral Charge (Cat) - daze
@@ -224,7 +217,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 543 ), -- Mage Ward
 			CreateSpellEntry( 11426 ), -- Ice Barrier
 			CreateSpellEntry( 45438 ), -- Ice Block
-
 			CreateSpellEntry( 12472 ), -- Icy Veins
 			CreateSpellEntry( 130 ), -- Slow Fall
 			CreateSpellEntry( 57761 ), -- Brain Freeze
@@ -240,7 +232,6 @@ CLASS_FILTERS = {
 		target = {
 			CreateSpellEntry( 31803 ), -- Censure 
 			CreateSpellEntry( 20066 ), -- Repentance 
-
 			CreateSpellEntry( 853 ), -- Hammer of Justice 
 			CreateSpellEntry( 31935 ), -- Avenger's Shield 
 			CreateSpellEntry( 20170 ), -- Seal of Justice 
@@ -249,7 +240,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 86273 ), -- Illuminated Healing
 			CreateSpellEntry( 1044 ), -- Hand of Freedom
 			CreateSpellEntry( 1022 ), -- Hand of Protection
-
 			CreateSpellEntry( 1038 ), -- Hand of Salvation
 			CreateSpellEntry( 6940 ), -- Hand of Sacrifice
 		},
@@ -257,20 +247,16 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 642 ), -- Divine Shield
 			CreateSpellEntry( 31850 ), -- Ardent Defender
 			CreateSpellEntry( 498 ), -- Divine Protection
-
 			CreateSpellEntry( 31884 ), -- Avenging Wrath
 			CreateSpellEntry( 87342 ), -- Holy Shield
 			CreateSpellEntry( 85433 ), -- Sacred Duty
 			CreateSpellEntry( 85416 ), --Grand Crusader
 			CreateSpellEntry( 20053 ), -- Conviction
-
 			CreateSpellEntry( 85696 ), -- Zealotry
 			CreateSpellEntry( 1044 ), -- Hand of Freedom
 			CreateSpellEntry( 1022 ), -- Hand of Protection
-
 			CreateSpellEntry( 1038 ), -- Hand of Salvation
 			CreateSpellEntry( 6940 ), -- Hand of Sacrifice
-
 			CreateSpellEntry( 53657 ), -- Judgements of the Pure
 			CreateSpellEntry( 53563 ), -- Beacon of Light
 			CreateSpellEntry( 31821 ), -- Aura Mastery
@@ -338,7 +324,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 6770 ), -- Sap
 			CreateSpellEntry( 1943 ), -- Rupture --
 			CreateSpellEntry( 703 ), -- Garrote --
-
 			CreateSpellEntry( 79140 ), -- vendetta
 			CreateSpellEntry( 16511 ), -- Hemorrhage
 		},
@@ -364,12 +349,11 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 8050), -- Flame Shock
 			CreateSpellEntry( 8056 ), -- Frost Shock
 			CreateSpellEntry( 17364 ), -- Storm Strike
-
 			CreateSpellEntry( 61295 ), -- Riptide
 			CreateSpellEntry( 51945 ), -- Earthliving
 			CreateSpellEntry( 77657 ), -- Searing Flames
 		},
-			player = {
+		player = {
 			CreateSpellEntry( 324 ), -- Lightning Shield
 			CreateSpellEntry( 52127 ), -- Water Shield
 			CreateSpellEntry( 974 ), -- Earth Shield
@@ -389,21 +373,18 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 30108, false, nil, nil, 30108 ), -- Unstable Affliction
 			CreateSpellEntry( 603 ), -- Curse of Doom
 			CreateSpellEntry( 980 ), -- Curse of Agony
-
 			CreateSpellEntry( 1490 ), -- Curse of the Elements 
 			CreateSpellEntry( 17962 ), -- Conflagration
 			CreateSpellEntry( 348, false, nil, nil, 348 ), -- Immolate
 			CreateSpellEntry( 27243, false, nil, nil, 27243 ), -- Seed of Corruption
-
 		},
-			player = {            
+		player = {            
 			CreateSpellEntry( 17941 ), -- Shadow trance 
 			CreateSpellEntry( 64371 ), -- Eradication
 		},
 		procs = {
 			CreateSpellEntry( 86121 ), -- Soul Swap
 			CreateSpellEntry( 54276 ), -- Backdraft
-
 			CreateSpellEntry( 71165 ), -- Molten Cor
 			CreateSpellEntry( 63167 ), -- Decimation
 		},
@@ -440,7 +421,6 @@ CLASS_FILTERS = {
 			CreateSpellEntry( 86662 ), CreateSpellEntry( 86663 ), -- Rude interruption rank 1 and 2
 		},
 		procs = {
-
 		},
 	},
 };

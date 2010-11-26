@@ -57,8 +57,8 @@
 	tukuilocal.datatext_profit = "Прибыль:"
 	tukuilocal.datatext_wg = "Время до Озера:"
 	tukuilocal.datatext_friendlist = "Список друзей:"
-	tukuilocal.datatext_playersp = "Спд:"
-	tukuilocal.datatext_playerap = "ap"
+	tukuilocal.datatext_playersp = "Спд: "
+	tukuilocal.datatext_playerap = "AP: "
 	tukuilocal.datatext_playercrit = "Крит. удар: "
 	tukuilocal.datatext_critrating = "Рейтинг критического удара:"
 	tukuilocal.datatext_hitrating = "Меткость: "
@@ -115,7 +115,7 @@
 	tukuilocal.mail_mailneed = "Нужен почтовый ящик."
 
 	tukuilocal.addon_manager = "Список дополнений"
-	tukuilocal.addon_close = "Закрыть"
+	tukuilocal.addon_save = "Сохранить настройки"
 	tukuilocal.addon_dep = "|cffff4400Зависимые ресурсы: |r"
 
 	tukuilocal.Slots = {
@@ -227,7 +227,7 @@
 	tukuilocal.core_raidutil_clear = "Очистить"
 	
 	tukuilocal.core_markbar_cleartarget = "Убрать"
-	tukuilocal.core_markbar = "Метки рейда"
+	tukuilocal.core_markbar = "Панель меток"
  
 	tukuilocal.hunter_unhappy = "Ваш питомец несчастлив!"
 	tukuilocal.hunter_content = "Ваш питомец доволен!"

@@ -116,7 +116,7 @@ tukuilocal.mail_inventoryfull = "Stopped, inventory is full."
 tukuilocal.mail_mailneed = "Need a mailbox."
 
 tukuilocal.addon_manager = "AddOn Manager"
-tukuilocal.addon_close = "Close"
+tukuilocal.addon_save = "Save Settings"
 tukuilocal.addon_dep = "|cffff4400Dependencies: |r"
 
 tukuilocal.Slots = {

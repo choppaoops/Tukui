@@ -81,7 +81,7 @@ if TukuiCF["datatext"].stat1 and TukuiCF["datatext"].stat1 > 0 then
 					spellpwr = GetSpellBonusDamage(7)
 				end
 				
-				Text:SetText(tukuilocal.datatext_playersp.." "..valuecolor..spellpwr)      
+				Text:SetText(tukuilocal.datatext_playersp..valuecolor..spellpwr)      
 			elseif TukuiDB.Role == "Melee" then
 				local base, posBuff, negBuff = UnitAttackPower("player");
 				local effective = base + posBuff + negBuff;
@@ -95,7 +95,7 @@ if TukuiCF["datatext"].stat1 and TukuiCF["datatext"].stat1 > 0 then
 					pwr = effective
 				end
 				
-				Text:SetText(tukuilocal.datatext_playerap.." "..valuecolor..pwr)      
+				Text:SetText(tukuilocal.datatext_playerap..valuecolor..pwr)      
 			end
 			int = 1
 		end

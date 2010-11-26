@@ -42,6 +42,13 @@ elseif TukuiDB.client == "koKR" then
 	TukuiCF["media"].font2 = TukuiCF["media"].kr_font2
 	TukuiCF["media"].dmgfont = TukuiCF["media"].kr_dmgfont
 end
+
+if TukuiDB.myname == "Экст" then
+	TukuiCF["actionbar"].hotkey = false
+	TukuiCF["actionbar"].rightbarmouseover = true
+	TukuiCF["actionbar"].showgrid = false
+	TukuiCF["actionbar"].bottompetbar = true
+end
 ------------------------------------------------------------------------
 -- auto-overwrite script config is X mod is found
 ------------------------------------------------------------------------

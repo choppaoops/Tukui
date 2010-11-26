@@ -125,14 +125,14 @@ TukuiCF["arena"] = {
 
 TukuiCF["actionbar"] = {
 	["enable"] = true,                     -- enable tukz action bars
-		["hotkey"] = false,                     -- enable hotkey display because it was a lot requested
+		["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
 		["rightbarmouseover"] = false,         -- enable right bars on mouse over
 		["shapeshiftmouseover"] = true,       -- enable shapeshift or totembar on mouseover
 		["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 		["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1, 2, 3 only), if 3, splitbar will be disabled
 		["rightbars"] = 1,                     -- numbers of right bar you want
 		["splitbar"] = true,					-- split the third right actionbar into two rows of 3 on the left and right side of the main actionbar
-		["showgrid"] = false,                   -- show grid on empty button
+		["showgrid"] = true,                   -- show grid on empty button
 		["bottompetbar"] = false,        -- position petbar below the actionbars instead of the right side
 		["buttonsize"] = 27,          --size of action buttons
 		["buttonspacing"] = 4,          --spacing of action buttons
