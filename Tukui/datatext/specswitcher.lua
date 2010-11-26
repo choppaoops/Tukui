@@ -38,7 +38,7 @@ if TukuiCF["datatext"].specswitcher and TukuiCF["datatext"].specswitcher > 0 the
 		local group1tree2 = select(5,GetTalentTabInfo(2,false,false,1))
 		local group1tree3 = select(5,GetTalentTabInfo(3,false,false,1))
 		local majorTree1 = GetPrimaryTalentTree(false,false,1)
-		local hs = GetNumTalentGroups() == 2
+		local hs = (GetNumTalentGroups() == 2 and GetPrimaryTalentTree(false,false,2))
 		local group2tree1 = hs and select(5,GetTalentTabInfo(1,false,false,2))
 		local group2tree2 = hs and select(5,GetTalentTabInfo(2,false,false,2))
 		local group2tree3 = hs and select(5,GetTalentTabInfo(3,false,false,2))
