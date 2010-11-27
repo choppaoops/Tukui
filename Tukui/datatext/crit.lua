@@ -32,7 +32,7 @@ if TukuiCF["datatext"].crit and TukuiCF["datatext"].crit > 0 then
 			CritChanceRating = meleecritrating
 		end
 		if int < 0 then
-			Text:SetText(tukuilocal.datatext_playercrit..valuecolor..format("%.2f", CritChance) .. "%")
+			Text:SetText(SPELL_CRIT_CHANCE..": "..valuecolor..format("%.2f", CritChance) .. "%")
 			Stat:SetAllPoints(Text)
 			Stat:SetScript("OnEnter", function()
 		if not InCombatLockdown() then

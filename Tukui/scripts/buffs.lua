@@ -169,17 +169,17 @@ local hr, m, s, text
 	elseif(time < 3600 and time > 60) then
 		hr = floor(time / 3600)
 		m = floor(mod(time, 3600) / 60 + 1)
-		text = format("%d"..""..valuecolor.." м.", m)
+		text = format("%d"..""..valuecolor..tukuilocal.buffs_min_abr, m)
 	elseif(time < 60 and time > 10) then
 		m = floor(time / 60)
 		s = mod(time, 60)
-		text = (m == 0 and format("%d"..valuecolor.." с.", s))
+		text = (m == 0 and format("%d"..valuecolor..tukuilocal.buffs_sec_abr, s))
 	elseif time < 10 then
 		s = mod(time, 60)
-		text = (format("%d"..valuecolor.." с.", s))
+		text = (format("%d"..valuecolor..tukuilocal.buffs_sec_abr, s))
 	else
 		hr = floor(time / 3600 + 1)
-		text = format("%d"..valuecolor.." ч.", hr)
+		text = format("%d"..valuecolor..tukuilocal.buffs_hour_abr, hr)
 	end
 	text = format("|cffffffff".."%s", text)
 	return text

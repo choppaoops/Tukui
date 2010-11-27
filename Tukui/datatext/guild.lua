@@ -33,7 +33,7 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 				end
 			end 			
 			self:SetAllPoints(Text)
-			Text:SetText(tukuilocal.datatext_guild..valuecolor..numOnline)
+			Text:SetText(GUILD..": "..valuecolor..numOnline)
 		else
 			Text:SetText(valuecolor..tukuilocal.datatext_noguild)
 		end
@@ -97,7 +97,7 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 				GameTooltip:ClearAllPoints()
 				GameTooltip:SetPoint(anchor, self, snapfrom, 0, yoffset2)
 				GameTooltip:ClearLines()
-				GameTooltip:AddDoubleLine(GetGuildInfo'player',format("%s %d/%d",tukuilocal.datatext_guild,online,total),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
+				GameTooltip:AddDoubleLine(GetGuildInfo'player',format("%s %d/%d",FRIENDS_LIST_ONLINE..":",online,total),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 				GameTooltip:AddLine' '
 				if gmotd ~= "" then GameTooltip:AddLine(format("  %s |cffaaaaaa- |cffffffff%s",GUILD_MOTD,gmotd),ttsubh.r,ttsubh.g,ttsubh.b,1) end
 				if online > 1 then

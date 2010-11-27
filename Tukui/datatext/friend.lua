@@ -63,7 +63,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 				for i = 1, BNtotal do if select(7, BNGetFriendInfo(i)) then BNonline = BNonline + 1 end end
 			end
 			local totalonline = online + BNonline
-			Text:SetText(tukuilocal.datatext_friends..valuecolor..totalonline)
+			Text:SetText(FRIENDS..": "..valuecolor..totalonline)
 			self:SetAllPoints(Text)
 	end
 
@@ -107,7 +107,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 				GameTooltip:ClearAllPoints()
 				GameTooltip:SetPoint(anchor, self, snapfrom, 0, yoffset2)
 				GameTooltip:ClearLines()
-				GameTooltip:AddDoubleLine(tukuilocal.datatext_friendlist, format(tukuilocal.datatext_online .. "%s/%s",totalonline,totalfriends),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
+				GameTooltip:AddDoubleLine(FRIENDS..": ", format(FRIENDS_LIST_ONLINE..": " .. "%s/%s",totalonline,totalfriends),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 				if online > 0 then
 					GameTooltip:AddLine' '
 					GameTooltip:AddLine("World of Warcraft")

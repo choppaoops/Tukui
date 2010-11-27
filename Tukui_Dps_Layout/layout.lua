@@ -425,7 +425,6 @@ local function Shared(self, unit)
 			-- show druid mana when shapeshifted in bear, cat or whatever
 			if TukuiDB.myclass == "DRUID" then
 				--ReAdjust main background (this is invisible.. we need to adjust this so buffs appear above the unitframe correctly.. and so we can click this module to target ourselfs)
-				self.FrameBorder.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(17))
 				player_height = player_height + TukuiDB.Scale(14)
 
 				CreateFrame("Frame"):SetScript("OnUpdate", function() TukuiDB.UpdateDruidMana(self) end)
@@ -467,6 +466,7 @@ local function Shared(self, unit)
 		
 				eclipseBar.FrameBackdrop = CreateFrame("Frame", nil, eclipseBar)
 				TukuiDB.SetTemplate(eclipseBar.FrameBackdrop)
+				TukuiDB.CreateShadow(eclipseBar.FrameBackdrop)
 				eclipseBar.FrameBackdrop:SetPoint("TOPLEFT", eclipseBar, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 				eclipseBar.FrameBackdrop:SetPoint("BOTTOMRIGHT", lunarBar, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 				eclipseBar.FrameBackdrop:SetFrameLevel(eclipseBar:GetFrameLevel() - 1)
