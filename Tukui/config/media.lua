@@ -6,8 +6,8 @@ TukuiCF["media"] = {
 	
 	-- fonts (TAIWAN ONLY)
 	["tw_font"] = [=[fonts\bLEI00D.ttf]=], -- general font of tukui
-	["tw_font2"] = [[fonts\bLEI00D.ttf]], -- general font of unitframes
-	["tw_dmgfont"] = [[fonts\bLEI00D.ttf]], -- general font of dmg / sct
+	["tw_font2"] = [[Interface\Addons\Tukui\media\fonts\visitor_rus.ttf]], -- general font of unitframes
+	["tw_dmgfont"] = [[Interface\AddOns\Tukui\media\fonts\combat.ttf]], -- general font of dmg / sct
 	
 	-- fonts (KOREAN ONLY)
 	["kr_font"] = [=[Fonts\2002.TTF]=], -- general font of tukui
