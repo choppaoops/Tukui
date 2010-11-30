@@ -69,7 +69,7 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 			int = 10
 		end
 		if int2 < 0 then
-			Text:SetText(FPS_ABBR..": "..valuecolor..floor(GetFramerate()).."  |r"..MILLISECONDS_ABBR..": "..valuecolor..select(3, GetNetStats()))
+			Text:SetText("fps"..": "..valuecolor..floor(GetFramerate()).."  |r".."ms"..": "..valuecolor..select(3, GetNetStats()))
 			int2 = 0.8
 		end
 	end
