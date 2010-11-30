@@ -2,14 +2,14 @@
 	["autoscale"] = true,                  -- mainly enabled for users that don't want to mess with the config file
 	["uiscale"] = 0.78,                    -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["multisampleprotect"] = true,         -- i don't recommend this because of shitty border but, voila!
-	["embedright"] = "NONE",				-- Addon to embed to the right frame ("Omen", "Recount", "Skada")
+	["embedright"] = "Skada",				-- Addon to embed to the right frame ("Omen", "Recount", "Skada")
 	["classcolortheme"] = false,			--class colored theme for panels
 	["autocustomlagtolerance"] = true,    --set custom lag tollerance to your latency
 }
 
 TukuiCF["skin"] = {	--Skin addons by Darth Android
-	["recount"] = false,
-	["skada"] = false,
+	["recount"] = true,
+	["skada"] = true,
 	["dxe"] = true,
 	["omen"] = false,
 	["qbar"] = true,
@@ -29,9 +29,9 @@ TukuiCF["unitframes"] = {
 	["classcolor"] = false,                  -- color unitframes by class
 	["healthcolor"] = TukuiCF["media"].backdropcolor, --color of the unitframe when unicolor theme is enabled
 	["healthbackdropcolor"] = { 0, 0, 0, 1 }, --backdropcolor of the unitframe
-	["healthcolorbyvalue"] = false,      -- color health by current health remaining
+	["healthcolorbyvalue"] = true,      -- color health by current health remaining
 	["combatfeedback"] = false,             -- enable combattext on player and target.
-	["playeraggro"] = false,                -- color player border to red if you have aggro on current target.
+	["playeraggro"] = true,                -- color player border to red if you have aggro on current target.
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
 	["swingbar"] = false,					--enables swingbar (dps layout only)
 	["debuffhighlight"] = false,				--highlight frame with the debuff color if the frame is dispellable
@@ -74,14 +74,14 @@ TukuiCF["raidframes"] = {
 }
 
 TukuiCF["auras"] = {
-	["auratimer"] = false,                  -- enable timers on buffs/debuffs
+	["auratimer"] = true,                  -- enable timers on buffs/debuffs
 	["auratextscale"] = 10,                -- the font size of buffs/debuffs timers on unitframes
-	["playerauras"] = false,               -- enable auras
-	["playershowonlydebuffs"] = false, 		-- only show the players debuffs over the player frame, not buffs (playerauras must be true)
+	["playerauras"] = true,               -- enable auras
+	["playershowonlydebuffs"] = true, 		-- only show the players debuffs over the player frame, not buffs (playerauras must be true)
 	["playerdebuffsonly"] = false,			-- show the players debuffs on target, and any debuff in the whitelist (see debuffFilter.lua)
 	["targetauras"] = true,                -- enable auras on target unit frame
 	["minimapauras"] = true,				-- enable minimap auras
-	["arenadebuffs"] = false, 				-- enable debuff filter for arena frames
+	["arenadebuffs"] = true, 				-- enable debuff filter for arena frames
 	["raidunitbuffwatch"] = false,       -- track important spell to watch in pve for grid mode.
 	["totdebuffs"] = false,                -- enable tot debuffs (high reso only)
 	["focusdebuffs"] = false,              -- enable focus debuffs 
@@ -100,7 +100,7 @@ TukuiCF["castbar"] = {
 }
 
 TukuiCF["classtimer"] = {
-	["enable"] = false,
+	["enable"] = true,
 		["bar_height"] = 17,
 		["bar_spacing"] = 1,
 		["icon_position"] = 2, -- 0 = left, 1 = right, 2 = Outside left, 3 = Outside Right
@@ -120,8 +120,8 @@ TukuiCF["combattext"] = {
 }
 
 TukuiCF["arena"] = {
-	["unitframes"] = false,                 -- enable tukz arena unitframes (requirement : tukui unitframes enabled)
-	["spelltracker"] = false,               -- enable tukz enemy spell tracker (an afflicted3 or interruptbar alternative)
+	["unitframes"] = true,                 -- enable tukz arena unitframes (requirement : tukui unitframes enabled)
+	["spelltracker"] = true,               -- enable tukz enemy spell tracker (an afflicted3 or interruptbar alternative)
 }
 
 TukuiCF["actionbar"] = {
