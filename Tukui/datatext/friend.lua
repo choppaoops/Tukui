@@ -63,7 +63,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 				for i = 1, BNtotal do if select(7, BNGetFriendInfo(i)) then BNonline = BNonline + 1 end end
 			end
 			local totalonline = online + BNonline
-			Text:SetText(FRIENDS..": "..valuecolor..totalonline)
+			Text:SetText("friends"..": "..valuecolor..totalonline)
 			self:SetAllPoints(Text)
 	end
 
