@@ -16,10 +16,10 @@ local Tooltips = {GameTooltip,ItemRefTooltip,ShoppingTooltip1,ShoppingTooltip2,S
 local linkTypes = {item = true, enchant = true, spell = true, quest = true, unit = true, talent = true, achievement = true, glyph = true}
 
 local classification = {
-	worldboss = "|cffAF5050Босс|r",
-	rareelite = "|cffAF5050+ Редкий|r",
+	worldboss = "|cffAF5050Boss|r",
+	rareelite = "|cffAF5050+ rare|r",
 	elite = "|cffAF5050+|r",
-	rare = "|cffAF5050Редкий|r",
+	rare = "|cffAF5050rare|r",
 }
  	
 local NeedBackdropBorderRefresh = false
