@@ -3,8 +3,8 @@ if not TukuiCF["nameplate"].enable == true then return end
 
 local TEXTURE = TukuiCF["media"].normTex
 local FONT = TukuiCF["media"].font2
-local FONTSIZE = 6.5
-local FONTFLAG = "THINOUTLINE"
+local FONTSIZE = 8
+local FONTFLAG = "OUTLINEMONOCHROME"
 local hpHeight = 12
 local hpWidth = 110
 local iconSize = 25		--Size of all Icons, RaidIcon/ClassIcon/Castbar Icon
@@ -372,7 +372,7 @@ local function SkinObjects(frame)
 	--Create Cast Name Text
 	cb.name = cb:CreateFontString(nil, "ARTWORK")
 	cb.name:SetPoint("TOP", cb, "BOTTOM", 0, -3)
-	cb.name:SetFont(FONT, FONTSIZE, FONTFLAG)
+	cb.name:SetFont(FONT, FONTSIZE, "OUTLINE")
 	cb.name:SetTextColor(1, 1, 1)
 	cb.name:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	
@@ -388,7 +388,7 @@ local function SkinObjects(frame)
 	local name = hp:CreateFontString(nil, 'OVERLAY')
 	name:SetPoint('BOTTOMLEFT', hp, 'TOPLEFT', -10, 3)
 	name:SetPoint('BOTTOMRIGHT', hp, 'TOPRIGHT', 10, 3)
-	name:SetFont(FONT, FONTSIZE, FONTFLAG)
+	name:SetFont(FONT, FONTSIZE, "OUTLINE")
 	name:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	frame.oldname = oldname
 	frame.name = name
