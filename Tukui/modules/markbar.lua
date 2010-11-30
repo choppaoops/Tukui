@@ -82,7 +82,7 @@ end)
  
 local HiddenToggleButtonText = HiddenToggleButton:CreateFontString("tmb_HiddenToggleButtonText","OVERLAY",HiddenToggleButton)
 HiddenToggleButtonText:SetFont(font,fontsize,"OUTLINE")
-HiddenToggleButtonText:SetText(RAID..": "..valuecolor..tukuilocal.core_markbar)
+HiddenToggleButtonText:SetText("raid"..": "..valuecolor..tukuilocal.core_markbar)
 HiddenToggleButtonText:SetPoint("CENTER", 1, 0.5)
  
 --Create button for when frame is shown
