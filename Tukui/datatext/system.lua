@@ -24,16 +24,16 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 		if memory > 999 then
 			local mem = floor((memory/1024) * mult + 0.5) / mult
 			if mem % 1 == 0 then
-				return mem..string.format(".0 %sмб%s", unpack(statColor))
+				return mem..string.format(".0 %smb%s", unpack(statColor))
 			else
-				return mem..string.format(" %sмб%s", unpack(statColor))
+				return mem..string.format(" %smb%s", unpack(statColor))
 			end
 		else
 			local mem = floor(memory * mult + 0.5) / mult
 				if mem % 1 == 0 then
-					return mem..string.format(".0 %sкб%s", unpack(statColor))
+					return mem..string.format(".0 %skb%s", unpack(statColor))
 				else
-					return mem..string.format(" %sкб%s", unpack(statColor))
+					return mem..string.format(" %skb%s", unpack(statColor))
 				end
 		end
 
