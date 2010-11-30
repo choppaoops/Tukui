@@ -21,13 +21,13 @@ if TukuiCF["datatext"].points and TukuiCF["datatext"].points > 0 then
 		local conquest = ""
 		local justice = ""
 		if h_amount > 0 then
-			honor = ("Ч: "..valuecolor..h_amount .. " "..cEnd)
+			honor = ("hp: "..valuecolor..h_amount .. " "..cEnd)
 		end
 		if c_amount > 0 then
-			conquest = ("Д: "..valuecolor..c_amount .. " "..cEnd)
+			conquest = ("cp: "..valuecolor..c_amount .. " "..cEnd)
 		end
 		if j_amount > 0 then
-			justice = ("С: "..valuecolor..j_amount)
+			justice = ("jp: "..valuecolor..j_amount)
 		end
 
 		if h_amount == 0 and c_amount == 0 and j_amount == 0 then
