@@ -1,7 +1,6 @@
 if not TukuiCF["raidframes"].enable == true or TukuiCF["raidframes"].gridonly == true then return end
 
-local font2 = TukuiCF["media"].font2
-local font1 = TukuiCF["media"].font2
+local font = TukuiCF["media"].font2
 local normTex = TukuiCF["media"].normTex
 
 --Frame Size
@@ -36,7 +35,7 @@ local function Shared(self, unit)
 
 	health.value = health:CreateFontString(nil, "OVERLAY")
 	health.value:SetPoint("RIGHT", health, -3, 1)
-	health.value:SetFont(font2, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
+	health.value:SetFont(font, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
 	health.value:SetTextColor(1,1,1)
 	health.value:SetShadowOffset(1, -1)
 	self.Health.value = health.value
@@ -96,9 +95,8 @@ local function Shared(self, unit)
 
 	local name = health:CreateFontString(nil, "OVERLAY")
     name:SetPoint("LEFT", health, 3, 1)
-	name:SetFont(font2, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
+	name:SetFont(font, TukuiCF["raidframes"].fontsize, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
-	--name.frequentUpdates = 0.2
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:namelong]")
 	self.Name = name
 
@@ -183,13 +181,6 @@ local function Shared(self, unit)
 	if TukuiCF["auras"].raidunitbuffwatch == true then
 		TukuiDB.createAuraWatch(self,unit)
     end
-
-	self:Hide()
-
-	-- execute an update on every raids unit if party or raid member changed
-	-- should fix issues with names/symbols/etc not updating introduced with 4.0.3 patch
-	self:RegisterEvent("PARTY_MEMBERS_CHANGED", TukuiDB.updateAllElements)
-	self:RegisterEvent("RAID_ROSTER_UPDATE", TukuiDB.updateAllElements)
 
 	return self
 end

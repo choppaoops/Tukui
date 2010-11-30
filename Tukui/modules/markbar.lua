@@ -1,5 +1,5 @@
 -- Mark Bar created by Smelly
--- Credits to Hydra, Elv22, and Safturento
+-- Credits to Hydra, Elv22, Safturento, and many more!
  
 -- Config
 font = TukuiCF.media.font2           	-- Font to be used for button text
@@ -202,7 +202,7 @@ MainTankButton:SetAttribute("unit", "target")
 MainTankButton:SetAttribute("action", "set")
  
 --MainAssist Button
-CreateButton("MainAssistButton", RaidUtilityPanel, "SecureActionButtonTemplate", (DisbandRaidButton:GetWidth() / 2) - TukuiDB.Scale(2), TukuiDB.Scale(18), "TOPRIGHT", RoleCheckButton, "BOTTOMRIGHT", 0, TukuiDB.Scale(-5), MAINASSIST, nil)
+CreateButton("MainAssistButton", RaidUtilityPanel, "SecureActionButtonTemplate", (DisbandRaidButton:GetWidth() / 2) - TukuiDB.Scale(2), TukuiDB.Scale(18), "TOPRIGHT", RoleCheckButton, "BOTTOMRIGHT", 0, TukuiDB.Scale(-5), MAIN_ASSIST, nil)
 TukuiDB.SetTemplate(MainAssistButton)
 MainAssistButton:SetAttribute("type", "mainassist")
 MainAssistButton:SetAttribute("unit", "target")

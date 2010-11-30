@@ -1,6 +1,6 @@
 if not TukuiCF["others"].enablemap == true then return end
 
-local mapscale = WORLDMAP_WINDOWED_SIZE
+local mapscale = 0.65
 
 local glowt = TukuiCF["media"].glowTex
 local ft = TukuiCF["media"].font2 -- Map font
@@ -86,6 +86,8 @@ local SmallerMapSkin = function()
 	WorldMapTitleButton:SetFrameStrata("MEDIUM")
 	WorldMapTooltip:SetFrameStrata("TOOLTIP")
 	
+	WorldMapFrameAreaFrame:SetFrameStrata("DIALOG")
+	WorldMapFrameAreaFrame:SetFrameLevel(20)
 	WorldMapFrameAreaLabel:SetFont(ft, fontsize*1.7, "OUTLINE")
 	WorldMapFrameAreaLabel:SetShadowOffset(2, -2)
 	WorldMapFrameAreaLabel:SetTextColor(0.90, 0.8294, 0.6407)
@@ -238,7 +240,7 @@ tinymap:SetScript("OnEvent", function(self, event, addon)
 	end)
 end)
 
-local coords = CreateFrame("Frame", "CoordsFrame", WorldMapFrame)
+coords = CreateFrame("Frame", "CoordsFrame", WorldMapFrame)
 coords.PlayerText = TukuiDB.SetFontString(CoordsFrame, TukuiCF["media"].font2, 10, "THINOUTLINE")
 coords.MouseText = TukuiDB.SetFontString(CoordsFrame, TukuiCF["media"].font2, 10, "THINOUTLINE")
 coords.PlayerText:SetTextColor(WorldMapQuestShowObjectivesText:GetTextColor())

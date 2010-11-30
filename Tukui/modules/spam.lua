@@ -17,9 +17,10 @@ local SpamList = {
 	"монетки",
 	"Блестяшkи",
 }
-local function TRADE_FILTER(self, event, arg1)
+local function TRADE_FILTER(self, event, arg1, arg2)
 	if (SpamList and SpamList[1]) then
 		for i, SpamList in pairs(SpamList) do
+			if arg2 == TukuiDB.myname then return end
 			if (strfind(arg1, SpamList)) then
 				return true
 			end
@@ -79,7 +80,7 @@ ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", SPELL_FILTER)
 -- I hate mages after 4.0.3a...
 ----------------------------------------------------------------------------------
 local function MAGE_FILTER(self, event, arg1)
-	if strfind(arg1,"портал") or strfind(arg1,"порталы") or strfind(arg1, "Порталы") or strfind(arg1, "ПОРТАЛ") or strfind(arg1, "ПОРТАЛЫ") then
+	if strfind(arg1,"портал") or strfind(arg1,"порталы") or strfind(arg1, "Порталы") or strfind(arg1, "ПОРТАЛ") or strfind(arg1, "ПОРТАЛЫ") or strfind(arg1, "Khaz'ro")  or strfind(arg1, "khaz'rogg'") then
 		return true
 	end
 end

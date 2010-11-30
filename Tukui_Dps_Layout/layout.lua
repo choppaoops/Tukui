@@ -5,8 +5,7 @@ if not TukuiCF["unitframes"].enable == true then return end
 ------------------------------------------------------------------------
 
 local db = TukuiCF["unitframes"]
-local font1 = TukuiCF["media"].font2
-local font2 = TukuiCF["media"].font2
+local font = TukuiCF["media"].font2
 local normTex = TukuiCF["media"].normTex
 local glowTex = TukuiCF["media"].glowTex
 
@@ -102,7 +101,7 @@ local function Shared(self, unit)
 		-- Health Bar Background
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
-		health.value = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		health.value = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		health.value:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
 		health.PostUpdate = TukuiDB.PostUpdateHealth
 		self.Health = health
@@ -163,7 +162,7 @@ local function Shared(self, unit)
 		powerBG:SetAllPoints(power)
 		powerBG:SetTexture(normTex)
 		powerBG.multiplier = 0.3
-		power.value = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		power.value = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		power.value:SetPoint("LEFT", health, "LEFT", TukuiDB.Scale(4), TukuiDB.Scale(1))
 		power.PreUpdate = TukuiDB.PreUpdatePower
 		power.PostUpdate = TukuiDB.PostUpdatePower
@@ -173,7 +172,7 @@ local function Shared(self, unit)
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort] [level] [shortclassification]')
 		Name:SetPoint("CENTER", health, "CENTER", TukuiDB.Scale(0), TukuiDB.Scale(1))
 		Name:SetJustifyH("LEFT")
-		Name:SetFont(font1, 10, "THINOUTLINE")
+		Name:SetFont(font, 10, "THINOUTLINE")
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		self.Name = Name
@@ -258,12 +257,12 @@ local function Shared(self, unit)
 		FlashInfo.parent = self
 		FlashInfo:SetToplevel(true)
 		FlashInfo:SetAllPoints(health)
-		FlashInfo.ManaLevel = TukuiDB.SetFontString(FlashInfo, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		FlashInfo.ManaLevel = TukuiDB.SetFontString(FlashInfo, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		FlashInfo.ManaLevel:SetPoint("RIGHT", power, "LEFT", -27, TukuiDB.Scale(-7))
 		self.FlashInfo = FlashInfo
 		
 		-- pvp status text
-		local status = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		local status = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		status:SetPoint("RIGHT", power, "LEFT", -27, TukuiDB.Scale(-7))
 		status:SetTextColor(0.69, 0.31, 0.31, 0)
 		self.Status = status
@@ -322,7 +321,7 @@ local function Shared(self, unit)
 			self.Experience = Experience
 
 			Experience.Text = self.Experience:CreateFontString(nil, 'OVERLAY')
-			Experience.Text:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+			Experience.Text:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			Experience.Text:SetPoint('CENTER', self.Experience)
 			self.Experience.Text = Experience.Text
 			self.Experience.PostUpdate = TukuiDB.ExperienceText
@@ -365,7 +364,7 @@ local function Shared(self, unit)
 			self.Reputation = Reputation
 
 			Reputation.Text = self.Reputation:CreateFontString(nil, 'OVERLAY')
-			Reputation.Text:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+			Reputation.Text:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			Reputation.Text:SetPoint('CENTER', self.Reputation)
 			self.Reputation.Text = Reputation.Text
 			
@@ -404,10 +403,10 @@ local function Shared(self, unit)
 			ThreatBar.useRawThreat = false
 			self.ThreatBar = ThreatBar
 			
-			ThreatBar.Text = TukuiDB.SetFontString(ThreatBar, font2, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			ThreatBar.Text = TukuiDB.SetFontString(ThreatBar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			ThreatBar.Text:SetPoint("RIGHT", ThreatBar, "RIGHT", TukuiDB.Scale(-5), 1 )
 	
-			ThreatBar.Title = TukuiDB.SetFontString(ThreatBar, font2, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			ThreatBar.Title = TukuiDB.SetFontString(ThreatBar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			ThreatBar.Title:SetText(tukuilocal.unitframes_ouf_threattext)
 			ThreatBar.Title:SetPoint("LEFT", ThreatBar, "LEFT", TukuiDB.Scale(5), 1 )
 			
@@ -428,7 +427,7 @@ local function Shared(self, unit)
 				player_height = player_height + TukuiDB.Scale(14)
 
 				CreateFrame("Frame"):SetScript("OnUpdate", function() TukuiDB.UpdateDruidMana(self) end)
-				local DruidMana = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+				local DruidMana = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 				DruidMana:SetTextColor(1, 0.49, 0.04)
 				self.DruidMana = DruidMana
 
@@ -456,7 +455,7 @@ local function Shared(self, unit)
 
 				local eclipseBarText = solarBar:CreateFontString(nil, 'OVERLAY')
 				eclipseBarText:SetPoint("CENTER", self.Health, "CENTER", TukuiDB.Scale(1), TukuiDB.Scale(-5))
-				eclipseBarText:SetFont(font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+				eclipseBarText:SetFont(font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 				eclipseBar.Text = eclipseBarText
 
 			
@@ -715,13 +714,13 @@ local function Shared(self, unit)
 			castbar.bg:SetFrameLevel(5)
 			TukuiDB.CreateShadow(castbar.bg)
  
-			castbar.time = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.time = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.time:SetPoint("RIGHT", castbar, "RIGHT", TukuiDB.Scale(-4), 0.5)
 			castbar.time:SetTextColor(1, 1, 1)
 			castbar.time:SetJustifyH("RIGHT")
 			castbar.CustomTimeText = CustomCastTimeText
  
-			castbar.Text = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.Text = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0.5)
 			castbar.Text:SetTextColor(1, 1, 1)
  
@@ -764,7 +763,7 @@ local function Shared(self, unit)
 		-- add combat feedback support
 		if db.combatfeedback == true then
 			local CombatFeedbackText 
-			CombatFeedbackText = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize*1.1, "OUTLINE")
+			CombatFeedbackText = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize*1.1, "OUTLINE")
 
 			if db.charportrait == true then
 				CombatFeedbackText:SetPoint("CENTER", self.Portrait, "CENTER")
@@ -851,7 +850,7 @@ local function Shared(self, unit)
 		-- Health Bar Background
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
-		health.value = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		health.value = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		health.value:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
 		health.PostUpdate = TukuiDB.PostUpdateHealth
 		self.Health = health
@@ -912,7 +911,7 @@ local function Shared(self, unit)
 		powerBG:SetAllPoints(power)
 		powerBG:SetTexture(normTex)
 		powerBG.multiplier = 0.3
-		power.value = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		power.value = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		power.value:SetPoint("LEFT", health, "LEFT", TukuiDB.Scale(4), TukuiDB.Scale(1))
 		power.PreUpdate = TukuiDB.PreUpdatePower
 		power.PostUpdate = TukuiDB.PostUpdatePower
@@ -985,7 +984,7 @@ local function Shared(self, unit)
 		local Name = health:CreateFontString(nil, "OVERLAY")
 		Name:SetPoint("LEFT", health, "LEFT", 0, TukuiDB.Scale(1))
 		Name:SetJustifyH("LEFT")
-		Name:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+		Name:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namelong] [Tukui:diffcolor][level] [shortclassification]')
@@ -1046,13 +1045,13 @@ local function Shared(self, unit)
 			castbar.bg:SetFrameLevel(5)
 			TukuiDB.CreateShadow(castbar.bg)
 
-			castbar.time = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.time = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.time:SetPoint("RIGHT", castbar, "RIGHT", TukuiDB.Scale(-4), 0.5)
 			castbar.time:SetTextColor(1, 1, 1)
 			castbar.time:SetJustifyH("RIGHT")
 			castbar.CustomTimeText = CustomCastTimeText
  
-			castbar.Text = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.Text = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0.5)
 			castbar.Text:SetTextColor(1, 1, 1)
  
@@ -1083,7 +1082,7 @@ local function Shared(self, unit)
 		-- add combat feedback support
 		if db.combatfeedback == true then
 			local CombatFeedbackText 
-			CombatFeedbackText = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize*1.1, "OUTLINE")
+			CombatFeedbackText = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize*1.1, "OUTLINE")
 			
 			if db.charportrait == true then
 				CombatFeedbackText:SetPoint("CENTER", self.Portrait, "CENTER")
@@ -1147,6 +1146,7 @@ local function Shared(self, unit)
 		
 		bars.FrameBackdrop = CreateFrame("Frame", nil, bars[1])
 		TukuiDB.SetTemplate(bars.FrameBackdrop)
+		TukuiDB.CreateShadow(bars.FrameBackdrop)
 		bars.FrameBackdrop:SetPoint("TOPLEFT", bars, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 		bars.FrameBackdrop:SetPoint("BOTTOMRIGHT", bars, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 		bars.FrameBackdrop:SetFrameLevel(bars:GetFrameLevel() - 1)
@@ -1285,7 +1285,7 @@ local function Shared(self, unit)
 		-- Unit name
 		local Name = health:CreateFontString(nil, "OVERLAY")
 		Name:SetPoint("CENTER", health, "CENTER", 0, TukuiDB.Scale(1))
-		Name:SetFont(font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+		Name:SetFont(font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 		Name:SetJustifyH("CENTER")
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
@@ -1362,13 +1362,13 @@ local function Shared(self, unit)
 			castbar.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 			castbar.bg:SetFrameLevel(5)
 			
-			castbar.time = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize)
+			castbar.time = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize)
 			castbar.time:SetPoint("RIGHT", castbar, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
 			castbar.time:SetTextColor(0.84, 0.75, 0.65)
 			castbar.time:SetJustifyH("RIGHT")
 			castbar.CustomTimeText = CustomCastTimeText
 
-			castbar.Text = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize)
+			castbar.Text = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize)
 			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 1)
 			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
 			
@@ -1458,7 +1458,7 @@ local function Shared(self, unit)
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
 
-		health.value = TukuiDB.SetFontString(health, font1,TukuiCF["unitframes"].fontsize, "OUTLINE")
+		health.value = TukuiDB.SetFontString(health, font,TukuiCF["unitframes"].fontsize, "OUTLINE")
 		health.value:SetPoint("LEFT", TukuiDB.Scale(2), TukuiDB.Scale(1))
 		health.PostUpdate = TukuiDB.PostUpdateHealth
 				
@@ -1546,7 +1546,7 @@ local function Shared(self, unit)
 		power.colorDisconnected = true
 		
 		if (unit and unit:find('arena%d')) then
-			power.value = TukuiDB.SetFontString(health, font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+			power.value = TukuiDB.SetFontString(health, font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			power.value:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
 			power.PreUpdate = TukuiDB.PreUpdatePower
 			power.PostUpdate = TukuiDB.PostUpdatePower
@@ -1562,14 +1562,14 @@ local function Shared(self, unit)
 			Name = health:CreateFontString(nil, "OVERLAY")
 			Name:SetPoint("CENTER", health, "CENTER", 0, TukuiDB.Scale(1))
 			Name:SetJustifyH("CENTER")
-			Name:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+			Name:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			Name:SetShadowColor(0, 0, 0)
 			Name:SetShadowOffset(1.25, -1.25)
 		else
 			Name = health:CreateFontString(nil, "OVERLAY")
 			Name:SetPoint("RIGHT", health, "RIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(1))
 			Name:SetJustifyH("RIGHT")
-			Name:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+			Name:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 			Name:SetShadowColor(0, 0, 0)
 			Name:SetShadowOffset(1.25, -1.25)		
 		end
@@ -1648,13 +1648,13 @@ local function Shared(self, unit)
 			castbar.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 			castbar.bg:SetFrameLevel(5)
 			
-			castbar.time = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.time = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.time:SetPoint("RIGHT", castbar, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
 			castbar.time:SetTextColor(0.84, 0.75, 0.65)
 			castbar.time:SetJustifyH("RIGHT")
 			castbar.CustomTimeText = CustomCastTimeText
 
-			castbar.Text = TukuiDB.SetFontString(castbar, font1, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
+			castbar.Text = TukuiDB.SetFontString(castbar, font, TukuiCF["unitframes"].fontsize, "THINOUTLINE")
 			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 1)
 			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
 			
@@ -1734,7 +1734,7 @@ local function Shared(self, unit)
 		local Name = health:CreateFontString(nil, "OVERLAY")
 		Name:SetPoint("CENTER", health, "CENTER", 0, TukuiDB.Scale(1))
 		Name:SetJustifyH("CENTER")
-		Name:SetFont(font1, TukuiCF["unitframes"].fontsize, "OUTLINE")
+		Name:SetFont(font, TukuiCF["unitframes"].fontsize, "OUTLINE")
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		
